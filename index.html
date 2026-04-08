@@ -1806,58 +1806,82 @@ footer::before {
               <h3 class="svc-name">Chatbot IA sur-mesure</h3>
               <p class="svc-desc">Imaginez un assistant qui répond à vos clients à 3h du matin, qualifie vos leads et gère les questions répétitives — sans que vous n'ayez à intervenir. Déployé sur votre site en 3 semaines, formé sur vos données, aux couleurs de votre marque. Vos équipes se concentrent enfin sur ce qui a de la valeur.</p>
 
-              <!-- n8n workflow diagram -->
+              <!-- n8n workflow diagram — vertical -->
               <div class="n8n-diagram" aria-hidden="true">
-                <svg viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="n8n-svg">
-                  <!-- Connecting lines -->
-                  <line x1="90" y1="80" x2="138" y2="80" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4 3"/>
-                  <line x1="222" y1="80" x2="270" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
-                  <line x1="354" y1="80" x2="402" y2="80" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4 3"/>
-                  <!-- Vertical branch from n8n -->
-                  <line x1="312" y1="111" x2="312" y2="133" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                <svg viewBox="0 0 280 430" fill="none" xmlns="http://www.w3.org/2000/svg" class="n8n-svg">
 
-                  <!-- Node 1 : Webhook / Message client -->
-                  <rect x="10" y="58" width="80" height="44" rx="8" fill="rgba(12,12,12,0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                  <rect x="10" y="58" width="80" height="8" rx="4" fill="rgba(255,255,255,0.05)"/>
-                  <text x="50" y="78" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)" letter-spacing="0.05em">WEBHOOK</text>
-                  <text x="50" y="91" text-anchor="middle" font-family="monospace" font-size="8.5" fill="rgba(255,255,255,0.85)">Message</text>
-                  <text x="50" y="101" text-anchor="middle" font-family="monospace" font-size="8.5" fill="rgba(255,255,255,0.85)">client</text>
+                  <!-- Title -->
+                  <text x="140" y="10" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.18)" letter-spacing="0.15em">FLUX AUTOMATISÉ — 24H/24</text>
 
-                  <!-- Node 2 : IA (Claude / Mistral) -->
-                  <rect x="138" y="52" width="84" height="56" rx="8" fill="rgba(12,12,12,0.95)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-                  <rect x="138" y="52" width="84" height="8" rx="4" fill="rgba(255,255,255,0.06)"/>
-                  <text x="180" y="71" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.9)" letter-spacing="0.05em">IA NODE</text>
-                  <text x="180" y="85" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.85)" font-weight="bold">Claude /</text>
-                  <text x="180" y="97" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.85)" font-weight="bold">Mistral</text>
-                  <!-- pulsing dot -->
-                  <circle cx="213" cy="60" r="3" fill="rgba(255,255,255,0.9)"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/></circle>
+                  <!-- ── NODE 1 : Client écrit ── -->
+                  <rect x="40" y="18" width="200" height="52" rx="10" fill="rgba(18,18,18,0.95)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                  <rect x="40" y="18" width="200" height="7" rx="4" fill="rgba(255,255,255,0.04)"/>
+                  <text x="55" y="33" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.35)" letter-spacing="0.1em">ÉTAPE 1</text>
+                  <text x="140" y="49" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.92)" font-weight="bold">Le client envoie un message</text>
+                  <text x="140" y="62" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.42)">Sur votre site, WhatsApp ou par email</text>
 
-                  <!-- Node 3 : n8n orchestration -->
-                  <rect x="270" y="55" width="84" height="50" rx="8" fill="rgba(12,12,12,0.9)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
-                  <rect x="270" y="55" width="84" height="8" rx="4" fill="rgba(255,255,255,0.05)"/>
-                  <text x="312" y="73" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)" letter-spacing="0.05em">ORCHE.</text>
-                  <text x="312" y="87" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.85)" font-weight="bold">n8n</text>
-                  <text x="312" y="99" text-anchor="middle" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,0.5)">workflow</text>
+                  <!-- Arrow 1 → 2 -->
+                  <line x1="140" y1="70" x2="140" y2="90" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <polygon points="136,88 140,96 144,88" fill="rgba(255,255,255,0.35)"/>
 
-                  <!-- Node 4 : Réponse -->
-                  <rect x="402" y="58" width="80" height="44" rx="8" fill="rgba(12,12,12,0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                  <rect x="402" y="58" width="80" height="8" rx="4" fill="rgba(255,255,255,0.05)"/>
-                  <text x="442" y="78" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)" letter-spacing="0.05em">OUTPUT</text>
-                  <text x="442" y="91" text-anchor="middle" font-family="monospace" font-size="8.5" fill="rgba(255,255,255,0.85)">Réponse</text>
-                  <text x="442" y="101" text-anchor="middle" font-family="monospace" font-size="8.5" fill="rgba(255,255,255,0.85)">client</text>
+                  <!-- ── NODE 2 : IA comprend ── -->
+                  <rect x="40" y="96" width="200" height="52" rx="10" fill="rgba(18,18,18,0.98)" stroke="rgba(255,255,255,0.32)" stroke-width="1.5"/>
+                  <rect x="40" y="96" width="200" height="7" rx="4" fill="rgba(255,255,255,0.06)"/>
+                  <circle cx="228" cy="103" r="3" fill="rgba(255,255,255,0.9)"><animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite"/></circle>
+                  <text x="55" y="111" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.45)" letter-spacing="0.1em">ÉTAPE 2 — IA</text>
+                  <text x="140" y="127" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.92)" font-weight="bold">L'IA lit et comprend</text>
+                  <text x="140" y="140" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.42)">Claude / Mistral — analyse en moins d'1 seconde</text>
 
-                  <!-- Branch bas : Escalade humain -->
-                  <rect x="270" y="133" width="84" height="22" rx="6" fill="rgba(12,12,12,0.8)" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3 2"/>
-                  <text x="312" y="148" text-anchor="middle" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,0.4)">Escalade humain</text>
+                  <!-- Arrow 2 → 3 -->
+                  <line x1="140" y1="148" x2="140" y2="168" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <polygon points="136,166 140,174 144,166" fill="rgba(255,255,255,0.35)"/>
 
-                  <!-- Arrows -->
-                  <polygon points="136,76 128,80 136,84" fill="rgba(255,255,255,0.4)"/>
-                  <polygon points="268,76 260,80 268,84" fill="rgba(255,255,255,0.4)"/>
-                  <polygon points="400,76 392,80 400,84" fill="rgba(255,255,255,0.4)"/>
-                  <polygon points="308,131 312,139 316,131" fill="rgba(255,255,255,0.25)"/>
+                  <!-- ── NODE 3 : Cherche dans vos données ── -->
+                  <rect x="40" y="174" width="200" height="52" rx="10" fill="rgba(18,18,18,0.95)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                  <rect x="40" y="174" width="200" height="7" rx="4" fill="rgba(255,255,255,0.04)"/>
+                  <text x="55" y="189" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.35)" letter-spacing="0.1em">ÉTAPE 3</text>
+                  <text x="140" y="205" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.92)" font-weight="bold">Cherche dans vos données</text>
+                  <text x="140" y="218" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.42)">Votre FAQ, tarifs, catalogue, documents</text>
 
-                  <!-- Label -->
-                  <text x="260" y="20" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.18)" letter-spacing="0.15em">FLUX AUTOMATISÉ — 24H/24</text>
+                  <!-- Arrow 3 → 4 -->
+                  <line x1="140" y1="226" x2="140" y2="246" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <polygon points="136,244 140,252 144,244" fill="rgba(255,255,255,0.35)"/>
+
+                  <!-- ── NODE 4 : Décision ── -->
+                  <rect x="40" y="252" width="200" height="52" rx="10" fill="rgba(18,18,18,0.95)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+                  <rect x="40" y="252" width="200" height="7" rx="4" fill="rgba(255,255,255,0.05)"/>
+                  <text x="55" y="267" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.4)" letter-spacing="0.1em">ÉTAPE 4 — DÉCISION</text>
+                  <text x="140" y="283" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.92)" font-weight="bold">Peut-il répondre seul ?</text>
+                  <text x="140" y="296" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.42)">Oui dans 85% des cas — sinon, escalade</text>
+
+                  <!-- Branch lines -->
+                  <line x1="140" y1="304" x2="140" y2="326" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <line x1="65" y1="326" x2="215" y2="326" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <line x1="65" y1="326" x2="65" y2="344" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <line x1="215" y1="326" x2="215" y2="344" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <polygon points="61,342 65,350 69,342" fill="rgba(255,255,255,0.38)"/>
+                  <polygon points="211,342 215,350 219,342" fill="rgba(255,255,255,0.2)"/>
+
+                  <!-- Labels branche -->
+                  <text x="65" y="338" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)">OUI</text>
+                  <text x="215" y="338" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.3)">NON</text>
+
+                  <!-- ── NODE 5a : Réponse automatique ── -->
+                  <rect x="8" y="350" width="116" height="62" rx="10" fill="rgba(18,18,18,0.95)" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+                  <rect x="8" y="350" width="116" height="7" rx="4" fill="rgba(255,255,255,0.06)"/>
+                  <text x="66" y="365" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.5)" letter-spacing="0.08em">RÉPONSE AUTO</text>
+                  <text x="66" y="382" text-anchor="middle" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.95)" font-weight="bold">✓ Envoyée</text>
+                  <text x="66" y="396" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)">au client</text>
+                  <text x="66" y="406" text-anchor="middle" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,0.35)">en moins de 2 secondes</text>
+
+                  <!-- ── NODE 5b : Escalade humain ── -->
+                  <rect x="156" y="350" width="116" height="62" rx="10" fill="rgba(12,12,12,0.8)" stroke="rgba(255,255,255,0.14)" stroke-width="1" stroke-dasharray="4 3"/>
+                  <rect x="156" y="350" width="116" height="7" rx="4" fill="rgba(255,255,255,0.02)"/>
+                  <text x="214" y="365" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.3)" letter-spacing="0.08em">SI COMPLEXE</text>
+                  <text x="214" y="382" text-anchor="middle" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.6)" font-weight="bold">Votre équipe</text>
+                  <text x="214" y="396" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.35)">est alertée</text>
+                  <text x="214" y="406" text-anchor="middle" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,0.25)">par email ou SMS</text>
+
                 </svg>
               </div>
 
