@@ -1,0 +1,2866 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Altiarc — Julien Delmas · Consultant IA & Intégrateur · Paris · Toulouse</title>
+  <meta name="description" content="Julien Delmas, consultant IA et intégrateur basé à Paris et Toulouse. Chatbot IA sur-mesure, automatisations, audit IA, création de sites web premium et formation. L'IA concrète, pas théorique.">
+  <meta property="og:title" content="Altiarc — Julien Delmas · Consultant IA & Intégrateur · Paris · Toulouse">
+  <meta property="og:description" content="De l'audit à l'intégration, je transforme vos processus en avantages concurrentiels mesurables.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://altiarc.fr">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Person", "LocalBusiness"],
+    "name": "Julien Delmas",
+    "jobTitle": "Consultant IA & Intégrateur",
+    "brand": { "@type": "Brand", "name": "Altiarc" },
+    "description": "Consultant IA hybride — intégrateur IA et automatisation basé à Paris",
+    "url": "https://altiarc.fr",
+    "address": { "@type": "PostalAddress", "addressLocality": "Paris & Toulouse", "addressCountry": "FR" },
+    "email": "jdelmas3001@gmail.com",
+    "sameAs": ["https://linkedin.com/in/julien-delmas-6b7545171"],
+    "makesOffer": [
+      { "@type": "Offer", "name": "Chatbot IA sur-mesure", "price": "1500", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Automatisations & Workflows", "price": "800", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Audit IA", "price": "500", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Création de site internet", "price": "1200", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Formation IA", "price": "400", "priceCurrency": "EUR" }
+    ]
+  }
+  </script>
+  <style>
+/* ══════════════════════════════════════════════════════
+   1. CSS VARIABLES
+   ══════════════════════════════════════════════════════ */
+:root {
+  --bg: #0c0c0c;
+  --bg2: #141414;
+  --bg3: #1e1e1e;
+  --fg: #ffffff;
+  --muted: rgba(255,255,255,0.5);
+  --dim: rgba(255,255,255,0.22);
+  --navy: #1a1a1a;
+  --gold: #c9a84c;
+  --gold-glow: rgba(201,168,76,0.06);
+  --cyan: #818CF8;
+  --cyan-dim: rgba(129,140,248,0.08);
+  --violet: #C084FC;
+  --violet-dim: rgba(192,132,252,0.06);
+  --rose: #F472B6;
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: 'Syne', sans-serif;
+  --font-ui: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+/* ══════════════════════════════════════════════════════
+   2. RESET & BASE
+   ══════════════════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: inherit; text-decoration: none; cursor: none; }
+button { border: none; background: none; cursor: none; font-family: inherit; color: inherit; }
+::selection { background: rgba(255,255,255,0.2); color: var(--fg); }
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+
+/* ══════════════════════════════════════════════════════
+   3. CURSOR
+   ══════════════════════════════════════════════════════ */
+#cursor, #cursor-ring {
+  position: fixed; pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%); border-radius: 50%;
+  will-change: left, top;
+  mix-blend-mode: screen;
+}
+#cursor {
+  width: 8px; height: 8px; background: #ffffff;
+  transition: width .2s, height .2s, background .2s;
+}
+#cursor-ring {
+  width: 32px; height: 32px;
+  border: 1px solid rgba(255,255,255,0.4);
+  transition: width .3s var(--ease-out), height .3s var(--ease-out), border-color .3s;
+}
+body.hovered #cursor { width: 4px; height: 4px; background: #ffffff; }
+body.hovered #cursor-ring { width: 52px; height: 52px; border-color: rgba(255,255,255,0.3); }
+@media (pointer: coarse) {
+  #cursor, #cursor-ring { display: none !important; }
+  body, a, button { cursor: auto; }
+}
+
+/* ══════════════════════════════════════════════════════
+   4. AMBIENT BACKGROUND
+   ══════════════════════════════════════════════════════ */
+#ambient { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.orb { position: absolute; border-radius: 50%; filter: blur(100px); will-change: transform; }
+.orb-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%);
+  top: -200px; left: -200px;
+  animation: orb-float 18s ease-in-out infinite;
+}
+.orb-2 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 60%);
+  top: -200px; right: -200px;
+  animation: orb-float 18s ease-in-out infinite reverse;
+}
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(60px, 40px) scale(1.05); }
+  50% { transform: translate(20px, 80px) scale(1.02); }
+  75% { transform: translate(-40px, 30px) scale(0.97); }
+}
+
+/* ══════════════════════════════════════════════════════
+   5. HOLOGRAPHIC GRID
+   ══════════════════════════════════════════════════════ */
+#grid-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 0%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 0%, transparent 100%);
+  animation: grid-pulse 8s ease-in-out infinite;
+}
+@keyframes grid-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ══════════════════════════════════════════════════════
+   6. GRAIN
+   ══════════════════════════════════════════════════════ */
+#grain {
+  position: fixed; inset: 0; z-index: 999; pointer-events: none; opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
+}
+
+/* ══════════════════════════════════════════════════════
+   7. SCROLL DRIVER & CUBE SCENE
+   ══════════════════════════════════════════════════════ */
+#scroll-driver { height: 150vh; position: relative; z-index: 1; }
+#cube-scene {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  perspective: 1400px;
+  will-change: opacity;
+  contain: layout style;
+}
+#particles-container { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.particle {
+  position: absolute; border-radius: 50%; background: var(--cyan);
+  animation: particle-float linear infinite; will-change: transform;
+}
+@keyframes particle-float {
+  0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-20px) translateX(var(--drift)); opacity: 0; }
+}
+#scan-line {
+  position: absolute; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: scan 5s linear infinite; pointer-events: none;
+}
+@keyframes scan {
+  0% { top: -2px; opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 0.5; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 2px; background: rgba(255,255,255,0.08);
+  border-radius: 1px; overflow: hidden; z-index: 10;
+}
+#scroll-progress-fill {
+  height: 100%; width: 0%; border-radius: 1px;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  transition: width 0.05s linear;
+}
+#scroll-hint {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  animation: hint-fade 3s ease-in-out infinite;
+}
+.scroll-hint-text {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--dim);
+}
+.scroll-arrow {
+  width: 22px; height: 34px;
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 11px;
+  display: flex; justify-content: center; padding-top: 5px;
+}
+.scroll-arrow-inner {
+  width: 3px; height: 7px; background: rgba(255,255,255,0.7);
+  border-radius: 2px; animation: scroll-bob 1.6s ease-in-out infinite;
+}
+@keyframes scroll-bob {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(10px); opacity: 0.2; }
+}
+@keyframes hint-fade {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+/* ══════════════════════════════════════════════════════
+   8. CUBE
+   ══════════════════════════════════════════════════════ */
+#cube-wrap {
+  position: relative; width: 380px; height: 380px;
+  transform-style: preserve-3d; will-change: transform;
+}
+#cube-wrap::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  width: 700px; height: 700px; transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 55%);
+  pointer-events: none; animation: halo 5s ease-in-out infinite;
+}
+@keyframes halo {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); }
+}
+#cube { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
+
+/* Face styling with inner glow + cross lines */
+.face {
+  position: absolute; width: 380px; height: 380px;
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: inset 0 0 40px rgba(255,255,255,0.03);
+  will-change: transform; backface-visibility: visible;
+}
+/* Horizontal center line */
+.face::before {
+  content: ''; position: absolute; top: 50%; left: 0; right: 0;
+  height: 1px; background: rgba(255,255,255,0.08);
+}
+/* Vertical center line */
+.face::after {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; background: rgba(255,255,255,0.08);
+}
+
+.face-front  { transform: translateZ(190px); }
+.face-back   { transform: rotateY(180deg) translateZ(190px); }
+.face-left   { transform: rotateY(-90deg) translateZ(190px); }
+.face-right  { transform: rotateY(90deg) translateZ(190px); }
+.face-top    { transform: rotateX(90deg) translateZ(190px); }
+.face-bottom { transform: rotateX(-90deg) translateZ(190px); }
+
+/* Diagonal lines on front face for enhanced wireframe */
+.face-front .diag-1 {
+  position: absolute; top: 0; left: 0; width: 141%; height: 1px;
+  background: rgba(255,255,255,0.06);
+  transform-origin: top left; transform: rotate(45deg);
+}
+.face-front .diag-2 {
+  position: absolute; top: 0; right: 0; width: 141%; height: 1px;
+  background: rgba(255,255,255,0.06);
+  transform-origin: top right; transform: rotate(-45deg);
+}
+
+/* Corner markers on faces */
+.face-corner {
+  position: absolute; width: 14px; height: 14px;
+}
+.fc-tl { top: 8px; left: 8px; border-top: 1px solid rgba(255,255,255,0.5); border-left: 1px solid rgba(255,255,255,0.5); }
+.fc-tr { top: 8px; right: 8px; border-top: 1px solid rgba(255,255,255,0.5); border-right: 1px solid rgba(255,255,255,0.5); }
+.fc-bl { bottom: 8px; left: 8px; border-bottom: 1px solid rgba(255,255,255,0.5); border-left: 1px solid rgba(255,255,255,0.5); }
+.fc-br { bottom: 8px; right: 8px; border-bottom: 1px solid rgba(255,255,255,0.5); border-right: 1px solid rgba(255,255,255,0.5); }
+
+/* ══════════════════════════════════════════════════════
+   9. CUBE INTERIOR
+   ══════════════════════════════════════════════════════ */
+#cube-interior {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  opacity: 1; will-change: opacity; z-index: 5;
+}
+.int-glow {
+  position: absolute; top: 50%; left: 50%; width: 500px; height: 500px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 55%);
+  pointer-events: none; z-index: -1;
+}
+.int-brand {
+  font-family: var(--font-display); font-style: normal; font-weight: 800;
+  font-size: 13px; letter-spacing: 0.4em; color: rgba(255,255,255,0.9);
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.int-eyebrow {
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.4em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 10px;
+}
+.int-name {
+  font-family: var(--font-display); font-style: normal; font-weight: 800;
+  font-size: 34px; color: var(--fg); letter-spacing: -0.03em; white-space: nowrap;
+}
+.int-tagline {
+  font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.35);
+  letter-spacing: 0.08em; margin-top: 8px; text-align: center;
+}
+.int-icons {
+  display: flex; gap: 14px; margin-top: 18px;
+}
+.int-icon {
+  width: 30px; height: 30px;
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.7); transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   10. SITE WRAPPER
+   ══════════════════════════════════════════════════════ */
+#site { position: relative; z-index: 2; background: var(--bg); }
+
+/* ══════════════════════════════════════════════════════
+   11. NAVBAR
+   ══════════════════════════════════════════════════════ */
+#navbar {
+  position: fixed; top: 20px; left: 50%;
+  transform: translateX(-50%) translateY(-120px);
+  z-index: 50;
+  background: rgba(12,12,12,0.9);
+  backdrop-filter: blur(20px) saturate(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(1.1);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 100px;
+  padding: 10px 24px;
+  display: flex; align-items: center; gap: 32px;
+  transition: transform 0.7s var(--ease-spring), background 0.3s, border-color 0.3s;
+  white-space: nowrap;
+}
+#navbar.visible { transform: translateX(-50%) translateY(0); }
+#navbar.scrolled { background: rgba(8,8,8,0.97); border-color: rgba(255,255,255,0.1); }
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo-mark {
+  font-family: var(--font-display); font-style: normal; font-weight: 800;
+  font-size: 20px; color: var(--fg); letter-spacing: -0.02em;
+}
+.nav-logo-name {
+  font-family: var(--font-ui); font-size: 12px; font-weight: 700;
+  color: var(--muted); letter-spacing: 0.04em;
+}
+.nav-logo-sub {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 300;
+  color: var(--dim); letter-spacing: 0.04em; white-space: nowrap;
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--muted); letter-spacing: 0.05em;
+  transition: color 0.2s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 1px; background: var(--cyan); transform: scaleX(0);
+  transition: transform 0.3s var(--ease-spring); transform-origin: right;
+}
+.nav-links a:hover { color: var(--fg); }
+.nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav-badge {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 11px; color: #aaaaaa;
+}
+.badge-dot {
+  width: 6px; height: 6px; background: #aaaaaa; border-radius: 50%;
+  animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(180,180,180,0.4); }
+  50% { box-shadow: 0 0 0 5px rgba(180,180,180,0); }
+}
+.nav-cta {
+  font-family: var(--font-ui); font-size: 13px; font-weight: 700;
+  color: var(--cyan);
+  border: 1px solid rgba(255,255,255,0.3); border-radius: 100px;
+  padding: 6px 18px; transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.nav-cta:hover {
+  background: rgba(255,255,255,0.08); border-color: var(--cyan);
+  box-shadow: 0 0 16px rgba(255,255,255,0.1);
+}
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+.nav-hamburger span {
+  display: block; width: 22px; height: 1.5px; background: var(--fg);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile nav overlay */
+#nav-overlay {
+  position: fixed; inset: 0; z-index: 45;
+  background: rgba(8,8,8,0.97);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.4s;
+}
+#nav-overlay.open { opacity: 1; pointer-events: auto; }
+.nav-overlay-links { list-style: none; text-align: center; }
+.nav-overlay-links li {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+#nav-overlay.open li:nth-child(1) { opacity:1; transform:none; transition-delay:.05s; }
+#nav-overlay.open li:nth-child(2) { opacity:1; transform:none; transition-delay:.10s; }
+#nav-overlay.open li:nth-child(3) { opacity:1; transform:none; transition-delay:.15s; }
+#nav-overlay.open li:nth-child(4) { opacity:1; transform:none; transition-delay:.20s; }
+.nav-overlay-links a {
+  font-family: var(--font-display); font-style: italic; font-weight: 200;
+  font-size: 48px; color: var(--fg); letter-spacing: -0.02em; line-height: 1.5;
+  transition: color 0.2s;
+}
+.nav-overlay-links a:hover { color: var(--cyan); }
+
+/* ══════════════════════════════════════════════════════
+   12. BUTTONS
+   ══════════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 14px;
+  padding: 13px 26px; border-radius: 100px;
+  transition: all 0.25s var(--ease-out); position: relative; overflow: hidden;
+}
+.btn-primary {
+  background: #ffffff; color: #000000;
+  border: 1px solid #ffffff;
+}
+.btn-primary::before { display: none; }
+.btn-primary:hover {
+  background: rgba(255,255,255,0.88);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(255,255,255,0.12);
+}
+.btn-primary:active { transform: scale(0.97); }
+.btn-ghost {
+  background: transparent; color: var(--fg);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-ghost:hover {
+  color: var(--fg); border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.04);
+}
+.btn-ghost:active { transform: scale(0.97); }
+.btn-cyan {
+  background: transparent; color: var(--fg);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-cyan:hover {
+  background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.45);
+  box-shadow: none;
+}
+.btn-cyan:active { transform: scale(0.97); }
+
+/* ══════════════════════════════════════════════════════
+   13. HERO
+   ══════════════════════════════════════════════════════ */
+#hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: flex-start;
+  padding: 160px 80px 120px; position: relative; overflow: hidden; text-align: left;
+  contain: layout style;
+}
+.hero-inner { max-width: 780px; position: relative; z-index: 2; }
+.eyebrow {
+  font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 36px; display: inline-flex;
+  align-items: center; gap: 8px;
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 100px;
+  padding: 5px 14px;
+}
+.eyebrow::before { content: '●'; color: #aaaaaa; font-size: 8px; animation: pulse-dot 2s ease infinite; }
+.hero-title { display: flex; flex-direction: column; gap: 0px; margin-bottom: 32px; }
+.h1-l1, .h1-l2 {
+  font-family: var(--font-display); font-style: normal; font-weight: 800;
+  font-size: clamp(42px, 6vw, 84px); line-height: 0.95; letter-spacing: -0.035em;
+  color: var(--fg);
+}
+.h1-l2 {
+  background: none;
+  -webkit-text-fill-color: var(--fg);
+  color: var(--fg);
+}
+.h1-l3 {
+  font-family: var(--font-ui); font-style: normal; font-weight: 300;
+  font-size: clamp(18px, 2.5vw, 30px); line-height: 1.4;
+  letter-spacing: -0.01em; color: var(--muted); margin-top: 20px;
+}
+.hero-desc {
+  font-family: var(--font-ui); font-size: 16px; color: var(--muted);
+  max-width: 480px; margin: 0 0 44px; line-height: 1.75;
+}
+.hero-ctas { display: flex; gap: 14px; justify-content: flex-start; flex-wrap: wrap; }
+.hero-orb {
+  position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none;
+}
+.hero-orb-v {
+  width: 500px; height: 500px; background: rgba(255,255,255,0.025);
+  left: -100px; top: 50%; transform: translateY(-50%);
+  animation: orb-float 14s ease-in-out infinite;
+}
+.hero-orb-c {
+  width: 400px; height: 400px; background: rgba(255,255,255,0.018);
+  right: -80px; top: 50%; transform: translateY(-50%);
+  animation: orb-float 14s ease-in-out infinite reverse;
+}
+
+/* Hero tagline bar — the relocated long phrase */
+.hero-tagline-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px;
+  margin: 12px 0 36px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+  max-width: 620px;
+}
+.hero-tagline-bar .tbar-sep {
+  color: var(--cyan); font-size: 9px; opacity: 0.7;
+}
+.hero-tagline-bar .tbar-word {
+  color: rgba(255,255,255,0.28); letter-spacing: 0.12em;
+  transition: color 0.3s;
+}
+.hero-tagline-bar:hover .tbar-word { color: rgba(255,255,255,0.45); }
+.hero-tagline-bar .tbar-accent {
+  color: rgba(255,255,255,0.55); font-weight: 500; letter-spacing: 0.1em;
+}
+
+/* Content text — Plus Jakarta Sans instead of Space Mono */
+.svc-desc, .ref-result, .step-desc, .modal-text, .svc-modal-tagline,
+.offer-desc, .contact-subtitle, .about-bio, .about-differentiator,
+.footer-tagline, .footer-sub, .footer-location, .form-success p,
+.ref-quote { font-family: var(--font-ui); }
+
+/* Glitch effect — improved with offset + brightness */
+.glitch { position: relative; display: inline-block; }
+.glitch::before, .glitch::after {
+  content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%;
+  overflow: hidden; pointer-events: none;
+  font-family: var(--font-display); font-style: normal; font-weight: 800;
+  font-size: inherit; line-height: inherit; letter-spacing: inherit;
+  background: none;
+  -webkit-text-fill-color: var(--fg);
+  color: var(--fg);
+}
+.glitch::before { clip-path: inset(0 0 100% 0); filter: brightness(1.5); }
+.glitch::after { clip-path: inset(100% 0 0 0); filter: brightness(1.5); }
+.glitch:hover::before { animation: glitch-top 0.4s steps(3) forwards; }
+.glitch:hover::after { animation: glitch-btm 0.4s steps(3) forwards; }
+@keyframes glitch-top {
+  0% { clip-path: inset(0 0 88% 0); transform: translate(-3px, 0); }
+  33% { clip-path: inset(12% 0 68% 0); transform: translate(3px, 0); }
+  66% { clip-path: inset(32% 0 48% 0); transform: translate(-2px, 0); }
+  100% { clip-path: inset(0 0 100% 0); transform: translate(0, 0); }
+}
+@keyframes glitch-btm {
+  0% { clip-path: inset(88% 0 0 0); transform: translate(2px, 0); }
+  33% { clip-path: inset(68% 0 12% 0); transform: translate(-3px, 0); }
+  66% { clip-path: inset(48% 0 32% 0); transform: translate(2px, 0); }
+  100% { clip-path: inset(100% 0 0 0); transform: translate(0, 0); }
+}
+
+/* ══════════════════════════════════════════════════════
+   14. SECTION SEPARATOR
+   ══════════════════════════════════════════════════════ */
+.section-sep {
+  display: block; height: 1px; border: 0; margin: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+}
+
+/* ══════════════════════════════════════════════════════
+   15. STATS BAND
+   ══════════════════════════════════════════════════════ */
+#stats {
+  padding: 80px 48px; background: var(--bg2);
+  border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);
+  contain: layout style;
+}
+.stats-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  display: block; font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(34px, 4vw, 60px); line-height: 1;
+  background: none;
+  -webkit-text-fill-color: var(--fg);
+  color: var(--fg);
+  margin-bottom: 10px;
+}
+.stat-label {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--dim);
+}
+.stat-source {
+  display: block; margin-top: 8px;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.18); font-style: italic;
+}
+
+/* ══════════════════════════════════════════════════════
+   16. SECTION COMMON
+   ══════════════════════════════════════════════════════ */
+.section-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--cyan); display: block; margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(28px, 3.2vw, 48px); line-height: 1.05; letter-spacing: -0.025em;
+}
+.section-title em {
+  font-family: var(--font-display); font-style: normal; font-weight: 400;
+}
+
+/* ══════════════════════════════════════════════════════
+   17. SERVICES
+   ══════════════════════════════════════════════════════ */
+#services { padding: 120px 48px; contain: layout style; }
+.services-inner { max-width: 1200px; margin: 0 auto; }
+.services-inner .section-header { margin-bottom: 56px; }
+#services-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+}
+/* Service card */
+.svc-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px; padding: 32px;
+  display: flex; flex-direction: column; position: relative; overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s var(--ease-spring), box-shadow 0.3s;
+}
+/* Glow line on top, appears on hover */
+.svc-card::before {
+  content: ''; position: absolute; top: 0; left: 12%; right: 12%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+/* Scan lines texture */
+.svc-card::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.008) 2px, rgba(255,255,255,0.008) 4px);
+}
+.svc-card:hover {
+  border-color: rgba(255,255,255,0.2); transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+}
+.svc-card:hover::before { opacity: 1; }
+.svc-card:hover .corner { opacity: 1; transform: scale(1); }
+
+/* Featured card (Chatbot) — mono special */
+.svc-chatbot {
+  grid-column: 1; grid-row: 1 / 3;
+  background: #181818;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.svc-chatbot:hover {
+  border-color: rgba(255,255,255,0.25);
+}
+.svc-site    { grid-column: 2; grid-row: 1; }
+.svc-auto    { grid-column: 3; grid-row: 1; }
+.svc-audit   { grid-column: 2; grid-row: 2; }
+.svc-form    { grid-column: 3; grid-row: 2; }
+
+.svc-num {
+  font-family: var(--font-mono); font-size: 11px; color: var(--dim);
+  letter-spacing: 0.2em; margin-bottom: 16px;
+}
+.svc-icon {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px; color: var(--cyan);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.svc-card:hover .svc-icon {
+  border-color: rgba(255,255,255,0.35);
+  box-shadow: 0 0 12px rgba(255,255,255,0.08);
+}
+.svc-chatbot .svc-icon { width: 48px; height: 48px; }
+.svc-name {
+  font-family: var(--font-display); font-weight: 800; font-size: 20px;
+  color: var(--fg); margin-bottom: 10px; line-height: 1.15;
+}
+.svc-chatbot .svc-name { font-size: 26px; }
+.svc-desc {
+  font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+  line-height: 1.7; flex-grow: 1;
+}
+.svc-footer {
+  margin-top: 20px; display: flex; align-items: flex-end;
+  justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+.svc-price {
+  font-family: var(--font-ui); font-weight: 700; font-size: 18px;
+  color: var(--fg);
+}
+.svc-delay {
+  font-family: var(--font-mono); font-size: 11px; color: var(--cyan); letter-spacing: 0.08em;
+}
+/* Corner brackets — scale-in animation on hover */
+.corner {
+  position: absolute; width: 10px; height: 10px;
+  opacity: 0; transform: scale(0.5);
+  transition: opacity 0.3s, transform 0.3s var(--ease-spring); z-index: 2;
+}
+.c-tl { top: 12px; left: 12px; border-top: 1px solid var(--cyan); border-left: 1px solid var(--cyan); }
+.c-tr { top: 12px; right: 12px; border-top: 1px solid var(--cyan); border-right: 1px solid var(--cyan); }
+.c-bl { bottom: 12px; left: 12px; border-bottom: 1px solid var(--cyan); border-left: 1px solid var(--cyan); }
+.c-br { bottom: 12px; right: 12px; border-bottom: 1px solid var(--cyan); border-right: 1px solid var(--cyan); }
+
+/* ══════════════════════════════════════════════════════
+   18. REFERENCES
+   ══════════════════════════════════════════════════════ */
+#references {
+  padding: 120px 48px; background: var(--bg2);
+  border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);
+  contain: layout style;
+}
+.refs-inner { max-width: 1100px; margin: 0 auto; }
+.refs-inner .section-header { margin-bottom: 56px; }
+.refs-grid {
+  display: flex; flex-direction: column; gap: 1px;
+  background: rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden;
+}
+.ref-card {
+  background: var(--bg2); padding: 40px 48px;
+  display: grid; grid-template-columns: 200px 1fr auto; gap: 40px; align-items: center;
+  position: relative; transition: background 0.3s;
+}
+/* Gold accent bar on left */
+.ref-card::before {
+  content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
+  width: 2px; background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  transition: height 0.3s;
+}
+.ref-card:hover { background: rgba(16,16,16,0.95); }
+.ref-card:hover .ref-corner { opacity: 1; transform: scale(1); }
+/* Corner brackets on ref cards too */
+.ref-corner {
+  position: absolute; width: 10px; height: 10px;
+  opacity: 0; transform: scale(0.5);
+  transition: opacity 0.3s, transform 0.3s var(--ease-spring);
+}
+.ref-c-tl { top: 12px; left: 12px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+.ref-c-tr { top: 12px; right: 12px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+.ref-c-bl { bottom: 12px; left: 12px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+.ref-c-br { bottom: 12px; right: 12px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+
+.ref-client {
+  font-family: var(--font-ui); font-weight: 700; font-size: 20px;
+  color: var(--fg); margin-bottom: 8px;
+}
+.ref-tag {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 100px; padding: 3px 10px; display: inline-block;
+}
+.ref-result {
+  font-family: var(--font-mono); font-size: 14px; color: var(--muted); line-height: 1.7;
+}
+.ref-result strong { color: var(--cyan); font-weight: 400; }
+.ref-quote {
+  font-family: var(--font-display); font-style: italic; font-size: 15px;
+  color: var(--dim); max-width: 280px; line-height: 1.6;
+  border-left: 1px solid rgba(255,255,255,0.2); padding-left: 16px;
+}
+
+/* ══════════════════════════════════════════════════════
+   19. WEBSITE OFFER
+   ══════════════════════════════════════════════════════ */
+#website-offer {
+  padding: 120px 48px;
+  background: linear-gradient(to bottom, var(--bg), var(--bg2) 50%, var(--bg));
+  contain: layout style;
+}
+.offer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+}
+/* Browser mockup */
+.browser-mockup {
+  background: var(--bg3); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.browser-bar {
+  background: rgba(18,18,18,0.9); padding: 12px 16px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+.browser-dot:nth-child(1) { background: rgba(255,255,255,0.2); }
+.browser-dot:nth-child(2) { background: rgba(255,255,255,0.15); }
+.browser-dot:nth-child(3) { background: rgba(255,255,255,0.1); }
+.browser-url {
+  flex: 1; margin-left: 12px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px; padding: 4px 12px;
+  font-family: var(--font-mono); font-size: 11px; color: var(--dim);
+}
+.browser-content { padding: 28px; min-height: 280px; position: relative; overflow: hidden; }
+/* Shimmer animation on mockup bars */
+.mock-bar { border-radius: 6px; margin-bottom: 12px; position: relative; overflow: hidden; }
+.mock-bar::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.mock-bar-lg { height: 14px; width: 55%; background: linear-gradient(90deg, rgba(255,255,255,0.15), rgba(255,255,255,0.06)); }
+.mock-bar-sm { height: 8px; background: rgba(255,255,255,0.06); }
+.mock-cards {
+  margin-top: 20px; display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr; gap: 8px;
+}
+.mock-card {
+  height: 72px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08); background: rgba(12,12,12,0.9);
+  position: relative; overflow: hidden;
+}
+.mock-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+}
+.mock-card:first-child { grid-row: 1 / 3; height: auto; }
+
+/* Offer content */
+.offer-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.06);
+  border-radius: 100px; padding: 4px 12px; margin-bottom: 20px;
+}
+.offer-title {
+  font-family: var(--font-display); font-style: italic; font-weight: 200;
+  font-size: clamp(24px, 2.8vw, 38px); line-height: 1.15;
+  letter-spacing: -0.02em; margin-bottom: 24px; color: var(--fg);
+}
+.offer-title strong {
+  font-weight: 700;
+  color: var(--fg);
+}
+.offer-desc {
+  font-family: var(--font-mono); font-size: 14px; color: var(--muted);
+  line-height: 1.8; margin-bottom: 28px;
+}
+.offer-args { list-style: none; margin-bottom: 32px; }
+.offer-args li {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: color 0.2s;
+}
+.offer-args li:hover { color: var(--fg); }
+.offer-args li::before { content: '★'; color: var(--gold); font-size: 10px; flex-shrink: 0; }
+.offer-price {
+  font-family: var(--font-ui); font-weight: 700; font-size: 28px;
+  color: var(--fg);
+  margin-bottom: 24px;
+}
+
+/* ══════════════════════════════════════════════════════
+   20. PROCESS
+   ══════════════════════════════════════════════════════ */
+#process { padding: 120px 48px; background: var(--bg2); contain: layout style; }
+.process-inner { max-width: 1100px; margin: 0 auto; }
+.process-inner .section-header { margin-bottom: 72px; }
+.process-timeline {
+  position: relative;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+}
+.process-line {
+  position: absolute; top: 24px; left: 48px; right: 48px;
+  height: 1px; background: rgba(255,255,255,0.1);
+}
+.process-line-active {
+  position: absolute; top: 24px; left: 48px;
+  height: 1px; width: 0;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  transition: width 2s var(--ease-out);
+}
+.process-step { position: relative; padding-top: 60px; text-align: center; }
+.step-dot {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 48px; height: 48px;
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 50%;
+  background: var(--bg2);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2; transition: border-color 0.6s, box-shadow 0.6s, background 0.6s;
+}
+.step-dot.active {
+  border-color: var(--cyan);
+  box-shadow: 0 0 24px rgba(255,255,255,0.2), inset 0 0 12px rgba(255,255,255,0.05);
+}
+.step-dot-num {
+  font-family: var(--font-mono); font-size: 11px; color: var(--dim);
+  letter-spacing: 0.05em; transition: color 0.5s;
+}
+.step-dot.active .step-dot-num { color: var(--cyan); }
+.step-title {
+  font-family: var(--font-ui); font-weight: 700; font-size: 16px;
+  color: var(--fg); margin-bottom: 6px; line-height: 1.2;
+}
+.step-duration {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 100px; padding: 2px 10px; margin-bottom: 10px;
+}
+.step-desc {
+  font-family: var(--font-mono); font-size: 12px; color: var(--muted); line-height: 1.7;
+}
+
+/* ══════════════════════════════════════════════════════
+   21. STACK
+   ══════════════════════════════════════════════════════ */
+#stack { padding: 80px 48px; }
+.stack-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+.stack-label {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--dim); margin-bottom: 28px;
+}
+.stack-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.stack-badge {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em;
+  color: var(--muted); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; padding: 8px 16px;
+  transition: color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.stack-badge:hover {
+  color: var(--fg); border-color: rgba(255,255,255,0.25);
+  box-shadow: 0 0 16px rgba(255,255,255,0.06); transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════════════════════
+   21b. À PROPOS
+   ══════════════════════════════════════════════════════ */
+#about {
+  padding: 120px 48px;
+  background: var(--bg);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  contain: layout style;
+}
+.about-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center;
+}
+.about-photo-wrap {
+  position: relative;
+}
+.about-photo-placeholder {
+  width: 100%; aspect-ratio: 4/5;
+  background: var(--bg3);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px; color: var(--dim);
+  position: relative; overflow: hidden;
+}
+.about-photo-placeholder::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.006) 2px, rgba(255,255,255,0.006) 4px);
+}
+.about-photo-initials {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 72px; color: rgba(255,255,255,0.08); line-height: 1;
+  letter-spacing: -0.04em;
+}
+.about-photo-hint {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  border: 1px dashed rgba(255,255,255,0.12);
+  border-radius: 100px; padding: 6px 14px;
+  position: relative; z-index: 1;
+}
+.about-photo-tag {
+  position: absolute; bottom: 16px; left: 16px;
+  background: rgba(12,12,12,0.9); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 8px 14px;
+  font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+  display: flex; align-items: center; gap: 8px;
+}
+.about-photo-tag .badge-dot { flex-shrink: 0; }
+.about-content .section-eyebrow { margin-bottom: 14px; }
+.about-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(26px, 3vw, 40px); line-height: 1.15;
+  letter-spacing: -0.03em; margin-bottom: 24px; color: var(--fg);
+}
+.about-title em {
+  font-family: var(--font-display); font-style: italic; font-weight: 200;
+}
+.about-bio {
+  font-family: var(--font-mono); font-size: 14px;
+  color: var(--muted); line-height: 1.85; margin-bottom: 32px;
+}
+.about-bio strong { color: var(--fg); font-weight: 600; }
+.about-creds {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; overflow: hidden; margin-bottom: 32px;
+}
+.about-cred {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+  transition: background 0.2s, color 0.2s;
+}
+.about-cred:last-child { border-bottom: none; }
+.about-cred:hover { background: rgba(255,255,255,0.025); color: var(--fg); }
+.about-cred-icon {
+  width: 32px; height: 32px; flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 13px; font-weight: 700;
+}
+.about-cred strong { color: var(--fg); font-weight: 600; }
+.about-differentiator {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; padding: 20px 24px;
+  font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+  line-height: 1.75; border-left: 2px solid var(--gold);
+}
+.about-differentiator strong { color: var(--fg); }
+@media (max-width: 1024px) {
+  .about-inner { grid-template-columns: 1fr; gap: 48px; }
+  .about-photo-wrap { max-width: 320px; }
+}
+
+/* ══════════════════════════════════════════════════════
+   22. CONTACT
+   ══════════════════════════════════════════════════════ */
+#contact { padding: 120px 48px; position: relative; overflow: hidden; contain: layout style; }
+.contact-bg { position: absolute; inset: 0; pointer-events: none; }
+.contact-bg .orb-v {
+  position: absolute; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  left: -200px; top: -200px; filter: blur(80px);
+  animation: orb-float 16s ease-in-out infinite;
+}
+.contact-bg .orb-c {
+  position: absolute; width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 60%);
+  right: -150px; bottom: -150px; filter: blur(80px);
+  animation: orb-float 16s ease-in-out infinite reverse;
+}
+.contact-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  position: relative; z-index: 2;
+}
+.contact-left .section-title {
+  font-family: var(--font-display); font-style: italic; font-weight: 200;
+  font-size: clamp(26px, 3vw, 40px); line-height: 1.15;
+  letter-spacing: -0.03em; margin-bottom: 16px;
+}
+.contact-subtitle {
+  font-family: var(--font-mono); font-size: 14px; color: var(--muted);
+  margin-bottom: 40px; line-height: 1.7;
+}
+.contact-info { display: flex; flex-direction: column; gap: 14px; }
+.contact-info-item {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+  transition: color 0.2s;
+}
+.contact-info-item:hover { color: var(--fg); }
+.contact-info-icon {
+  width: 34px; height: 34px; flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cyan); font-size: 12px; font-weight: 700;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.contact-info-item:hover .contact-info-icon {
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 0 10px rgba(255,255,255,0.06);
+}
+.contact-avail {
+  margin-top: 28px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+  border: 1px solid rgba(180,180,180,0.15); background: rgba(180,180,180,0.05);
+  border-radius: 100px; padding: 8px 16px;
+}
+/* Form */
+.contact-form { display: flex; flex-direction: column; gap: 18px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-label {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--dim);
+}
+.form-input, .form-textarea, .form-select {
+  background: rgba(12,12,12,0.6); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; padding: 14px 18px;
+  color: var(--fg); font-family: var(--font-mono); font-size: 14px;
+  outline: none; transition: border-color 0.25s, box-shadow 0.25s;
+  -webkit-appearance: none; appearance: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: rgba(255,255,255,0.35);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.06), 0 0 16px rgba(255,255,255,0.04);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--dim); }
+.form-textarea { resize: none; min-height: 100px; }
+.form-select {
+  color: var(--muted);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='rgba(255,255,255,0.4)' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px;
+}
+.form-select option { background: #0c0c0c; color: var(--fg); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.btn-submit {
+  font-family: var(--font-ui); font-weight: 700; font-size: 15px;
+  padding: 16px 32px; border-radius: 100px;
+  background: #ffffff;
+  color: #000000; border: 1px solid #ffffff;
+  transition: all 0.3s var(--ease-spring);
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.btn-submit:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.88);
+  box-shadow: 0 12px 40px rgba(255,255,255,0.12);
+}
+.btn-submit:active { transform: translateY(0) scale(0.97); }
+.btn-submit.sending { opacity: 0.7; pointer-events: none; }
+.form-success {
+  display: none; text-align: center; padding: 40px;
+  background: rgba(180,180,180,0.05); border: 1px solid rgba(180,180,180,0.15);
+  border-radius: 12px;
+}
+.form-success.show { display: block; }
+.form-success-icon { font-size: 40px; margin-bottom: 12px; color: #aaaaaa; }
+.form-success h3 { font-family: var(--font-ui); font-weight: 700; font-size: 18px; margin-bottom: 8px; }
+.form-success p { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+
+/* ══════════════════════════════════════════════════════
+   23. FOOTER
+   ══════════════════════════════════════════════════════ */
+footer {
+  padding: 60px 48px 40px; position: relative;
+  background: var(--bg);
+}
+/* Glowing top border */
+footer::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.15) 50%, transparent 95%);
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+.footer-brand {
+  font-family: var(--font-display); font-style: italic; font-weight: 200;
+  font-size: 28px; letter-spacing: -0.02em; color: var(--fg); margin-bottom: 6px;
+}
+.footer-tagline {
+  font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-bottom: 16px;
+}
+.footer-sub { font-family: var(--font-mono); font-size: 12px; color: var(--dim); }
+.footer-col-title {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--dim); margin-bottom: 14px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+  transition: color 0.2s, transform 0.2s;
+  display: inline-block;
+}
+.footer-links a:hover { color: var(--fg); transform: translateX(4px); }
+.footer-location { font-family: var(--font-mono); font-size: 13px; color: var(--muted); line-height: 2; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy, .footer-made { font-family: var(--font-mono); font-size: 11px; color: var(--dim); }
+
+/* ══════════════════════════════════════════════════════
+   24. REVEAL ANIMATIONS
+   ══════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-stagger > * {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+.reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+.reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:.08s; }
+.reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:.16s; }
+.reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:.24s; }
+.reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:.32s; }
+.reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:.40s; }
+.reveal-stagger.visible > *:nth-child(7) { opacity:1; transform:none; transition-delay:.48s; }
+.reveal-stagger.visible > *:nth-child(8) { opacity:1; transform:none; transition-delay:.56s; }
+.reveal-stagger.visible > *:nth-child(9) { opacity:1; transform:none; transition-delay:.64s; }
+.reveal-stagger.visible > *:nth-child(10) { opacity:1; transform:none; transition-delay:.72s; }
+.reveal-stagger.visible > *:nth-child(11) { opacity:1; transform:none; transition-delay:.80s; }
+.reveal-stagger.visible > *:nth-child(12) { opacity:1; transform:none; transition-delay:.88s; }
+
+/* ══════════════════════════════════════════════════════
+   25. RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  #services-grid { grid-template-columns: 1fr 1fr; }
+  .svc-chatbot { grid-column: 1 / 3; grid-row: auto; }
+  .svc-site, .svc-auto, .svc-audit, .svc-form { grid-column: auto; grid-row: auto; }
+  .ref-card { grid-template-columns: 1fr; gap: 16px; padding: 32px; }
+  .ref-quote { display: none; }
+  .offer-inner { grid-template-columns: 1fr; gap: 48px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-badge, .nav-logo-name { display: none; }
+  #navbar { gap: 14px; padding: 10px 18px; }
+  .nav-hamburger { display: flex; }
+  #hero { padding: 120px 24px 80px; }
+  #stats { padding: 60px 24px; }
+  #services, #references, #website-offer, #process { padding: 80px 24px; }
+  #stack { padding: 60px 24px; }
+  #contact { padding: 80px 24px; }
+  footer { padding: 40px 24px 30px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  #services-grid { grid-template-columns: 1fr; }
+  .svc-chatbot { grid-column: 1; }
+  .process-timeline { grid-template-columns: 1fr; gap: 28px; }
+  .process-line, .process-line-active { display: none; }
+  .process-step {
+    padding-top: 0; text-align: left;
+    display: grid; grid-template-columns: 48px 1fr; grid-template-rows: auto auto auto;
+    column-gap: 20px;
+  }
+  .step-dot {
+    position: relative; top: auto; left: auto; transform: none;
+    grid-row: 1 / 4; align-self: start;
+  }
+  .step-title { grid-column: 2; }
+  .step-duration { grid-column: 2; justify-self: start; }
+  .step-desc { grid-column: 2; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { text-align: center; justify-content: center; }
+}
+@media (max-width: 480px) {
+  #cube-wrap { width: 260px; height: 260px; }
+  .face { width: 260px; height: 260px; }
+  .face-front  { transform: translateZ(130px); }
+  .face-back   { transform: rotateY(180deg) translateZ(130px); }
+  .face-left   { transform: rotateY(-90deg) translateZ(130px); }
+  .face-right  { transform: rotateY(90deg) translateZ(130px); }
+  .face-top    { transform: rotateX(90deg) translateZ(130px); }
+  .face-bottom { transform: rotateX(-90deg) translateZ(130px); }
+}
+
+/* ══════════════════════════════════════════════════════
+   26. REDUCED MOTION
+   ══════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  #scroll-driver { height: 100vh; }
+  #cube-scene { display: none; }
+  .reveal, .reveal-stagger > * { opacity: 1; transform: none; }
+  #navbar { transform: translateX(-50%) translateY(0) !important; }
+}
+
+/* ══════════════════════════════════════════════════════
+   27. SERVICE MODALS
+   ══════════════════════════════════════════════════════ */
+
+/* n8n workflow diagram inside chatbot card */
+.n8n-diagram {
+  margin: 20px 0 4px;
+  background: rgba(8,8,8,0.6);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 12px 8px 8px;
+  position: relative; overflow: hidden;
+}
+.n8n-diagram::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+  pointer-events: none;
+}
+.n8n-svg { width: 100%; height: auto; display: block; }
+
+/* Pointer + click hint on service cards */
+.svc-card {
+  cursor: pointer;
+}
+.svc-click-hint {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--cyan); letter-spacing: 0.1em;
+  margin-top: 16px; opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s, transform 0.3s var(--ease-spring);
+}
+.svc-click-hint svg { transition: transform 0.3s var(--ease-spring); }
+.svc-card:hover .svc-click-hint {
+  opacity: 1; transform: translateY(0);
+}
+.svc-card:hover .svc-click-hint svg { transform: translateX(3px); }
+
+/* Backdrop */
+#svc-backdrop {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(8,8,8,0.78);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.38s var(--ease-spring);
+}
+#svc-backdrop.open { opacity: 1; pointer-events: all; }
+
+/* Modal container */
+#svc-modal {
+  position: fixed; inset: 0; z-index: 201;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; pointer-events: none;
+}
+.svc-modal-box {
+  position: relative; width: 100%; max-width: 900px; max-height: 90vh;
+  overflow-y: auto; overflow-x: hidden;
+  background: var(--bg2);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  opacity: 0; transform: translateY(28px) scale(0.97);
+  transition: opacity 0.4s var(--ease-spring), transform 0.4s var(--ease-spring);
+  pointer-events: none;
+  scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+.svc-modal-box::-webkit-scrollbar { width: 4px; }
+.svc-modal-box::-webkit-scrollbar-track { background: transparent; }
+.svc-modal-box::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+#svc-backdrop.open .svc-modal-box {
+  opacity: 1; transform: translateY(0) scale(1); pointer-events: all;
+}
+
+/* Top glow line inside modal */
+.svc-modal-box::before {
+  content: ''; position: sticky; top: 0; left: 0; right: 0; height: 1px; display: block;
+  background: linear-gradient(90deg, transparent 5%, var(--cyan) 50%, transparent 95%);
+  opacity: 0.5;
+}
+
+/* Modal header */
+.svc-modal-header {
+  padding: 36px 40px 24px;
+  display: flex; align-items: flex-start; gap: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.svc-modal-icon {
+  width: 52px; height: 52px; flex-shrink: 0;
+  border-radius: 14px; border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.04);
+  color: var(--cyan);
+}
+.svc-modal-meta { flex: 1; }
+.svc-modal-num {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--dim); letter-spacing: 0.2em; margin-bottom: 6px;
+}
+.svc-modal-title {
+  font-family: var(--font-ui); font-weight: 800; font-size: 26px;
+  color: var(--fg); line-height: 1.2; margin-bottom: 8px;
+}
+.svc-modal-tagline {
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--muted); line-height: 1.6;
+}
+.svc-modal-pricing {
+  text-align: right; flex-shrink: 0;
+}
+.svc-modal-price {
+  font-family: var(--font-ui); font-weight: 700; font-size: 20px;
+  color: var(--fg);
+  display: block; margin-bottom: 4px;
+}
+.svc-modal-delay {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--cyan); letter-spacing: 0.08em;
+}
+
+/* Close button */
+.svc-modal-close {
+  position: absolute; top: 20px; right: 20px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+  color: var(--muted); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.3s var(--ease-spring);
+  z-index: 2;
+}
+.svc-modal-close:hover {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);
+  color: var(--fg); transform: rotate(90deg);
+}
+.svc-modal-close:focus-visible {
+  outline: 2px solid var(--cyan); outline-offset: 2px;
+}
+
+/* Modal body — 2 columns */
+.svc-modal-body {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0;
+}
+.svc-modal-col {
+  padding: 32px 40px;
+}
+.svc-modal-col + .svc-modal-col {
+  border-left: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.015);
+}
+
+/* Modal section headings */
+.modal-section { margin-bottom: 28px; }
+.modal-section:last-child { margin-bottom: 0; }
+.modal-label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.modal-label::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent);
+}
+.modal-text {
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--muted); line-height: 1.75;
+}
+.modal-text strong { color: var(--fg); font-weight: 600; }
+
+/* Benefit list */
+.modal-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.modal-list li {
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--muted); line-height: 1.55;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.modal-list li::before {
+  content: '→'; color: var(--cyan); font-size: 12px;
+  flex-shrink: 0; margin-top: 1px;
+}
+.modal-list li strong { color: var(--fg); font-weight: 600; }
+
+/* Stack pills */
+.modal-stack {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.modal-pill {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--cyan); letter-spacing: 0.06em;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px; padding: 4px 12px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.modal-pill:hover {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25);
+}
+
+/* Result highlight */
+.modal-result-box {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px; padding: 16px 18px;
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--muted); line-height: 1.7;
+}
+.modal-result-box strong { color: var(--gold); }
+
+/* CTA button inside modal */
+.modal-cta-row {
+  margin-top: 28px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.modal-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-ui); font-weight: 700; font-size: 14px;
+  background: var(--cyan); color: #000000;
+  border: none; border-radius: 30px; padding: 13px 26px;
+  cursor: pointer; letter-spacing: 0.02em;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s;
+  text-decoration: none;
+}
+.modal-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255,255,255,0.3);
+}
+.modal-cta-btn:focus-visible {
+  outline: 2px solid var(--cyan); outline-offset: 3px;
+}
+.modal-cta-btn svg { transition: transform 0.3s var(--ease-spring); }
+.modal-cta-btn:hover svg { transform: translateX(3px); }
+.modal-cta-secondary {
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--muted); letter-spacing: 0.06em;
+}
+
+/* Color accents per service */
+.svc-modal-box[data-accent="gold"] .svc-modal-icon { color: var(--gold); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
+.svc-modal-box[data-accent="gold"] .modal-label { color: var(--gold); }
+.svc-modal-box[data-accent="gold"] .modal-label::after { background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent); }
+.svc-modal-box[data-accent="gold"] .modal-list li::before { color: var(--gold); }
+.svc-modal-box[data-accent="gold"] .modal-pill { color: var(--gold); background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.14); }
+.svc-modal-box[data-accent="gold"] .modal-pill:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); }
+.svc-modal-box[data-accent="gold"] .modal-cta-btn { background: var(--gold); }
+.svc-modal-box[data-accent="gold"] .modal-cta-btn:hover { box-shadow: 0 8px 28px rgba(255,255,255,0.3); }
+.svc-modal-box[data-accent="gold"] .modal-result-box { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); }
+
+.svc-modal-box[data-accent="violet"] .svc-modal-icon { color: var(--violet); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
+.svc-modal-box[data-accent="violet"] .modal-label { color: var(--violet); }
+.svc-modal-box[data-accent="violet"] .modal-label::after { background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent); }
+.svc-modal-box[data-accent="violet"] .modal-list li::before { color: var(--violet); }
+.svc-modal-box[data-accent="violet"] .modal-pill { color: var(--violet); background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.14); }
+.svc-modal-box[data-accent="violet"] .modal-pill:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); }
+.svc-modal-box[data-accent="violet"] .modal-cta-btn { background: var(--violet); color: #fff; }
+.svc-modal-box[data-accent="violet"] .modal-cta-btn:hover { box-shadow: 0 8px 28px rgba(255,255,255,0.35); }
+.svc-modal-box[data-accent="violet"] .modal-result-box { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); }
+
+/* Modal responsive */
+@media (max-width: 768px) {
+  .svc-modal-body { grid-template-columns: 1fr; }
+  .svc-modal-col + .svc-modal-col { border-left: none; border-top: 1px solid rgba(255,255,255,0.07); }
+  .svc-modal-header { padding: 28px 24px 20px; flex-wrap: wrap; }
+  .svc-modal-col { padding: 24px; }
+  .svc-modal-pricing { text-align: left; width: 100%; }
+  .svc-modal-title { font-size: 21px; }
+}
+@media (max-width: 480px) {
+  #svc-modal { padding: 12px; }
+  .svc-modal-box { border-radius: 14px; max-height: 94vh; }
+  .svc-modal-header { padding: 24px 18px 18px; }
+  .svc-modal-col { padding: 20px 18px; }
+}
+  </style>
+</head>
+<body>
+  <!-- ── CURSOR ── -->
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ── AMBIENT BACKGROUND ── -->
+  <div id="ambient" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+  <div id="grid-bg" aria-hidden="true"></div>
+  <div id="grain" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════════════════
+       SCROLL-DRIVEN CUBE ANIMATION
+       ══════════════════════════════════════════════════ -->
+  <div id="scroll-driver" role="presentation" aria-hidden="true">
+    <div id="cube-scene">
+      <div id="particles-container"></div>
+      <div id="cube-wrap">
+        <div id="cube">
+          <div class="face face-front">
+            <div class="diag-1"></div>
+            <div class="diag-2"></div>
+            <div class="face-corner fc-tl"></div>
+            <div class="face-corner fc-tr"></div>
+            <div class="face-corner fc-bl"></div>
+            <div class="face-corner fc-br"></div>
+          </div>
+          <div class="face face-back">
+            <div class="face-corner fc-tl"></div>
+            <div class="face-corner fc-tr"></div>
+            <div class="face-corner fc-bl"></div>
+            <div class="face-corner fc-br"></div>
+          </div>
+          <div class="face face-left">
+            <div class="face-corner fc-tl"></div>
+            <div class="face-corner fc-tr"></div>
+            <div class="face-corner fc-bl"></div>
+            <div class="face-corner fc-br"></div>
+          </div>
+          <div class="face face-right">
+            <div class="face-corner fc-tl"></div>
+            <div class="face-corner fc-tr"></div>
+            <div class="face-corner fc-bl"></div>
+            <div class="face-corner fc-br"></div>
+          </div>
+          <div class="face face-top">
+            <div class="face-corner fc-tl"></div>
+            <div class="face-corner fc-tr"></div>
+            <div class="face-corner fc-bl"></div>
+            <div class="face-corner fc-br"></div>
+          </div>
+          <div class="face face-bottom">
+            <div class="face-corner fc-tl"></div>
+            <div class="face-corner fc-tr"></div>
+            <div class="face-corner fc-bl"></div>
+            <div class="face-corner fc-br"></div>
+          </div>
+          <div id="cube-interior">
+            <div class="int-glow"></div>
+            <span class="int-brand">Altiarc</span>
+            <span class="int-eyebrow">Consultant IA · Paris · Toulouse</span>
+            <h2 class="int-name">Julien Delmas</h2>
+            <p class="int-tagline">L'IA concrète, pas théorique.</p>
+            <div class="int-icons">
+              <div class="int-icon" title="Chatbot">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="int-icon" title="Automatisation">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+              </div>
+              <div class="int-icon" title="Site Web">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+              </div>
+              <div class="int-icon" title="Audit">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="scan-line"></div>
+      <div id="scroll-progress"><div id="scroll-progress-fill"></div></div>
+      <div id="scroll-hint">
+        <span class="scroll-hint-text">Scrollez pour découvrir</span>
+        <div class="scroll-arrow"><div class="scroll-arrow-inner"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       SITE CONTENT
+       ══════════════════════════════════════════════════ -->
+  <div id="site">
+
+    <!-- NAVBAR -->
+    <nav id="navbar" role="navigation" aria-label="Navigation principale">
+      <div class="nav-logo">
+        <span class="nav-logo-mark">Altiarc</span>
+        <span class="nav-logo-sub">Moins de tâches. Plus d'impact.</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#references">Références</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-badge" aria-live="polite">
+        <span class="badge-dot"></span> Disponible
+      </div>
+      <a href="#contact" class="nav-cta">Audit gratuit</a>
+      <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- MOBILE NAV OVERLAY -->
+    <div id="nav-overlay" aria-hidden="true">
+      <ul class="nav-overlay-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#references">Références</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <main>
+      <!-- ── HERO ── -->
+      <section id="hero" aria-labelledby="hero-heading">
+        <div class="hero-inner">
+          <span class="eyebrow reveal">Consultant IA · Altiarc · Paris &amp; Toulouse</span>
+          <div class="hero-title" id="hero-heading">
+            <span class="h1-l1 reveal" style="transition-delay:.12s">Votre IA,</span>
+            <span class="h1-l2 glitch reveal" data-text="enfin concrète." style="transition-delay:.24s">enfin concrète.</span>
+          </div>
+          <div class="hero-tagline-bar reveal" style="transition-delay:.36s" aria-label="L'intelligence artificielle au service de votre croissance, de l'audit au déploiement">
+            <span class="tbar-accent">L'intelligence artificielle</span>
+            <span class="tbar-sep">◆</span>
+            <span class="tbar-word">au service de votre croissance</span>
+            <span class="tbar-sep">◆</span>
+            <span class="tbar-word">de l'audit au déploiement</span>
+          </div>
+          <p class="hero-desc reveal" style="transition-delay:.52s">
+            Pendant que vos concurrents font des réunions sur l'IA, je déploie — chatbots, automatisations, audits stratégiques. Des résultats mesurables en 3 semaines, pas des présentations.
+          </p>
+          <div class="hero-ctas reveal" style="transition-delay:.68s">
+            <a href="#contact" class="btn btn-primary btn-magnetic">Audit gratuit — 30 min →</a>
+            <a href="#references" class="btn btn-ghost">Voir les références</a>
+          </div>
+        </div>
+        <div class="hero-orb hero-orb-v" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb-c" aria-hidden="true"></div>
+      </section>
+
+      <hr class="section-sep" aria-hidden="true">
+
+      <!-- ── STATS ── -->
+      <section id="stats" aria-label="Chiffres clés">
+        <div class="stats-grid reveal-stagger">
+          <div class="stat-item">
+            <span class="stat-num" data-target="18000" data-suffix="+">0</span>
+            <span class="stat-label">Utilisateurs servis par nos solutions IA</span>
+            <span class="stat-source">Levallois Sporting Club, 2024</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="5" data-suffix="h">0</span>
+            <span class="stat-label">Gagnées par semaine en moyenne par client</span>
+            <span class="stat-source">Cabinet RH Toulouse, 2024</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-text="–70%">–70%</span>
+            <span class="stat-label">De tickets support répétitifs éliminés</span>
+            <span class="stat-source">Levallois SC · LC Auto Services</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-text="3">3</span>
+            <span class="stat-label">Semaines de l'idée au déploiement</span>
+            <span class="stat-source">Engagement contractuel sur tous les projets</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SERVICES ── -->
+      <section id="services" aria-labelledby="svc-title">
+        <div class="services-inner">
+          <div class="section-header reveal">
+            <span class="section-eyebrow">Ce que je fais</span>
+            <h2 class="section-title" id="svc-title">Des solutions <em>concrètes</em></h2>
+          </div>
+          <div id="services-grid" class="reveal-stagger">
+            <div class="svc-card svc-chatbot" data-service="chatbot" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Voir le détail : Chatbot IA sur-mesure">
+              <span class="corner c-tl"></span><span class="corner c-tr"></span>
+              <span class="corner c-bl"></span><span class="corner c-br"></span>
+              <span class="svc-num">01</span>
+              <div class="svc-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <h3 class="svc-name">Chatbot IA sur-mesure</h3>
+              <p class="svc-desc">Imaginez un assistant qui répond à vos clients à 3h du matin, qualifie vos leads et gère les questions répétitives — sans que vous n'ayez à intervenir. Déployé sur votre site en 3 semaines, formé sur vos données, aux couleurs de votre marque. Vos équipes se concentrent enfin sur ce qui a de la valeur.</p>
+
+              <!-- n8n workflow diagram -->
+              <div class="n8n-diagram" aria-hidden="true">
+                <svg viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="n8n-svg">
+                  <!-- Connecting lines -->
+                  <line x1="90" y1="80" x2="138" y2="80" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <line x1="222" y1="80" x2="270" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <line x1="354" y1="80" x2="402" y2="80" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <!-- Vertical branch from n8n -->
+                  <line x1="312" y1="111" x2="312" y2="133" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+                  <!-- Node 1 : Webhook / Message client -->
+                  <rect x="10" y="58" width="80" height="44" rx="8" fill="rgba(12,12,12,0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                  <rect x="10" y="58" width="80" height="8" rx="4" fill="rgba(255,255,255,0.05)"/>
+                  <text x="50" y="78" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)" letter-spacing="0.05em">WEBHOOK</text>
+                  <text x="50" y="91" text-anchor="middle" font-family="monospace" font-size="8.5" fill="rgba(255,255,255,0.85)">Message</text>
+                  <text x="50" y="101" text-anchor="middle" font-family="monospace" font-size="8.5" fill="rgba(255,255,255,0.85)">client</text>
+
+                  <!-- Node 2 : IA (Claude / Mistral) -->
+                  <rect x="138" y="52" width="84" height="56" rx="8" fill="rgba(12,12,12,0.95)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                  <rect x="138" y="52" width="84" height="8" rx="4" fill="rgba(255,255,255,0.06)"/>
+                  <text x="180" y="71" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.9)" letter-spacing="0.05em">IA NODE</text>
+                  <text x="180" y="85" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.85)" font-weight="bold">Claude /</text>
+                  <text x="180" y="97" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.85)" font-weight="bold">Mistral</text>
+                  <!-- pulsing dot -->
+                  <circle cx="213" cy="60" r="3" fill="rgba(255,255,255,0.9)"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/></circle>
+
+                  <!-- Node 3 : n8n orchestration -->
+                  <rect x="270" y="55" width="84" height="50" rx="8" fill="rgba(12,12,12,0.9)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+                  <rect x="270" y="55" width="84" height="8" rx="4" fill="rgba(255,255,255,0.05)"/>
+                  <text x="312" y="73" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)" letter-spacing="0.05em">ORCHE.</text>
+                  <text x="312" y="87" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.85)" font-weight="bold">n8n</text>
+                  <text x="312" y="99" text-anchor="middle" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,0.5)">workflow</text>
+
+                  <!-- Node 4 : Réponse -->
+                  <rect x="402" y="58" width="80" height="44" rx="8" fill="rgba(12,12,12,0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                  <rect x="402" y="58" width="80" height="8" rx="4" fill="rgba(255,255,255,0.05)"/>
+                  <text x="442" y="78" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.6)" letter-spacing="0.05em">OUTPUT</text>
+                  <text x="442" y="91" text-anchor="middle" font-family="monospace" font-size="8.5" fill="rgba(255,255,255,0.85)">Réponse</text>
+                  <text x="442" y="101" text-anchor="middle" font-family="monospace" font-size="8.5" fill="rgba(255,255,255,0.85)">client</text>
+
+                  <!-- Branch bas : Escalade humain -->
+                  <rect x="270" y="133" width="84" height="22" rx="6" fill="rgba(12,12,12,0.8)" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3 2"/>
+                  <text x="312" y="148" text-anchor="middle" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,0.4)">Escalade humain</text>
+
+                  <!-- Arrows -->
+                  <polygon points="136,76 128,80 136,84" fill="rgba(255,255,255,0.4)"/>
+                  <polygon points="268,76 260,80 268,84" fill="rgba(255,255,255,0.4)"/>
+                  <polygon points="400,76 392,80 400,84" fill="rgba(255,255,255,0.4)"/>
+                  <polygon points="308,131 312,139 316,131" fill="rgba(255,255,255,0.25)"/>
+
+                  <!-- Label -->
+                  <text x="260" y="20" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.18)" letter-spacing="0.15em">FLUX AUTOMATISÉ — 24H/24</text>
+                </svg>
+              </div>
+
+              <div class="svc-footer">
+                <span class="svc-price">à partir de 1 500 €</span>
+                <span class="svc-delay">3 semaines · Maintenance 80–200€/mois</span>
+              </div>
+              <span class="svc-click-hint">Explorer l'offre <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+            <div class="svc-card svc-site" data-service="site" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Voir le détail : Site web haute qualité">
+              <span class="corner c-tl"></span><span class="corner c-tr"></span>
+              <span class="corner c-bl"></span><span class="corner c-br"></span>
+              <span class="svc-num">02</span>
+              <div class="svc-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+              </div>
+              <h3 class="svc-name">Site web haute qualité</h3>
+              <p class="svc-desc">Votre site actuel fait-il vraiment confiance à vos clients dès la première seconde ? Un site premium, rapide et unique qui transforme les visiteurs en prospects — livré en 2 à 4 semaines, avec IA intégrable d'emblée.</p>
+              <div class="svc-footer">
+                <span class="svc-price">à partir de 1 200 €</span>
+                <span class="svc-delay">2–4 semaines</span>
+              </div>
+              <span class="svc-click-hint">Explorer l'offre <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+            <div class="svc-card svc-auto" data-service="auto" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Voir le détail : Automatisations et Workflows">
+              <span class="corner c-tl"></span><span class="corner c-tr"></span>
+              <span class="corner c-bl"></span><span class="corner c-br"></span>
+              <span class="svc-num">03</span>
+              <div class="svc-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+              </div>
+              <h3 class="svc-name">Automatisations & Workflows</h3>
+              <p class="svc-desc">Vos équipes passent du temps à copier-coller, relancer manuellement, générer des rapports à la main. Ces tâches disparaissent. Gain moyen constaté : 5h par semaine et par personne. ROI en moins de 3 mois.</p>
+              <div class="svc-footer">
+                <span class="svc-price">à partir de 800 €</span>
+                <span class="svc-delay">ROI &lt; 3 mois</span>
+              </div>
+              <span class="svc-click-hint">Explorer l'offre <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+            <div class="svc-card svc-audit" data-service="audit" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Voir le détail : Audit IA">
+              <span class="corner c-tl"></span><span class="corner c-tr"></span>
+              <span class="corner c-bl"></span><span class="corner c-br"></span>
+              <span class="svc-num">04</span>
+              <div class="svc-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </div>
+              <h3 class="svc-name">Audit IA</h3>
+              <p class="svc-desc">Vous voulez adopter l'IA mais vous ne savez pas par où commencer ? En 1 semaine, je cartographie votre activité, identifie vos 5 plus grands gains potentiels et vous livre un plan d'action concret — sans jargon, sans engagement.</p>
+              <div class="svc-footer">
+                <span class="svc-price">à partir de 500 €</span>
+                <span class="svc-delay">1 semaine</span>
+              </div>
+              <span class="svc-click-hint">Explorer l'offre <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+            <div class="svc-card svc-form" data-service="formation" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Voir le détail : Formation IA">
+              <span class="corner c-tl"></span><span class="corner c-tr"></span>
+              <span class="corner c-bl"></span><span class="corner c-br"></span>
+              <span class="svc-num">05</span>
+              <div class="svc-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <h3 class="svc-name">Formation IA</h3>
+              <p class="svc-desc">Votre équipe utilise l'IA comme un Google amélioré. Elle passe à côté de 90% de son potentiel. Demi-journée ou journée, 100% pratique, sur vos cas concrets. Dès le lendemain, chaque participant gagne en productivité.</p>
+              <div class="svc-footer">
+                <span class="svc-price">à partir de 400 €/jour</span>
+                <span class="svc-delay">Demi-journée ou journée</span>
+              </div>
+              <span class="svc-click-hint">Explorer l'offre <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── RÉFÉRENCES ── -->
+      <section id="references" aria-labelledby="refs-title">
+        <div class="refs-inner">
+          <div class="section-header reveal">
+            <span class="section-eyebrow">Ils m'ont fait confiance</span>
+            <h2 class="section-title" id="refs-title">Références</h2>
+          </div>
+          <div class="refs-grid">
+            <div class="ref-card reveal">
+              <span class="ref-corner ref-c-tl"></span><span class="ref-corner ref-c-tr"></span>
+              <span class="ref-corner ref-c-bl"></span><span class="ref-corner ref-c-br"></span>
+              <div>
+                <h3 class="ref-client">Levallois Sporting Club</h3>
+                <span class="ref-tag">Chatbot IA · Association</span>
+              </div>
+              <div class="ref-result">
+                <strong>18 000 adhérents · 37 sections · –70% de sollicitations répétitives</strong><br>
+                Chatbot IA déployé en 3 semaines, entraîné sur les données du club. Répond instantanément aux questions d'horaires, d'inscriptions et de tarifs — 24h/24, sans que l'équipe lève le petit doigt.
+              </div>
+              <p class="ref-quote">"Solution opérationnelle du premier coup. L'équipe administrative a récupéré 2h par jour."</p>
+            </div>
+            <div class="ref-card reveal" style="transition-delay:.1s">
+              <span class="ref-corner ref-c-tl"></span><span class="ref-corner ref-c-tr"></span>
+              <span class="ref-corner ref-c-bl"></span><span class="ref-corner ref-c-br"></span>
+              <div>
+                <h3 class="ref-client">Sud Radio</h3>
+                <span class="ref-tag">Audit IA · Média national</span>
+              </div>
+              <div class="ref-result">
+                <strong>Plan 4 phases · 12 mois · ROI chiffré présenté en CODIR</strong><br>
+                Audit complet des processus internes d'un média national. Identification de 8 automatisations prioritaires. Feuille de route stratégique livrée en 1 semaine, présentable à la direction.
+              </div>
+              <p class="ref-quote">"Un regard structuré et objectif qui a changé notre approche de l'IA. On savait enfin par où commencer."</p>
+            </div>
+            <div class="ref-card reveal" style="transition-delay:.2s">
+              <span class="ref-corner ref-c-tl"></span><span class="ref-corner ref-c-tr"></span>
+              <span class="ref-corner ref-c-bl"></span><span class="ref-corner ref-c-br"></span>
+              <div>
+                <h3 class="ref-client">LC Auto Services</h3>
+                <span class="ref-tag">Site web + Chatbot · Garage PME</span>
+              </div>
+              <div class="ref-result">
+                <strong>Site premium + IA intégrée · Zéro appel pour les devis simples</strong><br>
+                Refonte complète du site d'un garage de l'Aude avec chatbot IA pour les devis automatiques. Le client n'a plus à gérer les questions de base — le bot qualifie, répond et propose un créneau de rappel.
+              </div>
+              <p class="ref-quote">"Livré en 3 semaines. Le bot gère 80% des demandes entrantes tout seul."</p>
+            </div>
+            <div class="ref-card reveal" style="transition-delay:.3s">
+              <span class="ref-corner ref-c-tl"></span><span class="ref-corner ref-c-tr"></span>
+              <span class="ref-corner ref-c-bl"></span><span class="ref-corner ref-c-br"></span>
+              <div>
+                <h3 class="ref-client">Cabinet RH Toulouse</h3>
+                <span class="ref-tag">Automatisation · Cabinet de recrutement</span>
+              </div>
+              <div class="ref-result">
+                <strong>–8h/semaine sur l'administratif · ROI atteint en 6 semaines</strong><br>
+                Automatisation complète de l'onboarding candidats : envoi des formulaires, relances, création des dossiers, notifications équipe. Le cabinet se concentre sur le conseil, pas le copier-coller.
+              </div>
+              <p class="ref-quote">"On a récupéré presque une journée entière par semaine. Et les candidats ont une meilleure expérience."</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── OFFRE SITE WEB ── -->
+      <section id="website-offer" aria-labelledby="offer-title">
+        <div class="offer-inner">
+          <div class="browser-mockup reveal" aria-hidden="true">
+            <div class="browser-bar">
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-url">altiarc.fr/votre-site</div>
+            </div>
+            <div class="browser-content">
+              <div class="mock-bar mock-bar-lg"></div>
+              <div class="mock-bar mock-bar-sm" style="width:42%"></div>
+              <div class="mock-bar mock-bar-sm" style="width:55%"></div>
+              <div class="mock-cards">
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+              </div>
+            </div>
+          </div>
+          <div class="offer-content reveal" style="transition-delay:.15s">
+            <div class="offer-badge"><span style="color:var(--gold)">●</span> Propriété totale du code · Zéro abonnement</div>
+            <h2 class="offer-title" id="offer-title">Des sites qui vendent<br><strong>par eux-mêmes</strong></h2>
+            <p class="offer-desc">Design premium, animations avancées et intégration IA optionnelle. Performance Lighthouse 95+, hébergement Vercel/Netlify inclus, SEO technique, responsive mobile natif.</p>
+            <ul class="offer-args">
+              <li>Propriété totale du code</li>
+              <li>Aucun abonnement plateforme</li>
+              <li>IA intégrable dès le départ</li>
+              <li>Performance Lighthouse 95+</li>
+            </ul>
+            <p class="offer-price">à partir de 1 200 €</p>
+            <a href="#contact" class="btn btn-cyan btn-magnetic">Demander un devis →</a>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-sep" aria-hidden="true">
+
+      <!-- ── PROCESS ── -->
+      <section id="process" aria-labelledby="process-title">
+        <div class="process-inner">
+          <div class="section-header reveal">
+            <span class="section-eyebrow">Comment ça se passe</span>
+            <h2 class="section-title" id="process-title">De l'idée au déploiement<br><em>en 3 semaines</em></h2>
+          </div>
+          <div class="process-timeline" role="list">
+            <div class="process-line" aria-hidden="true"></div>
+            <div class="process-line-active" id="proc-line" aria-hidden="true"></div>
+            <div class="process-step reveal" role="listitem">
+              <div class="step-dot" data-step="0"><span class="step-dot-num">01</span></div>
+              <h3 class="step-title">Audit & cadrage</h3>
+              <span class="step-duration">2 jours</span>
+              <p class="step-desc">Analyse des besoins, définition du périmètre, choix technique et validation budget.</p>
+            </div>
+            <div class="process-step reveal" style="transition-delay:.1s" role="listitem">
+              <div class="step-dot" data-step="1"><span class="step-dot-num">02</span></div>
+              <h3 class="step-title">Conception & design</h3>
+              <span class="step-duration">1 semaine</span>
+              <p class="step-desc">Maquettes, charte graphique, parcours utilisateurs et validation des contenus.</p>
+            </div>
+            <div class="process-step reveal" style="transition-delay:.2s" role="listitem">
+              <div class="step-dot" data-step="2"><span class="step-dot-num">03</span></div>
+              <h3 class="step-title">Développement & tests</h3>
+              <span class="step-duration">1 semaine</span>
+              <p class="step-desc">Intégration code, connexion IA, tests cross-browser et optimisation performance.</p>
+            </div>
+            <div class="process-step reveal" style="transition-delay:.3s" role="listitem">
+              <div class="step-dot" data-step="3"><span class="step-dot-num">04</span></div>
+              <h3 class="step-title">Déploiement & formation</h3>
+              <span class="step-duration">2–3 jours</span>
+              <p class="step-desc">Mise en ligne, configuration DNS, briefing d'utilisation et documentation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── STACK ── -->
+      <section id="stack" aria-label="Stack technique">
+        <div class="stack-inner">
+          <p class="stack-label reveal">Stack maîtrisé</p>
+          <div class="stack-grid reveal-stagger">
+            <span class="stack-badge">n8n</span>
+            <span class="stack-badge">Claude API</span>
+            <span class="stack-badge">Mistral API</span>
+            <span class="stack-badge">Make.com</span>
+            <span class="stack-badge">Vercel</span>
+            <span class="stack-badge">Netlify</span>
+            <span class="stack-badge">Railway</span>
+            <span class="stack-badge">Astro</span>
+            <span class="stack-badge">WordPress</span>
+            <span class="stack-badge">HTML/CSS/JS</span>
+            <span class="stack-badge">Google Sheets API</span>
+            <span class="stack-badge">Docker</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-sep" aria-hidden="true">
+
+      <!-- ── À PROPOS ── -->
+      <section id="about" aria-labelledby="about-title">
+        <div class="about-inner">
+          <div class="about-photo-wrap reveal">
+            <div class="about-photo-placeholder">
+              <span class="about-photo-initials">JD</span>
+              <span class="about-photo-hint">← Ajouter votre photo ici</span>
+              <div class="about-photo-tag">
+                <span class="badge-dot"></span> Disponible · Paris &amp; Toulouse
+              </div>
+            </div>
+          </div>
+          <div class="about-content">
+            <span class="section-eyebrow reveal">Qui je suis</span>
+            <h2 class="about-title reveal" id="about-title" style="transition-delay:.1s">
+              Julien Delmas —<br><em>l'IA sans la théorie</em>
+            </h2>
+            <p class="about-bio reveal" style="transition-delay:.2s">
+              Je suis consultant IA et intégrateur indépendant basé à Paris et Toulouse. <strong>Mon travail : transformer des processus chronophages en systèmes automatisés qui tournent seuls.</strong><br><br>
+              Pas d'agence, pas d'intermédiaire — vous travaillez directement avec moi, du cadrage au déploiement. Chaque solution est construite sur vos données, vos outils, vos contraintes réelles.
+            </p>
+            <div class="about-creds reveal" style="transition-delay:.3s">
+              <div class="about-cred">
+                <div class="about-cred-icon">↗</div>
+                <span><strong>4 clients actifs</strong> — Média national, club sportif 18 000 membres, cabinet RH, garage PME</span>
+              </div>
+              <div class="about-cred">
+                <div class="about-cred-icon">⚡</div>
+                <span><strong>Stack IA avancé</strong> — Claude API, Mistral, n8n, Make.com, Vercel, Docker</span>
+              </div>
+              <div class="about-cred">
+                <div class="about-cred-icon">◎</div>
+                <span><strong>Intervenant terrain</strong> — Paris, Toulouse et remote · Déplacement possible sur site</span>
+              </div>
+            </div>
+            <div class="about-differentiator reveal" style="transition-delay:.4s">
+              <strong>Ce qui me différencie :</strong> je livre du code en production, pas des slides. Chaque projet démarre par un audit de 30 minutes offert — pour s'assurer qu'on part sur la bonne solution avant d'engager un euro.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-sep" aria-hidden="true">
+
+      <!-- ── CONTACT ── -->
+      <section id="contact" aria-labelledby="contact-title">
+        <div class="contact-bg" aria-hidden="true">
+          <div class="orb-v"></div>
+          <div class="orb-c"></div>
+        </div>
+        <div class="contact-inner">
+          <div class="contact-left">
+            <span class="section-eyebrow reveal">Travaillons ensemble</span>
+            <h2 class="section-title reveal" id="contact-title" style="transition-delay:.1s">
+              30 minutes pour savoir<br><em>si on peut travailler ensemble</em>
+            </h2>
+            <p class="contact-subtitle reveal" style="transition-delay:.2s">
+              Audit offert, sans engagement. Je pose les bonnes questions, je vous dis honnêtement ce que l'IA peut (ou ne peut pas) changer chez vous — et combien ça rapporte.<br><br>Réponse sous 24h.
+            </p>
+            <div class="contact-info reveal" style="transition-delay:.3s">
+              <div class="contact-info-item">
+                <div class="contact-info-icon">@</div>
+                jdelmas3001@gmail.com
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-icon">in</div>
+                linkedin.com/in/julien-delmas-6b7545171
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-icon">◎</div>
+                Paris · Toulouse · Remote disponible
+              </div>
+            </div>
+            <div class="contact-avail reveal" style="transition-delay:.4s">
+              <span class="badge-dot"></span>
+              Prochain créneau : semaine prochaine
+            </div>
+          </div>
+          <div class="reveal" style="transition-delay:.15s">
+            <form class="contact-form" id="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="f-name">Nom</label>
+                  <input class="form-input" id="f-name" name="name" type="text" placeholder="Votre nom" autocomplete="name" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="f-email">Email</label>
+                  <input class="form-input" id="f-email" name="email" type="email" placeholder="vous@entreprise.fr" autocomplete="email" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-type">Type de projet</label>
+                <select class="form-select" id="f-type" name="type">
+                  <option value="">Choisir un service...</option>
+                  <option value="chatbot">Chatbot IA sur-mesure</option>
+                  <option value="site">Création de site internet</option>
+                  <option value="automation">Automatisations & Workflows</option>
+                  <option value="audit">Audit IA</option>
+                  <option value="formation">Formation IA</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-msg">Message</label>
+                <textarea class="form-textarea" id="f-msg" name="message" placeholder="Décrivez votre projet en quelques lignes..." rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn-submit btn-magnetic">Demander mon audit gratuit →</button>
+            </form>
+            <div class="form-success" id="form-success" role="alert" aria-live="polite">
+              <div class="form-success-icon">✓</div>
+              <h3>Message envoyé</h3>
+              <p>Je vous réponds sous 24h. À très bientôt.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer role="contentinfo">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div>
+            <p class="footer-brand">Altiarc</p>
+            <p class="footer-tagline">L'IA concrète, pas théorique.</p>
+            <p class="footer-sub">Julien Delmas · Consultant IA & Intégrateur</p>
+          </div>
+          <div>
+            <p class="footer-col-title">Navigation</p>
+            <ul class="footer-links">
+              <li><a href="#services">Services</a></li>
+              <li><a href="#references">Références</a></li>
+              <li><a href="#process">Process</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-col-title">Localisation</p>
+            <p class="footer-location">Paris & Toulouse, France<br>Disponible en remote<br>jdelmas3001@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copy">© 2026 Altiarc · Julien Delmas · Paris & Toulouse</p>
+          <p class="footer-made">Fait avec IA & curiosité</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       JAVASCRIPT
+       ══════════════════════════════════════════════════ -->
+  <script>
+  (function() {
+    'use strict';
+
+    /* ── UTILITIES ── */
+    var lerp = function(a, b, t) { return a + (b - a) * t; };
+    var clamp = function(v, lo, hi) { return Math.min(Math.max(v, lo), hi); };
+    var ease = function(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; };
+    var easeOut = function(t) { return 1 - Math.pow(1 - t, 3); };
+    var mapR = function(v, a, b) { return clamp((v - a) / (b - a), 0, 1); };
+
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var isMobile = window.innerWidth < 768;
+    var isSmall = window.innerWidth < 480;
+    var cubeHalf = isSmall ? 130 : 190;
+
+    /* ── CURSOR ── */
+    var cursor = document.getElementById('cursor');
+    var ring = document.getElementById('cursor-ring');
+    var mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    var rx = mx, ry = my;
+
+    if (window.matchMedia('(pointer: fine)').matches) {
+      document.addEventListener('mousemove', function(e) {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx + 'px';
+        cursor.style.top = my + 'px';
+      }, { passive: true });
+
+      (function loop() {
+        rx += (mx - rx) * 0.1;
+        ry += (my - ry) * 0.1;
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
+        requestAnimationFrame(loop);
+      })();
+
+      document.addEventListener('mouseover', function(e) {
+        if (e.target.closest('a, button, .svc-card, .ref-card, .stack-badge, input, textarea, select')) {
+          document.body.classList.add('hovered');
+        }
+      }, { passive: true });
+      document.addEventListener('mouseout', function(e) {
+        if (e.target.closest('a, button, .svc-card, .ref-card, .stack-badge, input, textarea, select')) {
+          document.body.classList.remove('hovered');
+        }
+      }, { passive: true });
+    }
+
+    /* ── PARTICLES ── */
+    if (!reducedMotion) {
+      var pc = document.getElementById('particles-container');
+      var ct = isMobile ? 12 : 30;
+      for (var i = 0; i < ct; i++) {
+        var p = document.createElement('div');
+        p.className = 'particle';
+        var sz = 1 + Math.random() * 2.5;
+        p.style.cssText =
+          'left:' + (Math.random() * 100) + '%;' +
+          'width:' + sz + 'px;height:' + sz + 'px;' +
+          'opacity:' + (0.12 + Math.random() * 0.5) + ';' +
+          'animation-duration:' + (4 + Math.random() * 7) + 's;' +
+          'animation-delay:' + (-Math.random() * 8) + 's;' +
+          '--drift:' + (-50 + Math.random() * 100) + 'px;';
+        pc.appendChild(p);
+      }
+    }
+
+    /* ── CUBE SCROLL ANIMATION ── */
+    var driver = document.getElementById('scroll-driver');
+    var scene = document.getElementById('cube-scene');
+    var wrap = document.getElementById('cube-wrap');
+    var faces = {
+      f: document.querySelector('.face-front'),
+      b: document.querySelector('.face-back'),
+      l: document.querySelector('.face-left'),
+      r: document.querySelector('.face-right'),
+      t: document.querySelector('.face-top'),
+      o: document.querySelector('.face-bottom')
+    };
+    var interior = document.getElementById('cube-interior');
+    var nav = document.getElementById('navbar');
+    var progFill = document.getElementById('scroll-progress-fill');
+    var scrollHint = document.getElementById('scroll-hint');
+    var navShown = false;
+    var revealed = false;
+    var h = cubeHalf;
+    var ticking = false;
+
+    function updateCube() {
+      var max = driver.offsetHeight - window.innerHeight;
+      if (max <= 0) return;
+      var prog = clamp(window.scrollY / max, 0, 1);
+
+      /* Progress bar */
+      progFill.style.width = (prog * 100) + '%';
+      if (scrollHint) scrollHint.style.opacity = prog > 0.08 ? '0' : '';
+
+      if (reducedMotion) {
+        scene.style.opacity = '0';
+        if (!navShown) { navShown = true; nav.classList.add('visible'); doReveal(); }
+        return;
+      }
+
+      /* Phase 1: rotation 0→0.3 */
+      var p1 = easeOut(mapR(prog, 0, 0.3));
+      var rX = lerp(-20, -8, p1);
+      var rY = lerp(35, 0, p1);
+
+      /* Phase 2: faces open 0.2→0.7 */
+      var p2 = ease(mapR(prog, 0.2, 0.7));
+      var dist = p2 * 340;
+      var splay = p2 * 60;
+
+      /* Phase 4: zoom 0.6→0.9 */
+      var p4 = ease(mapR(prog, 0.6, 0.9));
+      var sc = lerp(1, 8, p4);
+      scene.style.opacity = lerp(1, 0, p4);
+
+      /* Apply */
+      wrap.style.transform = 'rotateX(' + rX + 'deg) rotateY(' + rY + 'deg) scale(' + sc + ')';
+      faces.f.style.transform = 'translateZ(' + (h + dist) + 'px) rotateX(' + (-splay) + 'deg)';
+      faces.b.style.transform = 'rotateY(180deg) translateZ(' + (h + dist) + 'px) rotateX(' + splay + 'deg)';
+      faces.l.style.transform = 'rotateY(-90deg) translateZ(' + (h + dist) + 'px) rotateY(' + splay + 'deg)';
+      faces.r.style.transform = 'rotateY(90deg) translateZ(' + (h + dist) + 'px) rotateY(' + (-splay) + 'deg)';
+      faces.t.style.transform = 'rotateX(90deg) translateZ(' + (h + dist) + 'px) rotateX(' + (-splay) + 'deg)';
+      faces.o.style.transform = 'rotateX(-90deg) translateZ(' + (h + dist) + 'px) rotateX(' + splay + 'deg)';
+
+      if (prog > 0.75 && !navShown) {
+        navShown = true;
+        nav.classList.add('visible');
+        doReveal();
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) { requestAnimationFrame(updateCube); ticking = true; }
+    }, { passive: true });
+    updateCube();
+
+    /* ── REVEAL ── */
+    function doReveal() {
+      if (revealed) return;
+      revealed = true;
+      var heroEls = document.querySelectorAll('#hero .reveal');
+      for (var i = 0; i < heroEls.length; i++) {
+        (function(el, idx) {
+          setTimeout(function() { el.classList.add('visible'); }, idx * 120);
+        })(heroEls[i], i);
+      }
+      setupObserver();
+    }
+
+    function setupObserver() {
+      var els = document.querySelectorAll('#site .reveal:not(#hero .reveal), #site .reveal-stagger');
+      var obs = new IntersectionObserver(function(entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            entries[i].target.classList.add('visible');
+            obs.unobserve(entries[i].target);
+          }
+        }
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+      for (var i = 0; i < els.length; i++) obs.observe(els[i]);
+    }
+
+    if (reducedMotion) {
+      var allR = document.querySelectorAll('.reveal, .reveal-stagger');
+      for (var i = 0; i < allR.length; i++) allR[i].classList.add('visible');
+      nav.classList.add('visible');
+    }
+
+    /* Fallback navbar show */
+    window.addEventListener('scroll', function() {
+      if (!navShown && window.scrollY > driver.offsetHeight - window.innerHeight * 0.5) {
+        navShown = true; nav.classList.add('visible'); doReveal();
+      }
+      nav.classList.toggle('scrolled', window.scrollY > driver.offsetHeight + 80);
+    }, { passive: true });
+
+    /* ── STATS COUNTERS ── */
+    function animNum(el) {
+      var target = parseInt(el.getAttribute('data-target'));
+      var suffix = el.getAttribute('data-suffix') || '';
+      if (!target) return;
+      var dur = target > 100 ? 2400 : 1400;
+      var start = performance.now();
+      function tick(now) {
+        var t = Math.min((now - start) / dur, 1);
+        var v = Math.floor(easeOut(t) * target);
+        el.textContent = v.toLocaleString('fr-FR') + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    var statsObs = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          var nums = entries[i].target.querySelectorAll('.stat-num[data-target]');
+          for (var j = 0; j < nums.length; j++) animNum(nums[j]);
+          statsObs.unobserve(entries[i].target);
+        }
+      }
+    }, { threshold: 0.3 });
+    statsObs.observe(document.getElementById('stats'));
+
+    /* ── PROCESS TIMELINE ── */
+    var procLine = document.getElementById('proc-line');
+    var dots = document.querySelectorAll('.step-dot');
+    var procObs = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          setTimeout(function() {
+            if (procLine) procLine.style.width = 'calc(100% - 96px)';
+            for (var d = 0; d < dots.length; d++) {
+              (function(dot, idx) {
+                setTimeout(function() { dot.classList.add('active'); }, idx * 450);
+              })(dots[d], d);
+            }
+          }, 400);
+          procObs.unobserve(entries[i].target);
+        }
+      }
+    }, { threshold: 0.2 });
+    procObs.observe(document.getElementById('process'));
+
+    /* ── MAGNETIC BUTTONS ── */
+    if (!isMobile) {
+      var magBtns = document.querySelectorAll('.btn-magnetic');
+      for (var i = 0; i < magBtns.length; i++) {
+        (function(btn) {
+          btn.addEventListener('mouseenter', function() {
+            btn.style.transition = 'transform 0.12s ease';
+          });
+          btn.addEventListener('mousemove', function(e) {
+            var r = btn.getBoundingClientRect();
+            var dx = (e.clientX - r.left - r.width / 2) * 0.28;
+            var dy = (e.clientY - r.top - r.height / 2) * 0.28;
+            btn.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+          });
+          btn.addEventListener('mouseleave', function() {
+            btn.style.transition = 'transform 0.5s cubic-bezier(0.32,0.72,0,1)';
+            btn.style.transform = 'translate(0,0)';
+          });
+        })(magBtns[i]);
+      }
+    }
+
+    /* ── MOBILE NAV ── */
+    var hamburger = document.querySelector('.nav-hamburger');
+    var overlay = document.getElementById('nav-overlay');
+    hamburger.addEventListener('click', function() {
+      var open = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!open));
+      overlay.classList.toggle('open', !open);
+      hamburger.classList.toggle('open', !open);
+      overlay.setAttribute('aria-hidden', String(open));
+      document.body.style.overflow = open ? '' : 'hidden';
+    });
+    var overlayLinks = overlay.querySelectorAll('a');
+    for (var i = 0; i < overlayLinks.length; i++) {
+      overlayLinks[i].addEventListener('click', function() {
+        overlay.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    }
+
+    /* ── SMOOTH SCROLL with navbar offset ── */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          var offset = 80;
+          var y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    });
+
+    /* ── FORM ── */
+    var form = document.getElementById('contact-form');
+    var successEl = document.getElementById('form-success');
+    var submitBtn = form.querySelector('.btn-submit');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      submitBtn.classList.add('sending');
+      submitBtn.textContent = 'Envoi en cours...';
+      setTimeout(function() {
+        form.style.display = 'none';
+        successEl.classList.add('show');
+      }, 1200);
+    });
+
+    /* ── SERVICE MODALS ── */
+    (function() {
+      var SERVICES = {
+        chatbot: {
+          accent: 'cyan',
+          num: '01',
+          icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+          name: 'Chatbot IA sur-mesure',
+          tagline: 'Votre meilleur commercial — disponible 24h/24, sans congé maladie.',
+          price: 'à partir de 1 500 €',
+          delay: '3 semaines · Maintenance 80–200 €/mois',
+          problem: 'Chaque jour, votre équipe répond aux mêmes 20 questions. Horaires, tarifs, procédures, disponibilités. Ces interruptions représentent <strong>2 à 4 heures de travail perdu quotidiennement</strong>. Et la nuit ? Le week-end ? Vos prospects n\'obtiennent aucune réponse et passent chez un concurrent.',
+          solution: 'Un chatbot IA formé sur <strong>vos propres documents</strong> — votre FAQ, vos tarifs, vos conditions, votre catalogue. Pensez-y comme un nouveau collaborateur qui a tout lu, tout mémorisé, et qui est disponible à toute heure. Il répond instantanément, ne se trompe pas, et transfère vers un humain uniquement quand c\'est vraiment nécessaire. Zéro compétence technique requise de votre côté.',
+          benefits: [
+            '<strong>2 à 4 heures récupérées par jour</strong> — vos équipes arrêtent de répondre aux mêmes questions',
+            '<strong>Disponible 24h/24, 7j/7</strong> — vos prospects ont une réponse même à minuit',
+            '<strong>80% des questions traitées seul</strong> — sans intervention humaine, dès le premier mois',
+            '<strong>Il apprend vos données</strong> — formé sur votre FAQ, vos tarifs, vos produits',
+            '<strong>Widget discret à vos couleurs</strong> — vos clients ne voient pas la différence avec un humain',
+            '<strong>Rapport hebdomadaire inclus</strong> — vous savez exactement ce qu\'on vous demande et ce qui manque'
+          ],
+          usecases: [
+            '🏟️ Club sportif (18 000 adhérents) : questions sur horaires, inscriptions et tarifs résolues sans secrétariat',
+            '🏢 Cabinet comptable : leads qualifiés automatiquement, dossiers pré-remplis avant le premier RDV',
+            '🛒 E-commerce : suivi de commandes, retours et recommandations gérés sans service client',
+            '🐾 Clinique vétérinaire : prise de RDV et conseils post-consultation sans téléphone'
+          ],
+          stack: ['Claude API', 'Mistral AI', 'n8n', 'Supabase', 'Widget JS', 'Webhook', 'OpenAI Embeddings'],
+          result: '<strong>–70%</strong> de sollicitations répétitives éliminées · <strong>+35%</strong> de satisfaction client · ROI atteint en <strong>moins de 2 mois</strong>',
+          cta: 'Voir une démo live',
+          ctaHref: '#contact',
+          ctaSub: 'Démo personnalisée gratuite · 30 min'
+        },
+        site: {
+          accent: 'gold',
+          num: '02',
+          icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>',
+          name: 'Site web haute qualité',
+          tagline: 'Votre vitrine digitale doit être aussi forte que votre offre.',
+          price: 'à partir de 1 200 €',
+          delay: '2–4 semaines · Livraison clé en main',
+          problem: 'Votre site actuel est peut-être fonctionnel — mais est-ce qu\'il <strong>convainc en moins de 5 secondes</strong> ? Un visiteur qui ne comprend pas immédiatement ce que vous faites et pourquoi vous choisir va repartir. Vous payez pour du trafic que vous perdez à cause d\'un design générique.',
+          solution: 'Je conçois un site entièrement sur-mesure, pensé pour convertir. Pas un template modifié — une vraie création, avec des animations fluides, une typographie soignée et un parcours utilisateur qui guide naturellement vers le contact. Livré en 2 à 4 semaines, votre site sera aussi beau sur mobile que sur desktop. Et si vous voulez y ajouter un chatbot IA plus tard, il sera déjà prévu dès le départ.',
+          benefits: [
+            '<strong>Aucun template</strong> — votre site est unique, comme votre activité',
+            '<strong>Chargement ultra-rapide</strong> — vos visiteurs n\'attendent pas, Google vous récompense',
+            '<strong>Mobile parfait</strong> — 70% de vos visiteurs arrivent sur téléphone, ils seront servis',
+            '<strong>Référencement technique</strong> — bien conçu pour être trouvé sur Google',
+            '<strong>Chatbot IA intégrable</strong> — prévu dès la conception si vous voulez l\'ajouter',
+            '<strong>Vous êtes propriétaire du code</strong> — aucun abonnement plateforme, aucune dépendance'
+          ],
+          usecases: [
+            '🏛️ Cabinet de conseil : site premium pour attirer des clients grands comptes et asseoir la crédibilité',
+            '🚀 Start-up B2B : landing page orientée conversion avec formulaire de démo intégré',
+            '🎨 Architecte ou designer : portfolio interactif avec galerie filtrable et effets au scroll',
+            '🧘 Thérapeute / coach : site rassurant avec prise de RDV et chatbot de pré-qualification'
+          ],
+          stack: ['HTML5 / CSS3', 'Vanilla JS', 'Next.js', 'Google Fonts', 'GSAP', 'Schema.org', 'Lighthouse'],
+          result: '<strong>+85%</strong> de temps passé sur le site · Score Lighthouse <strong>95+</strong> garanti · Livraison <strong>2 à 4 semaines</strong>',
+          cta: 'Voir des exemples',
+          ctaHref: '#references',
+          ctaSub: 'Projets récents disponibles sur demande'
+        },
+        auto: {
+          accent: 'violet',
+          num: '03',
+          icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>',
+          name: 'Automatisations & Workflows',
+          tagline: 'Chaque heure gagnée en automatisation est une heure investie dans ce qui compte.',
+          price: 'à partir de 800 €',
+          delay: 'ROI &lt; 3 mois · Déploiement 1–2 semaines',
+          problem: 'Comptez combien de fois par semaine quelqu\'un de votre équipe copie une donnée d\'un outil vers un autre, envoie un email de relance à la main, ou génère un tableau récapitulatif. Ce temps perdu représente en moyenne <strong>20 à 30% des heures travaillées</strong>. C\'est de la croissance que vous laissez sur la table.',
+          solution: 'Je commence par cartographier vos tâches répétitives — ensemble, on repère les plus chronophages. Ensuite je construis des automatisations qui font le travail à votre place. Vos outils se parlent entre eux : votre CRM, votre messagerie, vos tableaux de bord, vos formulaires. <strong>Vous n\'avez plus à y penser.</strong> Ça tourne en arrière-plan, silencieusement, 24h/24.',
+          benefits: [
+            '<strong>5h récupérées par personne et par semaine</strong> — gain moyen constaté chez nos clients',
+            '<strong>Zéro erreur de saisie</strong> — les données ne se perdent plus entre les outils',
+            '<strong>Vos outils se synchronisent seuls</strong> — CRM, Gmail, Notion, Airtable, Slack…',
+            '<strong>Alertes automatiques</strong> — vous êtes prévenu quand quelque chose nécessite votre attention',
+            '<strong>Rapports générés tout seuls</strong> — chaque lundi matin, vos indicateurs sont prêts',
+            '<strong>Mode d\'emploi livré</strong> — vous comprenez ce qui tourne et pouvez l\'ajuster'
+          ],
+          usecases: [
+            '📊 Agence marketing : rapports clients générés et envoyés automatiquement chaque lundi',
+            '🤝 Cabinet RH : onboarding candidats complet sans une seule action manuelle',
+            '📦 E-commerce : alerte rupture de stock + bon de commande fournisseur créé automatiquement',
+            '💼 Startup SaaS : nurturing automatisé des leads selon leur comportement dans l\'app'
+          ],
+          stack: ['n8n', 'Make.com', 'Zapier', 'OpenAI API', 'Airtable', 'Notion API', 'Google Workspace', 'Slack API'],
+          result: 'Gain moyen de <strong>5h/semaine par personne</strong> · ROI en <strong>moins de 3 mois</strong> · <strong>0 erreur</strong> sur les flux automatisés',
+          cta: 'Calculer mon ROI',
+          ctaHref: '#contact',
+          ctaSub: 'Audit de vos processus offert · 45 min'
+        },
+        audit: {
+          accent: 'cyan',
+          num: '04',
+          icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
+          name: 'Audit IA',
+          tagline: 'Savoir où commencer, c\'est déjà gagner 6 mois.',
+          price: 'à partir de 500 €',
+          delay: '1 semaine · Livrable PDF · Sans engagement',
+          problem: 'Tout le monde parle d\'IA. Les outils se multiplient. Mais concrètement, <strong>par où commencer pour votre activité ?</strong> Beaucoup d\'entreprises investissent dans des solutions qui ne correspondent pas à leurs vrais problèmes — et perdent du temps et de l\'argent. Sans bilan préalable, vous naviguez à vue.',
+          solution: 'En 1 semaine, je passe en revue votre organisation comme un médecin ferait un bilan de santé. Je regarde comment vous travaillez au quotidien, j\'identifie les tâches qui vous coûtent le plus de temps, et je vous dis exactement quels outils IA peuvent vous aider — et lesquels sont inutiles pour vous. <strong>Vous repartez avec un plan d\'action concret, priorisé par rentabilité</strong>, que vous pouvez présenter à votre direction ou mettre en œuvre vous-même.',
+          benefits: [
+            '<strong>Vision claire en 1 semaine</strong> — vous savez exactement par où commencer',
+            '<strong>Top 5 des actions à fort impact</strong> — les gains rapides dans les 30 premiers jours',
+            '<strong>Roadmap 6 mois</strong> — un plan réaliste, priorisé par rentabilité',
+            '<strong>Zéro jargon</strong> — tout est expliqué en langage humain, sans technique',
+            '<strong>Document PDF prêt à partager</strong> — présentable à vos associés ou investisseurs',
+            '<strong>Session de restitution incluse</strong> — je vous explique tout en visio ou en présentiel'
+          ],
+          usecases: [
+            '📻 Sud Radio : plan 4 phases présenté en CODIR, déployé sur 12 mois avec ROI chiffré',
+            '🏭 PME industrielle : 3 automatisations identifiées représentant +120k€ d\'économies annuelles',
+            '🎯 Cabinet de conseil : feuille de route IA pour se différencier face à la concurrence',
+            '🛍️ Groupe retail : diagnostic stratégique avant le déploiement d\'un chatbot omnicanal'
+          ],
+          stack: ['Framework d\'audit propriétaire', 'Matrice Impact / Faisabilité', 'Benchmark sectoriel', 'Rapport PDF structuré'],
+          result: '<strong>3 à 5 gains concrets</strong> identifiés dès la 1ère semaine · Roadmap <strong>6 mois</strong> clé en main · Décision <strong>sans engagement</strong>',
+          cta: 'Démarrer mon audit',
+          ctaHref: '#contact',
+          ctaSub: 'Entretien découverte gratuit · 30 min'
+        },
+        formation: {
+          accent: 'gold',
+          num: '05',
+          icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>',
+          name: 'Formation IA',
+          tagline: 'L\'IA ne remplace pas votre équipe — elle la rend 3× plus efficace.',
+          price: 'à partir de 400 €/jour',
+          delay: 'Demi-journée ou journée complète · Jusqu\'à 10 personnes',
+          problem: 'Votre équipe a entendu parler de ChatGPT. Peut-être qu\'elle l\'utilise déjà pour rédiger des emails ou résumer des documents. Mais elle ignore <strong>90% de ce que l\'IA peut vraiment faire</strong> — et comment l\'utiliser correctement pour obtenir des résultats professionnels. Résultat : du temps gaspillé sur de mauvais prompts, et une opportunité manquée chaque jour.',
+          solution: 'Une formation courte, dense et <strong>100% orientée pratique</strong>. Pas de théorie abstraite — on travaille directement sur vos vrais sujets de la journée. Rédaction, analyse, résumés, prospection, reporting : chaque participant repart avec des automatismes utilisables le lendemain matin. La formation s\'adapte à votre secteur, votre niveau, vos outils.',
+          benefits: [
+            '<strong>Applicable dès le lendemain</strong> — pas de théorie inutile, que du concret',
+            '<strong>Sur vos vrais sujets</strong> — on travaille avec vos documents, votre contexte',
+            '<strong>Des prompts qui fonctionnent vraiment</strong> — plus de résultats médiocres',
+            '<strong>Guide personnalisé</strong> remis à chaque participant après la session',
+            '<strong>Support 30 jours inclus</strong> — canal Slack pour poser vos questions après',
+            '<strong>Jusqu\'à 10 personnes</strong> — format équipe ou direction, demi-journée ou journée'
+          ],
+          usecases: [
+            '✍️ Équipe marketing : contenus, briefs, newsletters et analyses générés 3× plus vite',
+            '📈 Direction générale : veille concurrentielle, synthèses et aide à la décision augmentée',
+            '📞 Équipe commerciale : personnalisation des pitchs et réponses aux objections avec l\'IA',
+            '👩‍💼 RH & Admin : fiches de poste, comptes-rendus et processus d\'onboarding accélérés'
+          ],
+          stack: ['ChatGPT / GPT-4o', 'Claude 3.5', 'Midjourney / DALL-E', 'Perplexity', 'n8n', 'Make.com', 'Notion AI'],
+          result: '<strong>×3 productivité</strong> sur la rédaction et l\'analyse · <strong>95% des participants</strong> utilisent les techniques dès le lendemain · ROI visible en <strong>1 semaine</strong>',
+          cta: 'Demander un programme',
+          ctaHref: '#contact',
+          ctaSub: 'Programme sur-mesure · Devis en 24h'
+        }
+      };
+
+      var backdrop = document.getElementById('svc-backdrop');
+      var modalBox = backdrop.querySelector('.svc-modal-box');
+      var closeBtn = backdrop.querySelector('.svc-modal-close');
+      var lastFocused = null;
+
+      function buildModal(key) {
+        var s = SERVICES[key];
+        if (!s) return;
+        modalBox.setAttribute('data-accent', s.accent);
+        modalBox.setAttribute('role', 'dialog');
+        modalBox.setAttribute('aria-modal', 'true');
+        modalBox.setAttribute('aria-labelledby', 'svc-modal-title');
+
+        var benefitItems = s.benefits.map(function(b) {
+          return '<li>' + b + '</li>';
+        }).join('');
+
+        var usecaseItems = s.usecases.map(function(u) {
+          return '<li>' + u + '</li>';
+        }).join('');
+
+        var stackPills = s.stack.map(function(t) {
+          return '<span class="modal-pill">' + t + '</span>';
+        }).join('');
+
+        modalBox.innerHTML =
+          '<button class="svc-modal-close" aria-label="Fermer">' +
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+          '</button>' +
+          '<div class="svc-modal-box::before"></div>' +
+          '<div class="svc-modal-header">' +
+            '<div class="svc-modal-icon">' + s.icon + '</div>' +
+            '<div class="svc-modal-meta">' +
+              '<div class="svc-modal-num">' + s.num + ' / OFFRE</div>' +
+              '<h2 class="svc-modal-title" id="svc-modal-title">' + s.name + '</h2>' +
+              '<p class="svc-modal-tagline">' + s.tagline + '</p>' +
+            '</div>' +
+            '<div class="svc-modal-pricing">' +
+              '<span class="svc-modal-price">' + s.price + '</span>' +
+              '<span class="svc-modal-delay">' + s.delay + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="svc-modal-body">' +
+            '<div class="svc-modal-col">' +
+              '<div class="modal-section">' +
+                '<div class="modal-label">Problème client</div>' +
+                '<p class="modal-text">' + s.problem + '</p>' +
+              '</div>' +
+              '<div class="modal-section">' +
+                '<div class="modal-label">Solution proposée</div>' +
+                '<p class="modal-text">' + s.solution + '</p>' +
+              '</div>' +
+              '<div class="modal-section">' +
+                '<div class="modal-label">Ce que vous obtenez</div>' +
+                '<ul class="modal-list">' + benefitItems + '</ul>' +
+              '</div>' +
+              '<div class="modal-section">' +
+                '<div class="modal-label">Cas d\'usage concrets</div>' +
+                '<ul class="modal-list">' + usecaseItems + '</ul>' +
+              '</div>' +
+            '</div>' +
+            '<div class="svc-modal-col">' +
+              '<div class="modal-section">' +
+                '<div class="modal-label">Stack technique</div>' +
+                '<div class="modal-stack">' + stackPills + '</div>' +
+              '</div>' +
+              '<div class="modal-section">' +
+                '<div class="modal-label">Résultats attendus</div>' +
+                '<div class="modal-result-box">' + s.result + '</div>' +
+              '</div>' +
+              '<div class="modal-cta-row">' +
+                '<a href="' + s.ctaHref + '" class="modal-cta-btn">' +
+                  s.cta +
+                  '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+                '</a>' +
+                '<span class="modal-cta-secondary">' + s.ctaSub + '</span>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+
+        /* Re-bind close button */
+        modalBox.querySelector('.svc-modal-close').addEventListener('click', closeModal);
+
+        /* CTA closes modal then scrolls */
+        var ctaBtn = modalBox.querySelector('.modal-cta-btn');
+        if (ctaBtn) {
+          ctaBtn.addEventListener('click', function(e) {
+            var href = ctaBtn.getAttribute('href');
+            if (href && href.startsWith('#')) {
+              e.preventDefault();
+              closeModal();
+              setTimeout(function() {
+                var target = document.querySelector(href);
+                if (target) {
+                  var y = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+              }, 420);
+            }
+          });
+        }
+      }
+
+      function openModal(key) {
+        buildModal(key);
+        lastFocused = document.activeElement;
+        backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        modalBox.scrollTop = 0;
+        setTimeout(function() {
+          var firstFocus = modalBox.querySelector('.svc-modal-close');
+          if (firstFocus) firstFocus.focus();
+        }, 50);
+      }
+
+      function closeModal() {
+        backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+        if (lastFocused) lastFocused.focus();
+      }
+
+      /* Backdrop click closes */
+      backdrop.addEventListener('click', function(e) {
+        if (e.target === backdrop) closeModal();
+      });
+
+      /* ESC key closes */
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
+      });
+
+      /* Focus trap inside modal */
+      backdrop.addEventListener('keydown', function(e) {
+        if (e.key !== 'Tab' || !backdrop.classList.contains('open')) return;
+        var focusable = modalBox.querySelectorAll('button, a, [tabindex]:not([tabindex="-1"])');
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+
+      /* Click on service cards */
+      var cards = document.querySelectorAll('.svc-card[data-service]');
+      for (var i = 0; i < cards.length; i++) {
+        (function(card) {
+          card.addEventListener('click', function() {
+            openModal(card.getAttribute('data-service'));
+          });
+          card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openModal(card.getAttribute('data-service'));
+            }
+          });
+        })(cards[i]);
+      }
+    })();
+
+  })();
+  </script>
+
+  <!-- ── SERVICE MODAL OVERLAY ── -->
+  <div id="svc-backdrop" aria-hidden="true">
+    <div id="svc-modal" role="presentation">
+      <div class="svc-modal-box"></div>
+    </div>
+  </div>
+
+</body>
+</html>
