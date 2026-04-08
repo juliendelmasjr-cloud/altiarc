@@ -2589,6 +2589,8 @@ footer::before {
     });
 
     /* ── FORM ── */
+    var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw6b-RwRFoUONu-h9_yl0hNS8y_t8gqvsVggnwXiXuu7nz_HnkTpSYqwWiPW3q-LyN9/exec';
+
     var form = document.getElementById('contact-form');
     var successEl = document.getElementById('form-success');
     var submitBtn = form.querySelector('.btn-submit');
@@ -2596,10 +2598,34 @@ footer::before {
       e.preventDefault();
       submitBtn.classList.add('sending');
       submitBtn.textContent = 'Envoi en cours...';
-      setTimeout(function() {
-        form.style.display = 'none';
-        successEl.classList.add('show');
-      }, 1200);
+
+      var data = {
+        name:    document.getElementById('f-name').value.trim(),
+        email:   document.getElementById('f-email').value.trim(),
+        type:    document.getElementById('f-type').value,
+        message: document.getElementById('f-msg').value.trim()
+      };
+
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(json) {
+        if (json.status === 'ok') {
+          form.style.display = 'none';
+          successEl.classList.add('show');
+        } else {
+          submitBtn.classList.remove('sending');
+          submitBtn.textContent = 'Erreur — réessayer';
+          console.error('Apps Script error:', json.error);
+        }
+      })
+      .catch(function(err) {
+        submitBtn.classList.remove('sending');
+        submitBtn.textContent = 'Erreur — réessayer';
+        console.error('Fetch error:', err);
+      });
     });
 
     /* ── SERVICE MODALS ── */
