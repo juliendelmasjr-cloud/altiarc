@@ -666,7 +666,7 @@ body.hovered #cursor-ring { width: 52px; height: 52px; border-color: rgba(255,25
 #services-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr auto;
   gap: 16px;
 }
 /* Service card */
@@ -696,7 +696,7 @@ body.hovered #cursor-ring { width: 52px; height: 52px; border-color: rgba(255,25
 
 /* Featured card (Chatbot) — mono special */
 .svc-chatbot {
-  grid-column: 1; grid-row: 1 / 3;
+  grid-column: 1; grid-row: 1 / 4;
   background: #181818;
   border: 1px solid rgba(255,255,255,0.12);
 }
@@ -707,6 +707,7 @@ body.hovered #cursor-ring { width: 52px; height: 52px; border-color: rgba(255,25
 .svc-auto    { grid-column: 3; grid-row: 1; }
 .svc-audit   { grid-column: 2; grid-row: 2; }
 .svc-form    { grid-column: 3; grid-row: 2; }
+.svc-vocal   { grid-column: 2 / 4; grid-row: 3; }
 
 .svc-num {
   font-family: var(--font-mono); font-size: 11px; color: var(--dim);
@@ -1763,12 +1764,12 @@ footer::before {
           <div class="stat-item">
             <span class="stat-num" data-target="18000" data-suffix="+">0</span>
             <span class="stat-label">Utilisateurs servis par nos solutions IA</span>
-            <span class="stat-source">Levallois Sporting Club, 2024</span>
+            <span class="stat-source">Levallois Sporting Club, 2026</span>
           </div>
           <div class="stat-item">
             <span class="stat-num" data-target="5" data-suffix="h">0</span>
             <span class="stat-label">Gagnées par semaine en moyenne par client</span>
-            <span class="stat-source">Cabinet RH Toulouse, 2024</span>
+            <span class="stat-source">Cabinet RH Toulouse, 2026</span>
           </div>
           <div class="stat-item">
             <span class="stat-num" data-text="–70%">–70%</span>
@@ -1919,6 +1920,21 @@ footer::before {
               <div class="svc-footer">
                 <span class="svc-price">à partir de 400 €/jour</span>
                 <span class="svc-delay">Demi-journée ou journée</span>
+              </div>
+              <span class="svc-click-hint">Explorer l'offre <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+            <div class="svc-card svc-vocal" data-service="vocal" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Voir le détail : Agent IA Vocal">
+              <span class="corner c-tl"></span><span class="corner c-tr"></span>
+              <span class="corner c-bl"></span><span class="corner c-br"></span>
+              <span class="svc-num">06</span>
+              <div class="svc-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              </div>
+              <h3 class="svc-name">Agent IA Vocal</h3>
+              <p class="svc-desc">Un agent vocal IA répond au téléphone à votre place — 24h/24, sans temps d'attente. Il qualifie les appels entrants, répond aux questions fréquentes, prend des rendez-vous et transfère uniquement les cas complexes à un humain. Votre standard téléphonique, multiplié par 10.</p>
+              <div class="svc-footer">
+                <span class="svc-price">à partir de 2 000 €</span>
+                <span class="svc-delay">4 semaines · Maintenance 150–300€/mois</span>
               </div>
               <span class="svc-click-hint">Explorer l'offre <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
             </div>
@@ -2250,6 +2266,7 @@ footer::before {
                   <option value="automation">Automatisations & Workflows</option>
                   <option value="audit">Audit IA</option>
                   <option value="formation">Formation IA</option>
+                  <option value="vocal">Agent IA Vocal</option>
                   <option value="autre">Autre</option>
                 </select>
               </div>
@@ -2600,7 +2617,7 @@ footer::before {
       var typeLabels = {
         chatbot: 'Chatbot IA sur-mesure', site: 'Création de site internet',
         automation: 'Automatisations & Workflows', audit: 'Audit IA',
-        formation: 'Formation IA', autre: 'Autre'
+        formation: 'Formation IA', vocal: 'Agent IA Vocal', autre: 'Autre'
       };
       var typeVal = document.getElementById('f-type').value;
 
@@ -2786,6 +2803,36 @@ footer::before {
           cta: 'Demander un programme',
           ctaHref: '#contact',
           ctaSub: 'Programme sur-mesure · Devis en 24h'
+        },
+        vocal: {
+          accent: 'cyan',
+          num: '06',
+          icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>',
+          name: 'Agent IA Vocal',
+          tagline: 'Votre téléphone répond, qualifie et convertit — même quand vous dormez.',
+          price: 'à partir de 2 000 €',
+          delay: '4 semaines · Maintenance 150–300€/mois',
+          problem: 'Chaque appel manqué est un client potentiel perdu. Et chaque appel décroché pour répondre "quels sont vos horaires ?" ou "je veux un rendez-vous" mobilise un humain qui pourrait faire mieux. En France, <strong>60% des appels entrants des PME restent sans réponse</strong> faute de disponibilité. Ces prospects ne rappellent pas — ils vont chez un concurrent.',
+          solution: 'Un agent vocal IA formé sur votre activité prend l\'appel, répond naturellement aux questions courantes, propose des créneaux de rendez-vous et transfère uniquement les cas complexes vers vous. Il parle comme un vrai collaborateur — pas comme un robot des années 2010. Disponible 24h/24, sans temps d\'attente, sans salaire.',
+          benefits: [
+            '<strong>Zéro appel manqué</strong> — l\'agent répond à chaque sonnerie, même à 23h',
+            '<strong>Qualification automatique</strong> — il identifie le besoin et filtre les prospects chauds',
+            '<strong>Prise de RDV intégrée</strong> — synchronisé avec votre agenda en temps réel',
+            '<strong>Voix naturelle</strong> — indiscernable d\'un humain sur 90% des interactions',
+            '<strong>Tableaux de bord d\'appels</strong> — résumés de chaque conversation, durée, issue',
+            '<strong>Escalade intelligente</strong> — transfère vers vous uniquement quand c\'est nécessaire'
+          ],
+          usecases: [
+            '🦷 Cabinet dentaire : prise de RDV automatique, rappels de confirmation, zéro secrétaire débordée',
+            '🏠 Agence immobilière : qualification des acheteurs et vendeurs avant le premier contact humain',
+            '🔧 Artisan / PME : standard téléphonique premium sans recruter un standardiste',
+            '🏋️ Salle de sport : inscriptions, infos tarifs et relances d\'abonnements gérés sans effort'
+          ],
+          stack: ['ElevenLabs', 'Vapi.ai', 'Retell AI', 'OpenAI Realtime API', 'n8n', 'Google Calendar API', 'Twilio'],
+          result: '<strong>+60%</strong> d\'appels traités · <strong>–80%</strong> de temps humain sur le standard · ROI atteint en <strong>moins de 2 mois</strong>',
+          cta: 'Voir une démo vocale',
+          ctaHref: '#contact',
+          ctaSub: 'Démo live en 20 min · Sans engagement'
         }
       };
 
