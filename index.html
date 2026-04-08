@@ -696,7 +696,7 @@ body.hovered #cursor-ring { width: 52px; height: 52px; border-color: rgba(255,25
 
 /* Featured card (Chatbot) — mono special */
 .svc-chatbot {
-  grid-column: 1; grid-row: 1 / 4;
+  grid-column: 1; grid-row: 1 / 3;
   background: #181818;
   border: 1px solid rgba(255,255,255,0.12);
 }
@@ -707,7 +707,11 @@ body.hovered #cursor-ring { width: 52px; height: 52px; border-color: rgba(255,25
 .svc-auto    { grid-column: 3; grid-row: 1; }
 .svc-audit   { grid-column: 2; grid-row: 2; }
 .svc-form    { grid-column: 3; grid-row: 2; }
-.svc-vocal   { grid-column: 2 / 4; grid-row: 3; }
+.svc-vocal   { grid-column: 1 / 4; grid-row: 3; flex-direction: row; align-items: center; gap: 40px; }
+.svc-vocal .svc-vocal-left { flex: 1; display: flex; flex-direction: column; }
+.svc-vocal .svc-footer { margin-top: auto; }
+.svc-vocal .svc-desc { max-width: 560px; }
+.svc-vocal .svc-vocal-right { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 16px; text-align: right; }
 
 .svc-num {
   font-family: var(--font-mono); font-size: 11px; color: var(--dim);
@@ -1926,17 +1930,21 @@ footer::before {
             <div class="svc-card svc-vocal" data-service="vocal" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Voir le détail : Agent IA Vocal">
               <span class="corner c-tl"></span><span class="corner c-tr"></span>
               <span class="corner c-bl"></span><span class="corner c-br"></span>
-              <span class="svc-num">06</span>
-              <div class="svc-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              <div class="svc-vocal-left">
+                <span class="svc-num">06</span>
+                <div class="svc-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                </div>
+                <h3 class="svc-name">Agent IA Vocal</h3>
+                <p class="svc-desc">Un agent vocal IA répond au téléphone à votre place — 24h/24, sans temps d'attente. Il qualifie les appels entrants, répond aux questions fréquentes, prend des rendez-vous et transfère uniquement les cas complexes à un humain. Votre standard téléphonique, multiplié par 10.</p>
               </div>
-              <h3 class="svc-name">Agent IA Vocal</h3>
-              <p class="svc-desc">Un agent vocal IA répond au téléphone à votre place — 24h/24, sans temps d'attente. Il qualifie les appels entrants, répond aux questions fréquentes, prend des rendez-vous et transfère uniquement les cas complexes à un humain. Votre standard téléphonique, multiplié par 10.</p>
-              <div class="svc-footer">
-                <span class="svc-price">à partir de 2 000 €</span>
-                <span class="svc-delay">4 semaines · Maintenance 150–300€/mois</span>
+              <div class="svc-vocal-right">
+                <div class="svc-footer" style="flex-direction:column;align-items:flex-end;gap:6px;">
+                  <span class="svc-price">à partir de 2 000 €</span>
+                  <span class="svc-delay">4 semaines · Maintenance 150–300€/mois</span>
+                </div>
+                <span class="svc-click-hint" style="position:static;opacity:1;">Explorer l'offre <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
               </div>
-              <span class="svc-click-hint">Explorer l'offre <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
             </div>
           </div>
         </div>
