@@ -2589,8 +2589,6 @@ footer::before {
     });
 
     /* ── FORM ── */
-    var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw6b-RwRFoUONu-h9_yl0hNS8y_t8gqvsVggnwXiXuu7nz_HnkTpSYqwWiPW3q-LyN9/exec';
-
     var form = document.getElementById('contact-form');
     var successEl = document.getElementById('form-success');
     var submitBtn = form.querySelector('.btn-submit');
@@ -2599,29 +2597,40 @@ footer::before {
       submitBtn.classList.add('sending');
       submitBtn.textContent = 'Envoi en cours...';
 
-      var data = {
-        name:    document.getElementById('f-name').value.trim(),
-        email:   document.getElementById('f-email').value.trim(),
-        type:    document.getElementById('f-type').value,
-        message: document.getElementById('f-msg').value.trim()
+      var typeLabels = {
+        chatbot: 'Chatbot IA sur-mesure', site: 'Création de site internet',
+        automation: 'Automatisations & Workflows', audit: 'Audit IA',
+        formation: 'Formation IA', autre: 'Autre'
+      };
+      var typeVal = document.getElementById('f-type').value;
+
+      var payload = {
+        access_key: 'c4b7ed86-a66e-4e75-9859-b94bb553ec70',
+        subject:    '📩 Nouvelle demande — ' + document.getElementById('f-name').value.trim() + ' · ' + (typeLabels[typeVal] || typeVal),
+        name:       document.getElementById('f-name').value.trim(),
+        email:      document.getElementById('f-email').value.trim(),
+        service:    typeLabels[typeVal] || typeVal,
+        message:    document.getElementById('f-msg').value.trim()
       };
 
-      var params = new URLSearchParams({
-        name:    data.name,
-        email:   data.email,
-        type:    data.type,
-        message: data.message
-      });
-
-      fetch(APPS_SCRIPT_URL + '?' + params.toString(), { mode: 'no-cors' })
-      .then(function() {
-        form.style.display = 'none';
-        successEl.classList.add('show');
+      fetch('https://api.web3forms.com/submit', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload)
       })
-      .catch(function(err) {
+      .then(function(res) { return res.json(); })
+      .then(function(json) {
+        if (json.success) {
+          form.style.display = 'none';
+          successEl.classList.add('show');
+        } else {
+          submitBtn.classList.remove('sending');
+          submitBtn.textContent = 'Erreur — réessayer';
+        }
+      })
+      .catch(function() {
         submitBtn.classList.remove('sending');
         submitBtn.textContent = 'Erreur — réessayer';
-        console.error('Fetch error:', err);
       });
     });
 
