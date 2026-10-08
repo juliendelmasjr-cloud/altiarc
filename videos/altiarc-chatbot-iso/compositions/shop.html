@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          background: #0c0c0c;
+          font-family: "Outfit", sans-serif;
+          color: #ffffff;
+        }
+        #shop-fx {
+          position: absolute;
+          inset: 0;
+          will-change: filter, opacity;
+        }
+        #shop-canvas {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+        #shop-vignette {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 75% 75% at 50% 50%, rgba(12, 12, 12, 0) 62%, rgba(12, 12, 12, 0.35) 85%, rgba(12, 12, 12, 0.7) 100%);
+          display: block;
+        }
+        #shop-bubbles {
+          position: absolute;
+          inset: 0;
+        }
+        .shop-b {
+          position: absolute;
+          left: 0;
+          top: 0;
+          opacity: 0;
+          transform-origin: 50% 100%;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          border-radius: 22px;
+          padding: 14px 22px;
+          font-size: 30px;
+          line-height: 1.2;
+          white-space: nowrap;
+          box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+        }
+        .shop-q {
+          background: #ffffff;
+          color: #15151d;
+          font-weight: 600;
+        }
+        .shop-q.shop-night {
+          background: #1e1e2a;
+          color: #ffffff;
+          border: 2px solid rgba(244, 114, 182, 0.7);
+        }
+        .shop-dot {
+          display: block;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #f472b6;
+          flex: 0 0 auto;
+        }
+        .shop-r {
+          background: #1b1b2e;
+          color: #ffffff;
+          font-weight: 500;
+          border: 2px solid #818cf8;
+          box-shadow:
+            0 14px 40px rgba(0, 0, 0, 0.35),
+            0 0 26px rgba(129, 140, 248, 0.35);
+        }
+        .shop-ai {
+          display: block;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #c084fc;
+          box-shadow: 0 0 12px #c084fc;
+          flex: 0 0 auto;
+        }
+        .shop-pip {
+          position: absolute;
+          left: 0;
+          top: 0;
+          opacity: 0;
+          transform-origin: 50% 100%;
+          width: 46px;
+          height: 46px;
+          border-radius: 50%;
+          background: #f472b6;
+          color: #15151d;
+          font-weight: 800;
+          font-size: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+        }
+        #shop-hud {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+        }
+        #shop-clock {
+          position: absolute;
+          left: 56px;
+          top: 48px;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 12px 24px 12px 18px;
+          border-radius: 999px;
+          background: rgba(12, 12, 12, 0.74);
+          border: 2px solid rgba(255, 255, 255, 0.14);
+        }
+        #shop-clock-icon {
+          position: relative;
+          width: 34px;
+          height: 34px;
+          display: block;
+        }
+        #shop-clock-icon svg {
+          position: absolute;
+          inset: 0;
+          width: 34px;
+          height: 34px;
+          display: block;
+        }
+        #shop-clock-time {
+          font-family: "Space Mono", monospace;
+          font-size: 32px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          color: #ffffff;
+        }
+        #shop-counters {
+          position: absolute;
+          right: 56px;
+          top: 48px;
+          display: flex;
+          gap: 36px;
+          padding: 16px 30px;
+          border-radius: 26px;
+          background: rgba(12, 12, 12, 0.74);
+          border: 2px solid rgba(255, 255, 255, 0.14);
+        }
+        .shop-stat {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+        .shop-stat-label {
+          font-family: "Space Mono", monospace;
+          font-size: 20px;
+          letter-spacing: 0.08em;
+          color: rgba(255, 255, 255, 0.7);
+        }
+        .shop-stat-value {
+          font-size: 48px;
+          font-weight: 800;
+          line-height: 1.05;
+          letter-spacing: -0.01em;
+          font-variant-numeric: tabular-nums;
+        }
+        #shop-count-rdv {
+          color: #c9a84c;
+        }
+      </style>
+
+      <div id="root" data-composition-id="shop" data-width="1920" data-height="1080">
+        <div id="shop-fx">
+          <canvas id="shop-canvas" width="1920" height="1080" data-layout-allow-overflow></canvas>
+          <span id="shop-vignette"></span>
+          <div id="shop-bubbles" data-layout-allow-overflow>
+            <div class="shop-b shop-q" id="shop-q1"><span class="shop-dot"></span>Vous êtes ouverts samedi ?</div>
+            <div class="shop-b shop-r" id="shop-r1"><span class="shop-ai"></span>Oui, de 9 h à 19 h ✓</div>
+            <div class="shop-b shop-q" id="shop-q2"><span class="shop-dot"></span>Quel est le prix ?</div>
+            <div class="shop-b shop-r" id="shop-r2"><span class="shop-ai"></span>Dès 49 €, je vous envoie le détail ?</div>
+            <div class="shop-b shop-q" id="shop-q3"><span class="shop-dot"></span>Je peux prendre rendez-vous ?</div>
+            <div class="shop-b shop-r" id="shop-r3"><span class="shop-ai"></span>Bien sûr : mardi 14 h ?</div>
+            <div class="shop-pip" id="shop-p1">?</div>
+            <div class="shop-pip" id="shop-p2">?</div>
+            <div class="shop-pip" id="shop-p3">?</div>
+            <div class="shop-b shop-q shop-night" id="shop-q4"><span class="shop-dot"></span>Livraison possible ?</div>
+            <div class="shop-b shop-r" id="shop-r4"><span class="shop-ai"></span>Oui, sous 48 h.</div>
+            <div class="shop-b shop-q shop-night" id="shop-q5"><span class="shop-dot"></span>Je voudrais un devis</div>
+            <div class="shop-b shop-r" id="shop-r5"><span class="shop-ai"></span>Je m'en occupe ✓</div>
+          </div>
+        </div>
+        <div id="shop-hud">
+          <div id="shop-clock">
+            <span id="shop-clock-icon">
+              <svg id="shop-clock-sun" viewBox="0 0 34 34" fill="none" stroke="#c9a84c" stroke-width="2.6" stroke-linecap="round">
+                <circle cx="17" cy="17" r="6.5" fill="#c9a84c" />
+                <path d="M17 3v4M17 27v4M3 17h4M27 17h4M7.1 7.1l2.8 2.8M24.1 24.1l2.8 2.8M7.1 26.9l2.8-2.8M24.1 9.9l2.8-2.8" />
+              </svg>
+              <svg id="shop-clock-moon" viewBox="0 0 34 34">
+                <path d="M22.5 5.5a12 12 0 1 0 6 18.4A10 10 0 0 1 22.5 5.5z" fill="#c7cbff" />
+              </svg>
+            </span>
+            <span id="shop-clock-time">06:58</span>
+          </div>
+          <div id="shop-counters">
+            <div class="shop-stat">
+              <span class="shop-stat-label">CONVERSATIONS</span>
+              <span class="shop-stat-value" id="shop-count-conv">0</span>
+            </div>
+            <div class="shop-stat">
+              <span class="shop-stat-label">RENDEZ-VOUS</span>
+              <span class="shop-stat-value" id="shop-count-rdv">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        // Hold the render until the WebGL shop has drawn its first frame.
+        window.__hf = window.__hf || {};
+        window.__hf.buildReady = window.__hf.buildReady || {};
+        window.__hf.buildReady["altiarc-shop"] = new Promise((resolve) => {
+          window.__altiarcShopReady = resolve;
+        });
+
+        (function () {
+          // Depth treatment while a conversation is open over the shop, then the hand-off.
+          const tl = gsap.timeline({ paused: true });
+          const OPEN = "blur(7px) brightness(0.45)";
+          const CLEAR = "blur(0px) brightness(1)";
+          tl.fromTo("#shop-fx", { filter: CLEAR }, { filter: OPEN, duration: 0.5, ease: "power2.out" }, 9.45);
+          tl.fromTo("#shop-fx", { filter: OPEN }, { filter: CLEAR, duration: 0.45, ease: "power2.inOut", immediateRender: false }, 12.2);
+          tl.fromTo("#shop-fx", { filter: CLEAR }, { filter: OPEN, duration: 0.5, ease: "power2.out", immediateRender: false }, 19.9);
+          tl.fromTo("#shop-fx", { filter: OPEN }, { filter: CLEAR, duration: 0.45, ease: "power2.inOut", immediateRender: false }, 22.1);
+          tl.fromTo("#shop-fx", { opacity: 1 }, { opacity: 0, duration: 0.4, ease: "power2.in", immediateRender: false }, 23.12);
+          window.__timelines["shop"] = tl;
+        })();
+      </script>
+      <script type="module" src="shop/shop.js"></script>
+    </template>
+  </body>
+</html>

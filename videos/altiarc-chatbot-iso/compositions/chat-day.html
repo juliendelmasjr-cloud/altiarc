@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          font-family: "Outfit", sans-serif;
+          color: #ffffff;
+        }
+        #cd-stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          perspective: 1600px;
+        }
+        #cd-panel {
+          width: 1100px;
+          height: 700px;
+          border-radius: 28px;
+          background: rgba(20, 20, 27, 0.95);
+          border: 2px solid rgba(129, 140, 248, 0.38);
+          box-shadow:
+            0 40px 120px rgba(0, 0, 0, 0.6),
+            0 0 80px rgba(129, 140, 248, 0.16);
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+        }
+        #cd-head {
+          display: flex;
+          align-items: center;
+          gap: 22px;
+          padding: 28px 44px;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.07);
+        }
+        #cd-avatar {
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          background: radial-gradient(circle at 40% 35%, #a5adff, #818cf8 55%, #5b5fc7);
+          box-shadow: 0 0 26px rgba(129, 140, 248, 0.55);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+        }
+        .cd-eye {
+          width: 8px;
+          height: 13px;
+          border-radius: 6px;
+          background: #14102a;
+          display: block;
+        }
+        #cd-title {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+        #cd-name {
+          font-size: 36px;
+          font-weight: 600;
+        }
+        #cd-sub {
+          font-family: "Space Mono", monospace;
+          font-size: 20px;
+          letter-spacing: 0.08em;
+          color: rgba(255, 255, 255, 0.6);
+        }
+        #cd-pill {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 20px;
+          border-radius: 999px;
+          background: rgba(129, 140, 248, 0.14);
+          border: 2px solid rgba(129, 140, 248, 0.5);
+          font-family: "Space Mono", monospace;
+          font-size: 24px;
+          font-weight: 700;
+          color: #c7cbff;
+        }
+        #cd-pill-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #818cf8;
+          display: block;
+        }
+        #cd-time {
+          font-family: "Space Mono", monospace;
+          font-size: 24px;
+          color: rgba(255, 255, 255, 0.6);
+        }
+        #cd-body {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 22px;
+          padding: 34px 44px;
+        }
+        .cd-row {
+          display: flex;
+          width: 100%;
+        }
+        .cd-right {
+          justify-content: flex-end;
+        }
+        .cd-bubble {
+          max-width: 700px;
+          padding: 20px 28px;
+          border-radius: 26px;
+          font-size: 34px;
+          line-height: 1.3;
+        }
+        .cd-client {
+          background: #262633;
+          border-bottom-right-radius: 8px;
+        }
+        #cd-ai {
+          position: relative;
+          background: rgba(129, 140, 248, 0.16);
+          border: 2px solid rgba(129, 140, 248, 0.45);
+          border-bottom-left-radius: 8px;
+          min-height: 88px;
+          width: 680px;
+        }
+        #cd-typing {
+          position: absolute;
+          left: 28px;
+          top: 34px;
+          display: flex;
+          gap: 12px;
+        }
+        .cd-dot {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #c084fc;
+          display: block;
+        }
+        #cd-chips {
+          display: flex;
+          gap: 16px;
+        }
+        .cd-chip {
+          position: relative;
+          padding: 14px 26px;
+          border-radius: 999px;
+          border: 2px solid rgba(201, 168, 76, 0.75);
+          color: #e9d49a;
+          font-size: 30px;
+          font-weight: 600;
+        }
+        #cd-chip-a-fill {
+          position: absolute;
+          inset: -2px;
+          border-radius: 999px;
+          background: #c9a84c;
+          display: block;
+        }
+        #cd-chip-a-label {
+          position: relative;
+        }
+        #cd-ripple {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 120px;
+          height: 120px;
+          margin-left: -60px;
+          margin-top: -60px;
+          border-radius: 50%;
+          border: 3px solid #e9d49a;
+          display: block;
+        }
+        #cd-confirm {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          padding: 18px 26px;
+          border-radius: 22px;
+          background: rgba(201, 168, 76, 0.14);
+          border: 2px solid #c9a84c;
+          font-size: 32px;
+          font-weight: 600;
+          color: #ffffff;
+        }
+        #cd-confirm-icon {
+          width: 52px;
+          height: 52px;
+          border-radius: 14px;
+          background: #c9a84c;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        #cd-confirm-icon svg {
+          width: 32px;
+          height: 32px;
+          display: block;
+        }
+        #cd-confirm-meta {
+          font-family: "Space Mono", monospace;
+          font-size: 24px;
+          color: #e9d49a;
+        }
+      </style>
+
+      <div id="root" data-composition-id="chat-day" data-width="1920" data-height="1080">
+        <div id="cd-stage">
+          <div id="cd-panel">
+            <div id="cd-head">
+              <div id="cd-avatar"><span class="cd-eye"></span><span class="cd-eye"></span></div>
+              <div id="cd-title">
+                <div id="cd-name">Assistant Maison Nova</div>
+                <div id="cd-sub">CHATBOT ALTIARC · EN LIGNE</div>
+              </div>
+              <div id="cd-pill"><span id="cd-pill-dot"></span>24/7</div>
+              <div id="cd-time">14:12</div>
+            </div>
+            <div id="cd-body">
+              <div class="cd-row cd-right"><div class="cd-bubble cd-client" id="cd-q">Je peux prendre rendez-vous ?</div></div>
+              <div class="cd-row">
+                <div class="cd-bubble" id="cd-ai">
+                  <span id="cd-typing"><span class="cd-dot"></span><span class="cd-dot"></span><span class="cd-dot"></span></span>
+                  <span id="cd-ai-text"></span>
+                </div>
+              </div>
+              <div class="cd-row" id="cd-chips">
+                <div class="cd-chip" id="cd-chip-a"><span id="cd-chip-a-fill"></span><span id="cd-ripple"></span><span id="cd-chip-a-label">Mardi 14 h</span></div>
+                <div class="cd-chip" id="cd-chip-b">Jeudi 10 h</div>
+              </div>
+              <div class="cd-row" id="cd-confirm-row">
+                <div id="cd-confirm">
+                  <span id="cd-confirm-icon">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="#14141b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="5" y="7" width="22" height="20" rx="3" /><path d="M5 13h22M11 4v6M21 4v6M11 20l3 3 6-6" />
+                    </svg>
+                  </span>
+                  <span>C'est noté, à mardi !</span>
+                  <span id="cd-confirm-meta">MAR · 14:00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const REPLY = "Bien sûr ! Mardi 14 h ou jeudi 10 h ?";
+          const out = document.getElementById("cd-ai-text");
+
+          tl.fromTo("#cd-panel", { scale: 0.12, rotationX: 58, y: 140, opacity: 0 }, { scale: 1, rotationX: 0, y: 0, opacity: 1, duration: 0.6, ease: "power4.out" }, 0);
+          tl.fromTo("#cd-head > *", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: "power3.out" }, 0.28);
+          tl.fromTo("#cd-pill-dot", { scale: 1 }, { scale: 1.5, duration: 0.3, repeat: 7, yoyo: true, ease: "sine.inOut" }, 0.4);
+          tl.fromTo("#cd-q", { opacity: 0, x: 50, scale: 0.92 }, { opacity: 1, x: 0, scale: 1, duration: 0.36, ease: "back.out(1.6)" }, 0.32);
+
+          tl.fromTo("#cd-ai", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.22, ease: "power3.out" }, 0.6);
+          tl.fromTo(".cd-dot", { y: 0 }, { y: -9, duration: 0.12, stagger: 0.06, repeat: 1, yoyo: true, ease: "sine.inOut" }, 0.66);
+          tl.fromTo("#cd-typing", { opacity: 1 }, { opacity: 0, duration: 0.06, immediateRender: false }, 0.94);
+          const typed = { n: 0 };
+          tl.fromTo(
+            typed,
+            { n: 0 },
+            {
+              n: REPLY.length,
+              duration: 0.6,
+              ease: "none",
+              onUpdate: () => {
+                out.textContent = REPLY.slice(0, Math.round(typed.n));
+              },
+            },
+            0.96,
+          );
+
+          // Quick replies → the visitor taps "Mardi 14 h".
+          tl.fromTo(".cd-chip", { opacity: 0, y: 16, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, stagger: 0.08, ease: "back.out(1.8)" }, 1.55);
+          tl.fromTo("#cd-chip-a-fill", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "power2.out" }, 1.95);
+          tl.fromTo("#cd-chip-a-label", { color: "#e9d49a" }, { color: "#14141b", duration: 0.15 }, 1.95);
+          tl.fromTo("#cd-ripple", { scale: 0.3, opacity: 0.9 }, { scale: 1.6, opacity: 0, duration: 0.45, ease: "power2.out" }, 1.95);
+          tl.fromTo("#cd-chip-a", { scale: 1 }, { scale: 0.94, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out" }, 1.93);
+          tl.fromTo("#cd-chip-b", { opacity: 1 }, { opacity: 0.35, duration: 0.2, immediateRender: false }, 2.0);
+
+          // Ready-to-use result: the confirmed slot.
+          tl.fromTo("#cd-confirm", { opacity: 0, scale: 0.7, y: 14 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(1.8)" }, 2.15);
+
+          // Fold back into the vitrine (the 3D calendar card takes over).
+          tl.to("#cd-panel", { scale: 0.1, rotationX: 50, y: 150, opacity: 0, duration: 0.4, ease: "power2.in" }, 2.68);
+
+          window.__timelines["chat-day"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          font-family: "Outfit", sans-serif;
+          color: #ffffff;
+        }
+        #cn-stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          perspective: 1600px;
+        }
+        #cn-panel {
+          width: 1100px;
+          height: 640px;
+          border-radius: 28px;
+          background: rgba(20, 20, 27, 0.95);
+          border: 2px solid rgba(129, 140, 248, 0.38);
+          box-shadow:
+            0 40px 120px rgba(0, 0, 0, 0.6),
+            0 0 80px rgba(129, 140, 248, 0.2);
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+        }
+        #cn-head {
+          display: flex;
+          align-items: center;
+          gap: 22px;
+          padding: 28px 44px;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.07);
+        }
+        #cn-avatar {
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          background: radial-gradient(circle at 40% 35%, #a5adff, #818cf8 55%, #5b5fc7);
+          box-shadow: 0 0 26px rgba(129, 140, 248, 0.55);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+        }
+        .cn-eye {
+          width: 8px;
+          height: 13px;
+          border-radius: 6px;
+          background: #14102a;
+          display: block;
+        }
+        #cn-title {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+        #cn-name {
+          font-size: 36px;
+          font-weight: 600;
+        }
+        #cn-sub {
+          font-family: "Space Mono", monospace;
+          font-size: 20px;
+          letter-spacing: 0.08em;
+          color: rgba(255, 255, 255, 0.6);
+        }
+        #cn-pill {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 20px;
+          border-radius: 999px;
+          background: rgba(129, 140, 248, 0.14);
+          border: 2px solid rgba(129, 140, 248, 0.5);
+          font-family: "Space Mono", monospace;
+          font-size: 24px;
+          font-weight: 700;
+          color: #c7cbff;
+        }
+        #cn-pill-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #818cf8;
+          display: block;
+        }
+        #cn-time {
+          font-family: "Space Mono", monospace;
+          font-size: 24px;
+          color: rgba(255, 255, 255, 0.6);
+        }
+        #cn-body {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+          padding: 36px 44px;
+        }
+        .cn-row {
+          display: flex;
+          width: 100%;
+        }
+        .cn-right {
+          justify-content: flex-end;
+        }
+        .cn-bubble {
+          max-width: 720px;
+          padding: 20px 28px;
+          border-radius: 26px;
+          font-size: 34px;
+          line-height: 1.3;
+        }
+        #cn-q {
+          background: #262633;
+          border-bottom-right-radius: 8px;
+        }
+        #cn-ai {
+          position: relative;
+          background: rgba(129, 140, 248, 0.16);
+          border: 2px solid rgba(129, 140, 248, 0.45);
+          border-bottom-left-radius: 8px;
+          min-height: 134px;
+          width: 720px;
+        }
+        #cn-typing {
+          position: absolute;
+          left: 28px;
+          top: 34px;
+          display: flex;
+          gap: 12px;
+        }
+        .cn-dot {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #c084fc;
+          display: block;
+        }
+        #cn-handoff {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          padding: 16px 26px;
+          border-radius: 999px;
+          background: rgba(201, 168, 76, 0.14);
+          border: 2px solid #c9a84c;
+          font-size: 30px;
+          font-weight: 600;
+        }
+        #cn-handoff-check {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #c9a84c;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        #cn-handoff-check svg {
+          width: 24px;
+          height: 24px;
+          display: block;
+        }
+        #cn-handoff-to {
+          font-family: "Space Mono", monospace;
+          font-size: 24px;
+          color: #e9d49a;
+        }
+      </style>
+
+      <div id="root" data-composition-id="chat-night" data-width="1920" data-height="1080">
+        <div id="cn-stage">
+          <div id="cn-panel">
+            <div id="cn-head">
+              <div id="cn-avatar"><span class="cn-eye"></span><span class="cn-eye"></span></div>
+              <div id="cn-title">
+                <div id="cn-name">Assistant Maison Nova</div>
+                <div id="cn-sub">BOUTIQUE FERMÉE · CHATBOT EN LIGNE</div>
+              </div>
+              <div id="cn-pill"><span id="cn-pill-dot"></span>24/7</div>
+              <div id="cn-time">23:47</div>
+            </div>
+            <div id="cn-body">
+              <div class="cn-row cn-right"><div class="cn-bubble" id="cn-q">Je voudrais un devis pour 20 personnes.</div></div>
+              <div class="cn-row">
+                <div class="cn-bubble" id="cn-ai">
+                  <span id="cn-typing"><span class="cn-dot"></span><span class="cn-dot"></span><span class="cn-dot"></span></span>
+                  <span id="cn-ai-text"></span>
+                </div>
+              </div>
+              <div class="cn-row">
+                <div id="cn-handoff">
+                  <span id="cn-handoff-check">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#14141b" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7" /></svg>
+                  </span>
+                  <span>Transmis</span>
+                  <span id="cn-handoff-to">SERVICE COMMERCIAL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const REPLY = "Je transmets à notre commercial. Il vous rappelle demain à 9 h.";
+          const out = document.getElementById("cn-ai-text");
+
+          tl.fromTo("#cn-panel", { scale: 0.12, rotationX: 58, y: 140, opacity: 0 }, { scale: 1, rotationX: 0, y: 0, opacity: 1, duration: 0.58, ease: "power4.out" }, 0);
+          tl.fromTo("#cn-head > *", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: "power3.out" }, 0.28);
+          tl.fromTo("#cn-pill-dot", { scale: 1 }, { scale: 1.5, duration: 0.3, repeat: 7, yoyo: true, ease: "sine.inOut" }, 0.4);
+          tl.fromTo("#cn-q", { opacity: 0, x: 50, scale: 0.92 }, { opacity: 1, x: 0, scale: 1, duration: 0.36, ease: "back.out(1.6)" }, 0.3);
+
+          tl.fromTo("#cn-ai", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.22, ease: "power3.out" }, 0.58);
+          tl.fromTo(".cn-dot", { y: 0 }, { y: -9, duration: 0.12, stagger: 0.06, repeat: 1, yoyo: true, ease: "sine.inOut" }, 0.64);
+          tl.fromTo("#cn-typing", { opacity: 1 }, { opacity: 0, duration: 0.06, immediateRender: false }, 0.9);
+          const typed = { n: 0 };
+          tl.fromTo(
+            typed,
+            { n: 0 },
+            {
+              n: REPLY.length,
+              duration: 0.7,
+              ease: "none",
+              onUpdate: () => {
+                out.textContent = REPLY.slice(0, Math.round(typed.n));
+              },
+            },
+            0.92,
+          );
+
+          // Routed to the right person.
+          tl.fromTo("#cn-handoff", { opacity: 0, scale: 0.7, y: 12 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(1.8)" }, 1.7);
+
+          tl.to("#cn-panel", { scale: 0.1, rotationX: 50, y: 150, opacity: 0, duration: 0.38, ease: "power2.in" }, 2.15);
+
+          window.__timelines["chat-night"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

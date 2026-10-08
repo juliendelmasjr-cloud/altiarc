@@ -7,7 +7,7 @@ audience: Dirigeants d'entreprises (commerces, PME, structures médias)
 mode: collaborative
 ---
 
-# Altiarc — La boutique 24/7 (v1)
+# Altiarc — La boutique 24/7 (v1 — construite)
 
 ## Decisions
 
@@ -22,6 +22,8 @@ mode: collaborative
 - **Bans** : pas de robot à bouche/bras, pas de dégradé de texte, pas de diaporama, pas de fondu au noir final.
 - **Held frame** : 07 — le carton final tient ~1,5 s immobile (boucle propre sur le site).
 - **Boucle** : le film commence et finit dans la nuit → la boucle sur le site est invisible.
+- **Build (timing réel, index.html)** : boutique `compositions/shop.html` 0–23,6 s (3D, bulles, horloge, compteurs) · gros plan RDV 9,4–12,5 s · gros plan nuit 19,85–22,4 s · signature 23,0–27,0 s. Durée finale : **27,0 s**.
+- **Écarts avec la v1** : la conversation RDV du plan 2 est celle sur laquelle on zoome au plan 3 (sa carte or part après la confirmation) ; « Vous êtes ouverts samedi ? » reçoit sa réponse sans objet (simple info) ; 3 visiteurs supplémentaires avec une pastille « ? » montrent le volume ; le gros plan jour dure 3,1 s.
 - **Truthfulness** : les compteurs (≈ 1 284 conversations, 96 RDV) et les réponses (horaires, prix « dès 49 € ») sont illustratifs.
 
 ## Frame 1 — L'aube (0.0–3.5s)
@@ -30,7 +32,7 @@ mode: collaborative
 - duration: 3.5s
 - poster: 3.0s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/shop.html
 - blueprint: camera-journey (sub-shape B)
 - rules: multi-phase-camera, coordinate-target-zoom (zoom-out), ambient-glow-bloom
@@ -49,7 +51,7 @@ Why : le chatbot était déjà là avant l'ouverture.
 - duration: 5.5s
 - poster: 7.2s
 - transition_in: continuous camera
-- status: outline
+- status: animated
 - src: compositions/shop.html
 - blueprint: constellation-hub (adapté : le chatbot au centre, les visiteurs autour)
 - rules: spring-pop-entrance, waterfall-entry, counting-dynamic-scale
@@ -70,7 +72,7 @@ Why : un seul chatbot, tous les visiteurs servis, et rien ne se perd.
 - duration: 3.5s
 - poster: 11.3s
 - transition_in: camera dive + tilt-to-flatten
-- status: outline
+- status: animated
 - src: compositions/chat-day.html
 - blueprint: camera-journey (dive → hinge → travel to consequence)
 - rules: coordinate-target-zoom, discrete-text-sequence, cursor-click-ripple, card-morph-anchor
@@ -89,7 +91,7 @@ Why : preuve concrète — une question devient un rendez-vous dans l'agenda, sa
 - duration: 4.0s
 - poster: 15.6s
 - transition_in: camera pull-back
-- status: outline
+- status: animated
 - src: compositions/shop.html
 - blueprint: camera-journey (pull-back + lente orbite)
 - rules: theme-crossfade-morph (ciel/lumière), multi-phase-camera, ambient-glow-bloom
@@ -108,7 +110,7 @@ Why : la boutique ferme, l'accueil non.
 - duration: 3.0s
 - poster: 18.4s
 - transition_in: continuous camera
-- status: outline
+- status: animated
 - src: compositions/shop.html
 - blueprint: constellation-hub (variante nuit)
 - rules: particle-burst (sobre), spring-pop-entrance, counting-dynamic-scale
@@ -127,7 +129,7 @@ Why : la nuit, l'équipe dort, le chatbot travaille.
 - duration: 3.0s
 - poster: 21.6s
 - transition_in: camera dive + tilt-to-flatten
-- status: outline
+- status: animated
 - src: compositions/chat-night.html
 - blueprint: camera-journey (dive → hinge)
 - rules: coordinate-target-zoom, discrete-text-sequence, spring-pop-entrance
@@ -145,7 +147,7 @@ Why : preuve n°2 — la bonne demande arrive au bon interlocuteur, même à min
 - duration: 4.5s
 - poster: 26.0s
 - transition_in: camera pull-back → match on the chatbot
-- status: outline
+- status: animated
 - src: compositions/endcard.html
 - blueprint: logo-assemble-lockup (même lockup que « La ville »)
 - rules: multi-phase-camera, spring-pop-entrance, counting-dynamic-scale
