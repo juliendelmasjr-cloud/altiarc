@@ -1,0 +1,413 @@
+{
+ "note": "Sound-design cues. t = file start (s, film time); peaks already offset. Rebuild with: python videos/tools/score.py <film> <project>",
+ "cues": [
+  {
+   "t": 0.3,
+   "name": "sparkle",
+   "file": ".media/audio/sfx/sfx_008.mp3",
+   "gain": 0.18,
+   "pan": 0,
+   "what": "chatbot opens its eyes"
+  },
+  {
+   "t": 0.4,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.35,
+   "pan": 0,
+   "what": "pull-back at dawn"
+  },
+  {
+   "t": 2.75,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.6,
+   "pan": -0.3,
+   "what": "interior lights on"
+  },
+  {
+   "t": 3.05,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.8,
+   "pan": 0.35,
+   "what": "sign flips to OUVERT"
+  },
+  {
+   "t": 3.1,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.25,
+   "pan": 0.35,
+   "what": "sign"
+  },
+  {
+   "t": 4.95,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.4,
+   "pan": -0.2,
+   "what": "question bubble"
+  },
+  {
+   "t": 5.25,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.4,
+   "pan": 0.45,
+   "what": "question bubble"
+  },
+  {
+   "t": 5.55,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.4,
+   "pan": 0.35,
+   "what": "question bubble"
+  },
+  {
+   "t": 5.12,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.22,
+   "pan": -0.5,
+   "what": "question pip"
+  },
+  {
+   "t": 5.32,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.22,
+   "pan": -0.6,
+   "what": "question pip"
+  },
+  {
+   "t": 5.52,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.22,
+   "pan": 0.2,
+   "what": "question pip"
+  },
+  {
+   "t": 6.1,
+   "name": "sparkle",
+   "file": ".media/audio/sfx/sfx_008.mp3",
+   "gain": 0.22,
+   "pan": 0,
+   "what": "six answers at once"
+  },
+  {
+   "t": 6.3,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.35,
+   "pan": 0.3,
+   "what": "replies"
+  },
+  {
+   "t": 6.42,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.25,
+   "pan": -0.3,
+   "what": "replies"
+  },
+  {
+   "t": 7.2,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.2,
+   "pan": 0,
+   "what": "tokens fly inside"
+  },
+  {
+   "t": 8.32,
+   "name": "ping",
+   "file": ".media/audio/sfx/sfx_005.mp3",
+   "gain": 0.45,
+   "pan": -0.4,
+   "what": "contact filed"
+  },
+  {
+   "t": 8.5,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.5,
+   "pan": -0.2,
+   "what": "ticket on the desk"
+  },
+  {
+   "t": 9.15,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.3,
+   "pan": 0.2,
+   "what": "dive to the vitrine"
+  },
+  {
+   "t": 9.62,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.35,
+   "pan": 0.3,
+   "what": "client message"
+  },
+  {
+   "t": 10.36,
+   "name": "typing",
+   "file": ".media/audio/sfx/sfx_007.mp3",
+   "gain": 0.8,
+   "pan": -0.15,
+   "what": "chatbot types"
+  },
+  {
+   "t": 10.85,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.3,
+   "pan": -0.2,
+   "what": "quick replies"
+  },
+  {
+   "t": 11.33,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 1.0,
+   "pan": -0.2,
+   "what": "visitor taps Mardi 14 h"
+  },
+  {
+   "t": 11.52,
+   "name": "chime",
+   "file": ".media/audio/sfx/sfx_004.mp3",
+   "gain": 1.1,
+   "pan": 0,
+   "what": "C'est noté"
+  },
+  {
+   "t": 12.0,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.2,
+   "pan": 0,
+   "what": "panel folds"
+  },
+  {
+   "t": 12.38,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.25,
+   "pan": -0.2,
+   "what": "card flies to the agenda"
+  },
+  {
+   "t": 13.4,
+   "name": "ping",
+   "file": ".media/audio/sfx/sfx_005.mp3",
+   "gain": 0.7,
+   "pan": -0.3,
+   "what": "slot lights up"
+  },
+  {
+   "t": 13.8,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.25,
+   "pan": 0.2,
+   "what": "pull-back, golden hour"
+  },
+  {
+   "t": 15.6,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.4,
+   "pan": -0.4,
+   "what": "interior lights off"
+  },
+  {
+   "t": 15.72,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.4,
+   "pan": -0.2,
+   "what": "interior lights off"
+  },
+  {
+   "t": 15.84,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.4,
+   "pan": 0,
+   "what": "interior lights off"
+  },
+  {
+   "t": 15.78,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.7,
+   "pan": 0.35,
+   "what": "sign flips to FERMÉ"
+  },
+  {
+   "t": 16.75,
+   "name": "notif",
+   "file": ".media/audio/sfx/sfx_009.mp3",
+   "gain": 0.35,
+   "pan": 0.4,
+   "what": "messages arrive"
+  },
+  {
+   "t": 17.25,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.35,
+   "pan": -0.2,
+   "what": "Livraison possible ?"
+  },
+  {
+   "t": 17.5,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.35,
+   "pan": 0.2,
+   "what": "Je voudrais un devis"
+  },
+  {
+   "t": 17.98,
+   "name": "sparkle",
+   "file": ".media/audio/sfx/sfx_008.mp3",
+   "gain": 0.2,
+   "pan": 0,
+   "what": "night answers"
+  },
+  {
+   "t": 18.2,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.3,
+   "pan": -0.2,
+   "what": "reply"
+  },
+  {
+   "t": 18.25,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.25,
+   "pan": 0.2,
+   "what": "reply"
+  },
+  {
+   "t": 18.6,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.18,
+   "pan": 0,
+   "what": "tokens into the closed shop"
+  },
+  {
+   "t": 19.6,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.3,
+   "pan": 0.2,
+   "what": "dive to the vitrine"
+  },
+  {
+   "t": 19.65,
+   "name": "ping",
+   "file": ".media/audio/sfx/sfx_005.mp3",
+   "gain": 0.45,
+   "pan": -0.4,
+   "what": "contact filed"
+  },
+  {
+   "t": 19.9,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.5,
+   "pan": -0.2,
+   "what": "ticket on the commercial's desk"
+  },
+  {
+   "t": 20.05,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.35,
+   "pan": 0.3,
+   "what": "client message"
+  },
+  {
+   "t": 20.77,
+   "name": "typing",
+   "file": ".media/audio/sfx/sfx_007.mp3",
+   "gain": 0.8,
+   "pan": -0.15,
+   "what": "chatbot types"
+  },
+  {
+   "t": 21.55,
+   "name": "chime",
+   "file": ".media/audio/sfx/sfx_004.mp3",
+   "gain": 1.1,
+   "pan": 0,
+   "what": "Transmis"
+  },
+  {
+   "t": 21.95,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.2,
+   "pan": 0,
+   "what": "panel folds"
+  },
+  {
+   "t": 22.35,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.25,
+   "pan": -0.2,
+   "what": "pull-back"
+  },
+  {
+   "t": 23.2,
+   "name": "sparkle",
+   "file": ".media/audio/sfx/sfx_008.mp3",
+   "gain": 0.22,
+   "pan": 0,
+   "what": "the chatbot orb"
+  },
+  {
+   "t": 23.7,
+   "name": "ping",
+   "file": ".media/audio/sfx/sfx_005.mp3",
+   "gain": 0.4,
+   "pan": 0,
+   "what": "orb becomes the gold full stop"
+  },
+  {
+   "t": 23.96,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.18,
+   "pan": -0.3,
+   "what": "slides left"
+  },
+  {
+   "t": 24.2,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.2,
+   "pan": 0.2,
+   "what": "wordmark sweep"
+  },
+  {
+   "t": 24.88,
+   "name": "ping",
+   "file": ".media/audio/sfx/sfx_005.mp3",
+   "gain": 0.55,
+   "pan": 0.2,
+   "what": "full stop lands"
+  }
+ ]
+}

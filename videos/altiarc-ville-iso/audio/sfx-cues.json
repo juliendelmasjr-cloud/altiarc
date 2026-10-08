@@ -1,0 +1,325 @@
+{
+ "note": "Sound-design cues. t = file start (s, film time); peaks already offset. Rebuild with: python videos/tools/score.py <film> <project>",
+ "cues": [
+  {
+   "t": 0.3,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.35,
+   "pan": 0,
+   "what": "pull-back from the seed module"
+  },
+  {
+   "t": 0.85,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.28,
+   "pan": -0.3,
+   "what": "building rises"
+  },
+  {
+   "t": 1.1,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.28,
+   "pan": -0.5,
+   "what": "building rises"
+  },
+  {
+   "t": 1.3,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.28,
+   "pan": 0.4,
+   "what": "building rises"
+  },
+  {
+   "t": 1.5,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.28,
+   "pan": -0.1,
+   "what": "building rises"
+  },
+  {
+   "t": 1.7,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.28,
+   "pan": 0.5,
+   "what": "building rises"
+  },
+  {
+   "t": 3.78,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.2,
+   "pan": -0.4,
+   "what": "task card pops"
+  },
+  {
+   "t": 4.13,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.2,
+   "pan": 0.3,
+   "what": "task card pops"
+  },
+  {
+   "t": 4.48,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.2,
+   "pan": -0.2,
+   "what": "task card pops"
+  },
+  {
+   "t": 4.83,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.2,
+   "pan": 0.45,
+   "what": "task card pops"
+  },
+  {
+   "t": 5.23,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.2,
+   "pan": -0.45,
+   "what": "task card pops"
+  },
+  {
+   "t": 5.68,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.2,
+   "pan": 0.2,
+   "what": "task card pops"
+  },
+  {
+   "t": 6.54,
+   "name": "impact",
+   "file": ".media/audio/sfx/sfx_010.mp3",
+   "gain": 0.07,
+   "pan": 0,
+   "what": "core lands (peak 6.9)"
+  },
+  {
+   "t": 7.05,
+   "name": "sparkle",
+   "file": ".media/audio/sfx/sfx_008.mp3",
+   "gain": 0.18,
+   "pan": 0,
+   "what": "ribbons draw"
+  },
+  {
+   "t": 9.3,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.25,
+   "pan": 0.2,
+   "what": "pull-up over the city"
+  },
+  {
+   "t": 10.55,
+   "name": "ping",
+   "file": ".media/audio/sfx/sfx_005.mp3",
+   "gain": 0.5,
+   "pan": 0.3,
+   "what": "first gold result lands"
+  },
+  {
+   "t": 10.62,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.3,
+   "pan": -0.2,
+   "what": "dive to the call centre"
+  },
+  {
+   "t": 11.1,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.18,
+   "pan": 0,
+   "what": "chat panel unfolds"
+  },
+  {
+   "t": 11.72,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.4,
+   "pan": 0.3,
+   "what": "client message"
+  },
+  {
+   "t": 12.58,
+   "name": "typing",
+   "file": ".media/audio/sfx/sfx_007.mp3",
+   "gain": 0.8,
+   "pan": -0.15,
+   "what": "AI reply types"
+  },
+  {
+   "t": 13.4,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.4,
+   "pan": -0.2,
+   "what": "booking button"
+  },
+  {
+   "t": 13.5,
+   "name": "chime",
+   "file": ".media/audio/sfx/sfx_004.mp3",
+   "gain": 1.0,
+   "pan": 0,
+   "what": "ready-to-use result"
+  },
+  {
+   "t": 14.0,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.2,
+   "pan": 0,
+   "what": "panel folds"
+  },
+  {
+   "t": 14.6,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.3,
+   "pan": 0.2,
+   "what": "swoop to the office"
+  },
+  {
+   "t": 15.35,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.3,
+   "pan": 0,
+   "what": "workflow nodes"
+  },
+  {
+   "t": 16.09,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.8,
+   "pan": -0.45,
+   "what": "node checked"
+  },
+  {
+   "t": 16.45,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.8,
+   "pan": -0.15,
+   "what": "node checked"
+  },
+  {
+   "t": 16.81,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.8,
+   "pan": 0.15,
+   "what": "node checked"
+  },
+  {
+   "t": 17.17,
+   "name": "click",
+   "file": ".media/audio/sfx/sfx_006.mp3",
+   "gain": 0.8,
+   "pan": 0.45,
+   "what": "node checked"
+  },
+  {
+   "t": 17.0,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.14,
+   "pan": 0.3,
+   "what": "4 h struck through"
+  },
+  {
+   "t": 17.36,
+   "name": "chime",
+   "file": ".media/audio/sfx/sfx_004.mp3",
+   "gain": 1.1,
+   "pan": 0.2,
+   "what": "4 min"
+  },
+  {
+   "t": 18.0,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.2,
+   "pan": 0,
+   "what": "panel folds"
+  },
+  {
+   "t": 18.3,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.28,
+   "pan": -0.2,
+   "what": "pull-back to the city"
+  },
+  {
+   "t": 18.95,
+   "name": "pop",
+   "file": ".media/audio/sfx/sfx_003.mp3",
+   "gain": 0.3,
+   "pan": 0,
+   "what": "ROI dashboard rises"
+  },
+  {
+   "t": 20.4,
+   "name": "ping",
+   "file": ".media/audio/sfx/sfx_005.mp3",
+   "gain": 0.7,
+   "pan": 0.3,
+   "what": "counters land"
+  },
+  {
+   "t": 21.6,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.3,
+   "pan": 0,
+   "what": "city recedes"
+  },
+  {
+   "t": 22.85,
+   "name": "sparkle",
+   "file": ".media/audio/sfx/sfx_008.mp3",
+   "gain": 0.22,
+   "pan": 0,
+   "what": "the gold module"
+  },
+  {
+   "t": 23.18,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.18,
+   "pan": -0.3,
+   "what": "module slides left"
+  },
+  {
+   "t": 23.42,
+   "name": "whoosh",
+   "file": ".media/audio/sfx/sfx_002.mp3",
+   "gain": 0.22,
+   "pan": 0.2,
+   "what": "wordmark sweep"
+  },
+  {
+   "t": 24.05,
+   "name": "ping",
+   "file": ".media/audio/sfx/sfx_005.mp3",
+   "gain": 0.6,
+   "pan": 0.2,
+   "what": "full stop lands"
+  }
+ ]
+}
