@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          font-family: "Outfit", sans-serif;
+          color: #ffffff;
+        }
+        #end-bg {
+          position: absolute;
+          inset: 0;
+          background: #0c0c0c;
+        }
+        #end-glow {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 1500px;
+          height: 900px;
+          margin-left: -750px;
+          margin-top: -450px;
+          background: radial-gradient(closest-side, rgba(129, 140, 248, 0.22), rgba(129, 140, 248, 0.06) 55%, rgba(129, 140, 248, 0) 100%);
+          display: block;
+        }
+        #end-lockup {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 26px;
+        }
+        #end-mark-row {
+          display: flex;
+          align-items: baseline;
+          gap: 10px;
+        }
+        #end-word {
+          display: block;
+          font-size: 176px;
+          font-weight: 800;
+          line-height: 1;
+          letter-spacing: -0.025em;
+          color: #ffffff;
+          padding-bottom: 10px;
+        }
+        #end-dot {
+          display: block;
+          width: 34px;
+          height: 34px;
+          border-radius: 6px;
+          background: #c9a84c;
+          box-shadow:
+            0 0 28px rgba(201, 168, 76, 0.85),
+            0 0 70px rgba(201, 168, 76, 0.4);
+        }
+        #end-baseline {
+          font-size: 48px;
+          font-weight: 300;
+          letter-spacing: 0.005em;
+          color: rgba(255, 255, 255, 0.84);
+        }
+        #end-url {
+          margin-top: 14px;
+          font-family: "Space Mono", monospace;
+          font-size: 32px;
+          letter-spacing: 0.1em;
+          color: #c9a84c;
+        }
+      </style>
+
+      <div id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+        <div id="end-bg"></div>
+        <span id="end-glow"></span>
+        <div id="end-lockup">
+          <div id="end-mark-row">
+            <div id="end-word">Altiarc</div>
+            <span id="end-dot"></span>
+          </div>
+          <div id="end-baseline">Moins de tâches. Plus d'impact.</div>
+          <div id="end-url">altiarc.fr</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const build = () => {
+            const tl = gsap.timeline({ paused: true });
+            const word = document.getElementById("end-word");
+            const dot = document.getElementById("end-dot");
+            // Layout is final; measure once and bake the offsets.
+            const wr = word.getBoundingClientRect();
+            const dr = dot.getBoundingClientRect();
+            const root = document.getElementById("root").getBoundingClientRect();
+            const ox = root.left + root.width / 2 - (dr.left + dr.width / 2);
+            const oy = root.top + root.height / 2 - (dr.top + dr.height / 2);
+            const wordW = wr.width;
+            const startX = wr.left - dr.left; // dot's left edge on the word's left edge
+            const gap = dr.left - wr.right;
+
+            tl.fromTo("#end-bg", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power1.inOut" }, 0.05);
+            tl.fromTo("#end-glow", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 1.4, ease: "power2.out" }, 0.4);
+
+            // The module arrives from the city's last point of light (screen centre).
+            tl.fromTo(dot, { x: ox, y: oy, scale: 0, rotation: 45 }, { x: ox, y: oy, scale: 1, rotation: 0, duration: 0.4, ease: "power3.out" }, 0.25);
+            tl.fromTo(dot, { x: ox, y: oy }, { x: startX, y: 0, duration: 0.26, ease: "power3.inOut", immediateRender: false }, 0.66);
+
+            // Sweep right: the wordmark is revealed right behind the module.
+            const sweep = { x: startX };
+            tl.fromTo(
+              sweep,
+              { x: startX },
+              {
+                x: 0,
+                duration: 0.62,
+                ease: "power3.out",
+                onUpdate: () => {
+                  gsap.set(dot, { x: sweep.x });
+                  const revealed = sweep.x - startX; // px of word uncovered
+                  const right = Math.max(0, wordW - revealed);
+                  word.style.clipPath = `inset(-20px ${right.toFixed(1)}px -20px -20px)`;
+                },
+              },
+              0.9,
+            );
+            tl.fromTo(word, { clipPath: `inset(-20px ${wordW}px -20px -20px)` }, { clipPath: `inset(-20px ${wordW}px -20px -20px)`, duration: 0.01 }, 0);
+
+            tl.fromTo("#end-baseline", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.38);
+            tl.fromTo("#end-url", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 1.55);
+            void gap;
+            window.__timelines["endcard"] = tl;
+          };
+          if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+          else build();
+        })();
+      </script>
+    </template>
+  </body>
+</html>

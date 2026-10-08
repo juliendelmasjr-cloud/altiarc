@@ -7,7 +7,7 @@ audience: Dirigeants d'entreprises (PME, structures médias)
 mode: collaborative
 ---
 
-# Altiarc — La ville isométrique (v1)
+# Altiarc — La ville isométrique (v1 — construite)
 
 ## Decisions
 
@@ -19,21 +19,23 @@ mode: collaborative
 - **Brand** : voir `frame.md` (tokens altiarc.fr). Indigo = le système, or = la valeur, rose = la friction.
 - **Bans** : pas de dégradé de texte, pas de robot à visage, pas de diaporama (chaque plan découle du précédent), pas d'économiseur d'écran (chaque mouvement transporte une tâche).
 - **Held frame** : 07 — le carton final tient ~2 s sans mouvement.
+- **Build (timing réel, index.html)** : ville `compositions/city.html` 0–23,4 s · chatbot 11,2–14,6 s · workflow 15,0–18,5 s · ROI 18,9–21,9 s · signature 22,6–26,0 s. Durée finale : **26,0 s**.
+- **Écart avec la v1** : l'ouverture part du **cœur-module indigo** posé au centre (et non d'un cube sur un ruban : les rubans n'existent qu'une fois le système allumé). Ce module monte avec le cœur, vire à l'or à la fin et devient le point du logo.
 - **Truthfulness** : les chiffres du tableau de bord (heures gagnées, ROI ×3) sont illustratifs ; « ×3 » reprend la promesse du site (« elle la rend 3× plus efficace »).
 
 ## Frame 1 — La ville (0.0–3.5s)
 
-- scene: Macro sur un module lumineux qui glisse sur un ruban, puis grand dézoom qui révèle la ville isométrique : 5 bâtiments sur un îlot sombre
+- scene: Macro sur le module indigo posé au centre, puis grand dézoom qui révèle la ville isométrique : 5 bâtiments sortent du sol sur un îlot sombre
 - duration: 3.5s
 - poster: 2.8s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/city.html
 - blueprint: camera-journey (sub-shape B — cursorless flight)
 - rules: multi-phase-camera, coordinate-target-zoom (zoom-out variation), spring-pop-entrance
 - voiceover: onscreen
 
-On screen : un cube indigo glisse sur un ruban lumineux (plan très serré). La caméra recule fort
+On screen : le module indigo flotte au-dessus de la plateforme centrale (plan très serré). La caméra recule fort
 (`power4.out`, 2.2 s) et révèle l'îlot : **Bureau** (tour vitrée), **Atelier** (toit en dents de
 scie), **Boutique** (auvent rayé), **Entrepôt** (portes roulantes, palettes), **Centre d'appels**
 (antenne + enseigne casque). Les bâtiments émergent du sol en cascade pendant le recul. Au centre,
@@ -48,7 +50,7 @@ Why : poser le monde du dirigeant — *son* entreprise, avec tous ses métiers.
 - duration: 3.5s
 - poster: 5.5s
 - transition_in: continuous camera
-- status: outline
+- status: animated
 - src: compositions/city.html
 - blueprint: overwhelm-surround (adapté, dans le monde 3D)
 - rules: waterfall-entry, spring-pop-entrance, ambient-glow-bloom
@@ -68,7 +70,7 @@ Why : nommer la douleur sans un mot — le temps perdu s'empile.
 - duration: 4.0s
 - poster: 9.5s
 - transition_in: continuous camera
-- status: outline
+- status: animated
 - src: compositions/city.html
 - blueprint: camera-journey (leg : travelling latéral le long d'un convoyeur)
 - rules: svg-path-draw (tracé des rubans, en 3D), multi-phase-camera, motion-blur-streak
@@ -88,7 +90,7 @@ Why : montrer le système Altiarc — entrée brute, traitement, sortie prête �
 - duration: 3.5s
 - poster: 13.6s
 - transition_in: camera dive + tilt-to-flatten
-- status: outline
+- status: animated
 - src: compositions/chat.html
 - blueprint: camera-journey (dive → panel → hinge)
 - rules: coordinate-target-zoom, 3d-camera-flight (tilt-to-flatten), discrete-text-sequence, spring-pop-entrance
@@ -108,7 +110,7 @@ Why : preuve n°1 — le client obtient une réponse à 23 h 47, sans personne a
 - duration: 3.5s
 - poster: 17.0s
 - transition_in: camera swoop + tilt-to-flatten
-- status: outline
+- status: animated
 - src: compositions/workflow.html
 - blueprint: agent-progress-theater (adapté) dans camera-journey
 - rules: svg-path-draw, waterfall-entry, css-marker-patterns (barré), counting-dynamic-scale
@@ -127,7 +129,7 @@ Why : preuve n°2 — un workflow remplace des heures de travail manuel.
 - duration: 3.5s
 - poster: 20.8s
 - transition_in: camera pull-back
-- status: outline
+- status: animated
 - src: compositions/roi.html
 - blueprint: dataviz-countup
 - rules: counting-dynamic-scale, stat-bars-and-fills, svg-path-draw, chart-scrub-readout
@@ -146,7 +148,7 @@ Why : preuve n°3 — c'est mesurable, et ça monte.
 - duration: 4.5s
 - poster: 25.0s
 - transition_in: camera pull-back → match on the module
-- status: outline
+- status: animated
 - src: compositions/endcard.html
 - blueprint: logo-assemble-lockup (CTA text-clear bloom / settled-lockup)
 - rules: multi-phase-camera, spring-pop-entrance, gsap-effects (révélation par masque)

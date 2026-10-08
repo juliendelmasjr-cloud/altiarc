@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          font-family: "Outfit", sans-serif;
+          color: #ffffff;
+        }
+        #roi-stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          padding-top: 96px;
+          perspective: 1800px;
+        }
+        #roi-panel {
+          width: 1320px;
+          height: 560px;
+          border-radius: 28px;
+          background: rgba(20, 20, 27, 0.9);
+          border: 2px solid rgba(201, 168, 76, 0.42);
+          box-shadow:
+            0 40px 120px rgba(0, 0, 0, 0.55),
+            0 0 90px rgba(201, 168, 76, 0.14);
+          padding: 40px 52px;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+        }
+        #roi-head {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          font-family: "Space Mono", monospace;
+          font-size: 24px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          color: #e9d49a;
+        }
+        #roi-live {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #c9a84c;
+          box-shadow: 0 0 16px #c9a84c;
+          display: block;
+        }
+        #roi-main {
+          flex: 1;
+          display: flex;
+          gap: 56px;
+        }
+        #roi-chart {
+          width: 720px;
+          height: 100%;
+          display: block;
+          overflow: visible;
+        }
+        #roi-stats {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 34px;
+        }
+        .roi-stat {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          padding-left: 30px;
+          border-left: 3px solid rgba(255, 255, 255, 0.12);
+        }
+        .roi-label {
+          font-size: 28px;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.7);
+        }
+        .roi-value {
+          display: flex;
+          align-items: baseline;
+          gap: 14px;
+          font-size: 92px;
+          font-weight: 800;
+          line-height: 1;
+          letter-spacing: -0.02em;
+          font-variant-numeric: tabular-nums;
+        }
+        #roi-hours {
+          color: #c9a84c;
+        }
+        .roi-unit {
+          font-family: "Space Mono", monospace;
+          font-size: 26px;
+          font-weight: 400;
+          letter-spacing: 0.04em;
+          color: rgba(255, 255, 255, 0.66);
+        }
+      </style>
+
+      <div id="root" data-composition-id="roi" data-width="1920" data-height="1080">
+        <div id="roi-stage">
+          <div id="roi-panel">
+            <div id="roi-head"><span id="roi-live"></span>ROI · EN DIRECT</div>
+            <div id="roi-main">
+              <svg id="roi-chart" viewBox="0 0 720 380">
+                <defs>
+                  <linearGradient id="roi-fill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#c9a84c" stop-opacity="0.35" />
+                    <stop offset="1" stop-color="#c9a84c" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+                <g stroke="rgba(255,255,255,0.08)" stroke-width="2">
+                  <line x1="0" y1="40" x2="720" y2="40" />
+                  <line x1="0" y1="140" x2="720" y2="140" />
+                  <line x1="0" y1="240" x2="720" y2="240" />
+                  <line x1="0" y1="340" x2="720" y2="340" />
+                </g>
+                <path id="roi-area" d="M0 330 L80 318 L160 300 L240 286 L320 250 L400 226 L480 180 L560 150 L640 98 L720 52 L720 340 L0 340 Z" fill="url(#roi-fill)" />
+                <path id="roi-line" d="M0 330 L80 318 L160 300 L240 286 L320 250 L400 226 L480 180 L560 150 L640 98 L720 52" fill="none" stroke="#c9a84c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                <circle id="roi-head-dot" cx="720" cy="52" r="11" fill="#c9a84c" />
+                <circle id="roi-head-ring" cx="720" cy="52" r="11" fill="none" stroke="#c9a84c" stroke-width="3" />
+              </svg>
+              <div id="roi-stats">
+                <div class="roi-stat">
+                  <div class="roi-label">Heures gagnées</div>
+                  <div class="roi-value"><span id="roi-hours">+0 h</span><span class="roi-unit">/ mois</span></div>
+                </div>
+                <div class="roi-stat">
+                  <div class="roi-label">Productivité des équipes</div>
+                  <div class="roi-value"><span id="roi-mult">×1</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const line = document.getElementById("roi-line");
+          const LEN = line.getTotalLength();
+          const hours = document.getElementById("roi-hours");
+          const mult = document.getElementById("roi-mult");
+
+          tl.fromTo(
+            "#roi-panel",
+            { y: 240, rotationX: 42, scale: 0.6, opacity: 0 },
+            { y: 0, rotationX: 0, scale: 1, opacity: 1, duration: 0.6, ease: "power4.out" },
+            0,
+          );
+          tl.fromTo("#roi-head", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.3);
+          tl.fromTo("#roi-live", { scale: 1 }, { scale: 1.6, duration: 0.28, repeat: 7, yoyo: true, ease: "sine.inOut" }, 0.4);
+
+          // The curve draws itself; the head dot rides its end.
+          tl.fromTo(line, { strokeDasharray: LEN, strokeDashoffset: LEN }, { strokeDashoffset: 0, duration: 1.45, ease: "power2.inOut" }, 0.42);
+          tl.fromTo("#roi-area", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power1.out" }, 0.9);
+          const head = { p: 0 };
+          const dot = document.getElementById("roi-head-dot");
+          const ring = document.getElementById("roi-head-ring");
+          tl.fromTo(
+            head,
+            { p: 0 },
+            {
+              p: 1,
+              duration: 1.45,
+              ease: "power2.inOut",
+              onUpdate: () => {
+                const pt = line.getPointAtLength(head.p * LEN);
+                dot.setAttribute("cx", pt.x.toFixed(2));
+                dot.setAttribute("cy", pt.y.toFixed(2));
+                ring.setAttribute("cx", pt.x.toFixed(2));
+                ring.setAttribute("cy", pt.y.toFixed(2));
+              },
+            },
+            0.42,
+          );
+          tl.fromTo("#roi-head-ring", { attr: { r: 11 }, opacity: 0.9 }, { attr: { r: 30 }, opacity: 0, duration: 0.5, repeat: 1, ease: "power2.out" }, 1.85);
+
+          // Count-ups.
+          tl.fromTo(".roi-stat", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.12, ease: "power3.out" }, 0.4);
+          const ch = { h: 0 };
+          const cm = { m: 1 };
+          tl.fromTo(
+            ch,
+            { h: 0 },
+            {
+              h: 120,
+              duration: 1.5,
+              ease: "power2.out",
+              onUpdate: () => {
+                hours.textContent = "+" + Math.round(ch.h) + " h";
+              },
+            },
+            0.5,
+          );
+          tl.fromTo(
+            cm,
+            { m: 1 },
+            {
+              m: 3,
+              duration: 1.4,
+              ease: "power2.out",
+              immediateRender: false,
+              onUpdate: () => {
+                const v = cm.m >= 2.995 ? "3" : cm.m.toFixed(1).replace(".", ",");
+                mult.textContent = "×" + v;
+              },
+            },
+            0.62,
+          );
+          tl.fromTo("#roi-mult", { scale: 1 }, { scale: 1.12, duration: 0.18, yoyo: true, repeat: 1, ease: "power2.out", transformOrigin: "0% 80%" }, 2.02);
+
+          // Dissolve upward as the camera pulls away.
+          tl.to("#roi-panel", { y: -60, opacity: 0, scale: 0.92, duration: 0.45, ease: "power2.in" }, 2.5);
+
+          window.__timelines["roi"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

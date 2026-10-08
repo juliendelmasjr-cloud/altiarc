@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          font-family: "Outfit", sans-serif;
+          color: #ffffff;
+        }
+        #wf-stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          perspective: 1800px;
+        }
+        #wf-panel {
+          position: relative;
+          width: 1440px;
+          height: 700px;
+          border-radius: 28px;
+          background: rgba(20, 20, 27, 0.94);
+          border: 2px solid rgba(129, 140, 248, 0.38);
+          box-shadow:
+            0 40px 120px rgba(0, 0, 0, 0.6),
+            0 0 80px rgba(129, 140, 248, 0.16);
+          padding: 44px 56px;
+          display: flex;
+          flex-direction: column;
+          gap: 46px;
+        }
+        #wf-head {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-family: "Space Mono", monospace;
+          font-size: 24px;
+          letter-spacing: 0.08em;
+          color: rgba(255, 255, 255, 0.66);
+        }
+        #wf-status {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          color: #c7cbff;
+          font-weight: 700;
+        }
+        #wf-status-dot {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #818cf8;
+          display: block;
+        }
+        #wf-flow {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 230px;
+        }
+        #wf-links {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: visible;
+        }
+        .wf-node {
+          position: relative;
+          z-index: 1;
+          width: 250px;
+          height: 210px;
+          border-radius: 24px;
+          background: #1b1b26;
+          border: 2px solid rgba(255, 255, 255, 0.12);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 18px;
+        }
+        .wf-glow {
+          position: absolute;
+          inset: -2px;
+          border-radius: 24px;
+          border: 3px solid #818cf8;
+          box-shadow: 0 0 34px rgba(129, 140, 248, 0.55);
+          display: block;
+          opacity: 0;
+        }
+        .wf-icon {
+          width: 70px;
+          height: 70px;
+          display: block;
+        }
+        .wf-label {
+          font-size: 30px;
+          font-weight: 600;
+          text-align: center;
+          line-height: 1.15;
+          max-width: 210px;
+        }
+        .wf-check {
+          position: absolute;
+          top: -18px;
+          right: -18px;
+          width: 46px;
+          height: 46px;
+          border-radius: 50%;
+          background: #c9a84c;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 0 24px rgba(201, 168, 76, 0.6);
+        }
+        .wf-check svg {
+          width: 26px;
+          height: 26px;
+          display: block;
+        }
+        #wf-packet {
+          position: absolute;
+          z-index: 2;
+          left: 125px;
+          top: 50%;
+          width: 30px;
+          height: 30px;
+          margin-top: -15px;
+          margin-left: -15px;
+          border-radius: 8px;
+          background: #818cf8;
+          box-shadow: 0 0 30px #818cf8;
+          display: block;
+        }
+        #wf-foot {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          border-top: 2px solid rgba(255, 255, 255, 0.07);
+          padding-top: 34px;
+        }
+        #wf-foot-label {
+          font-family: "Space Mono", monospace;
+          font-size: 24px;
+          letter-spacing: 0.08em;
+          color: rgba(255, 255, 255, 0.66);
+          padding-bottom: 18px;
+        }
+        #wf-times {
+          display: flex;
+          align-items: flex-end;
+          gap: 48px;
+        }
+        #wf-before {
+          position: relative;
+          font-size: 104px;
+          font-weight: 800;
+          line-height: 1;
+          letter-spacing: -0.02em;
+          color: rgba(255, 255, 255, 0.55);
+        }
+        #wf-strike {
+          position: absolute;
+          left: -8px;
+          right: -8px;
+          top: 52%;
+          height: 9px;
+          border-radius: 6px;
+          background: #f472b6;
+          transform-origin: 0 50%;
+          display: block;
+        }
+        #wf-arrow {
+          font-size: 64px;
+          font-weight: 300;
+          color: rgba(255, 255, 255, 0.5);
+          padding-bottom: 14px;
+        }
+        #wf-after {
+          font-size: 104px;
+          font-weight: 800;
+          line-height: 1;
+          letter-spacing: -0.02em;
+          color: #c9a84c;
+        }
+      </style>
+
+      <div id="root" data-composition-id="workflow" data-width="1920" data-height="1080">
+        <div id="wf-stage">
+          <div id="wf-panel">
+            <div id="wf-head">
+              <span>WORKFLOW · FACTURATION AUTOMATIQUE</span>
+              <span id="wf-status"><span id="wf-status-dot"></span>ACTIF</span>
+            </div>
+            <div id="wf-flow">
+              <svg id="wf-links" viewBox="0 0 1328 230" preserveAspectRatio="none">
+                <line x1="125" y1="115" x2="1203" y2="115" stroke="rgba(255,255,255,0.14)" stroke-width="4" stroke-dasharray="10 12" />
+                <line id="wf-lit" x1="125" y1="115" x2="1203" y2="115" stroke="#818cf8" stroke-width="5" />
+              </svg>
+              <div class="wf-node" id="wf-n0">
+                <span class="wf-glow"></span>
+                <svg class="wf-icon" viewBox="0 0 100 100" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="12" y="24" width="76" height="54" rx="8" /><path d="M16 30 L50 56 L84 30" />
+                </svg>
+                <div class="wf-label">Email reçu</div>
+                <div class="wf-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0c0c0c" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7" /></svg></div>
+              </div>
+              <div class="wf-node" id="wf-n1">
+                <span class="wf-glow"></span>
+                <svg class="wf-icon" viewBox="0 0 100 100" fill="none" stroke="#c084fc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="26" y="26" width="48" height="48" rx="10" /><path d="M40 12 V26 M60 12 V26 M40 74 V88 M60 74 V88 M12 40 H26 M12 60 H26 M74 40 H88 M74 60 H88" /><rect x="40" y="40" width="20" height="20" rx="4" fill="#c084fc" />
+                </svg>
+                <div class="wf-label">Tri IA</div>
+                <div class="wf-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0c0c0c" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7" /></svg></div>
+              </div>
+              <div class="wf-node" id="wf-n2">
+                <span class="wf-glow"></span>
+                <svg class="wf-icon" viewBox="0 0 100 100" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M24 10 H64 L78 24 V90 H24 Z" /><path d="M64 10 V24 H78" /><path d="M36 46 H66 M36 60 H66 M36 74 H54" />
+                </svg>
+                <div class="wf-label">Facture générée</div>
+                <div class="wf-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0c0c0c" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7" /></svg></div>
+              </div>
+              <div class="wf-node" id="wf-n3">
+                <span class="wf-glow"></span>
+                <svg class="wf-icon" viewBox="0 0 100 100" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="50" cy="24" rx="32" ry="12" /><path d="M18 24 V76 C18 83 32 88 50 88 C68 88 82 83 82 76 V24" /><path d="M18 50 C18 57 32 62 50 62 C68 62 82 57 82 50" />
+                </svg>
+                <div class="wf-label">CRM à jour</div>
+                <div class="wf-check"><svg viewBox="0 0 24 24" fill="none" stroke="#0c0c0c" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 L10 17 L19 7" /></svg></div>
+              </div>
+              <span id="wf-packet"></span>
+            </div>
+            <div id="wf-foot">
+              <div id="wf-foot-label">TEMPS DE TRAITEMENT</div>
+              <div id="wf-times">
+                <div id="wf-before">4 h<span id="wf-strike"></span></div>
+                <div id="wf-arrow">→</div>
+                <div id="wf-after">4 min</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          // Node centres along the 1328px flow row (250px nodes, space-between).
+          const X = [125, 484.33, 843.67, 1203];
+          const T0 = 0.95;
+          const HOP = 0.36;
+
+          tl.fromTo(
+            "#wf-panel",
+            { scale: 0.12, rotationX: 58, y: 160, opacity: 0 },
+            { scale: 1, rotationX: 0, y: 0, opacity: 1, duration: 0.62, ease: "power4.out" },
+            0,
+          );
+          tl.fromTo("#wf-head > *", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.08, ease: "power3.out" }, 0.3);
+          tl.fromTo(".wf-node", { opacity: 0, y: 40, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.08, ease: "back.out(1.5)" }, 0.42);
+          tl.fromTo(".wf-check", { scale: 0, opacity: 0 }, { scale: 0, opacity: 0, duration: 0.01 }, 0);
+          tl.fromTo("#wf-lit", { attr: { x2: 125 } }, { attr: { x2: 1203 }, duration: HOP * 3, ease: "none" }, T0);
+          tl.fromTo("#wf-packet", { opacity: 0 }, { opacity: 1, duration: 0.1 }, T0 - 0.16);
+          for (let i = 0; i < 4; i++) {
+            const at = T0 + i * HOP;
+            if (i > 0) tl.fromTo("#wf-packet", { x: X[i - 1] - X[0] }, { x: X[i] - X[0], duration: HOP, ease: "power1.inOut", immediateRender: false }, at - HOP);
+            tl.fromTo(`#wf-n${i} .wf-glow`, { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, at);
+            tl.fromTo(`#wf-n${i} .wf-glow`, { opacity: 1 }, { opacity: 0.25, duration: 0.4, ease: "power2.in", immediateRender: false }, at + 0.2);
+            tl.fromTo(`#wf-n${i} .wf-check`, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.2)", immediateRender: false }, at + 0.14);
+          }
+          tl.fromTo("#wf-packet", { opacity: 1 }, { opacity: 0, duration: 0.15, immediateRender: false }, T0 + 3 * HOP + 0.05);
+          tl.fromTo("#wf-status-dot", { scale: 1 }, { scale: 1.5, duration: 0.3, repeat: 7, yoyo: true, ease: "sine.inOut" }, 0.5);
+
+          // 4 h → 4 min.
+          tl.fromTo("#wf-foot", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.62);
+          tl.fromTo("#wf-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.28, ease: "power2.inOut" }, 2.15);
+          tl.fromTo("#wf-arrow", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.25, ease: "power2.out" }, 2.3);
+          tl.fromTo("#wf-after", { opacity: 0, scale: 0.6, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.42, ease: "back.out(1.9)" }, 2.38);
+
+          tl.to("#wf-panel", { scale: 0.1, rotationX: 50, y: 160, opacity: 0, duration: 0.42, ease: "power2.in" }, 3.05);
+
+          window.__timelines["workflow"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
