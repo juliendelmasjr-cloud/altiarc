@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "preferences": {
+    "destination": {
+      "value": "website-embed",
+      "confirmed_in": [
+        "altiarc-chatbot-iso"
+      ],
+      "updated_at": "2026-10-08T11:51:04.071Z"
+    },
+    "aspect": {
+      "value": "1920x1080",
+      "confirmed_in": [
+        "altiarc-chatbot-iso"
+      ],
+      "updated_at": "2026-10-08T11:51:04.131Z"
+    },
+    "language": {
+      "value": "fr",
+      "confirmed_in": [
+        "altiarc-chatbot-iso"
+      ],
+      "updated_at": "2026-10-08T11:51:04.194Z"
+    },
+    "flow": {
+      "value": "automation",
+      "confirmed_in": [
+        "altiarc-chatbot-iso"
+      ],
+      "updated_at": "2026-10-08T11:51:04.252Z"
+    },
+    "storyboard": {
+      "value": "yes",
+      "confirmed_in": [
+        "altiarc-chatbot-iso"
+      ],
+      "updated_at": "2026-10-08T11:51:04.312Z"
+    }
+  },
+  "sightings": {}
+}
