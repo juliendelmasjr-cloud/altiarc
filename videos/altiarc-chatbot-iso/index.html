@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
     <title>Altiarc — La boutique 24/7</title>
     <script src="vendor/gsap.min.js"></script>
     <script type="importmap">
@@ -37,60 +37,16 @@
     </style>
   </head>
   <body>
-    <div
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="27"
-      data-width="1920"
-      data-height="1080"
-      data-fps="30"
-    >
+    <div data-hf-id="hf-l1nn" id="root" data-composition-id="main" data-start="0" data-duration="27" data-width="1920" data-height="1080" data-fps="30">
       <!-- Track 0 — the shop, its day/night cycle, bubbles and HUD (Three.js) -->
-      <div
-        id="shop"
-        data-composition-id="shop"
-        data-composition-src="compositions/shop.html"
-        data-start="0"
-        data-duration="23.6"
-        data-track-index="0"
-        data-width="1920"
-        data-height="1080"
-      ></div>
+      <div data-hf-id="hf-0dko" id="shop" data-composition-id="shop" data-composition-src="compositions/shop.html" data-start="0" data-duration="23.6" data-track-index="0" data-width="1920" data-height="1080"></div>
 
       <!-- Close-up conversations that unfold out of the vitrine -->
-      <div
-        id="chat-day"
-        data-composition-id="chat-day"
-        data-composition-src="compositions/chat-day.html"
-        data-start="9.4"
-        data-duration="3.1"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-      ></div>
-      <div
-        id="chat-night"
-        data-composition-id="chat-night"
-        data-composition-src="compositions/chat-night.html"
-        data-start="19.85"
-        data-duration="2.55"
-        data-track-index="2"
-        data-width="1920"
-        data-height="1080"
-      ></div>
+      <div data-hf-id="hf-u2j4" id="chat-day" data-composition-id="chat-day" data-composition-src="compositions/chat-day.html" data-start="9.4" data-duration="3.1" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-l6zx" id="chat-night" data-composition-id="chat-night" data-composition-src="compositions/chat-night.html" data-start="19.85" data-duration="2.55" data-track-index="2" data-width="1920" data-height="1080"></div>
 
       <!-- Signature -->
-      <div
-        id="endcard"
-        data-composition-id="endcard"
-        data-composition-src="compositions/endcard.html"
-        data-start="23.0"
-        data-duration="4.0"
-        data-track-index="3"
-        data-width="1920"
-        data-height="1080"
-      ></div>
+      <div data-hf-id="hf-0lp6" id="endcard" data-composition-id="endcard" data-composition-src="compositions/endcard.html" data-start="23.0" data-duration="4.0" data-track-index="3" data-width="1920" data-height="1080"></div>
     </div>
     <script>
       // The root only hosts the scenes; each scene owns its own timeline.
