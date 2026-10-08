@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "preferences": {
+    "destination": {
+      "value": "website-embed",
+      "confirmed_in": [
+        "altiarc-ville-iso"
+      ],
+      "updated_at": "2026-10-08T10:38:46.577Z"
+    },
+    "aspect": {
+      "value": "1920x1080",
+      "confirmed_in": [
+        "altiarc-ville-iso"
+      ],
+      "updated_at": "2026-10-08T10:38:46.630Z"
+    },
+    "language": {
+      "value": "fr",
+      "confirmed_in": [
+        "altiarc-ville-iso"
+      ],
+      "updated_at": "2026-10-08T10:38:46.686Z"
+    },
+    "flow": {
+      "value": "automation",
+      "confirmed_in": [
+        "altiarc-ville-iso"
+      ],
+      "updated_at": "2026-10-08T10:38:46.742Z"
+    },
+    "storyboard": {
+      "value": "yes",
+      "confirmed_in": [
+        "altiarc-ville-iso"
+      ],
+      "updated_at": "2026-10-08T10:38:46.800Z"
+    }
+  },
+  "sightings": {}
+}
