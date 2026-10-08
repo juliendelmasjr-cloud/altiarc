@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
     <title>Altiarc — La ville isométrique</title>
     <script src="vendor/gsap.min.js"></script>
     <script type="importmap">
@@ -37,70 +37,17 @@
     </style>
   </head>
   <body>
-    <div
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="26"
-      data-width="1920"
-      data-height="1080"
-      data-fps="30"
-    >
+    <div data-hf-id="hf-cuji" id="root" data-composition-id="main" data-start="0" data-duration="26" data-width="1920" data-height="1080" data-fps="30">
       <!-- Track 0 — the isometric city (Three.js, one continuous camera) -->
-      <div
-        id="city"
-        data-composition-id="city"
-        data-composition-src="compositions/city.html"
-        data-start="0"
-        data-duration="23.4"
-        data-track-index="0"
-        data-width="1920"
-        data-height="1080"
-      ></div>
+      <div data-hf-id="hf-lh8t" id="city" data-composition-id="city" data-composition-src="compositions/city.html" data-start="0" data-duration="23.4" data-track-index="0" data-width="1920" data-height="1080"></div>
 
       <!-- Screens that unfold out of the buildings -->
-      <div
-        id="chat"
-        data-composition-id="chat"
-        data-composition-src="compositions/chat.html"
-        data-start="11.2"
-        data-duration="3.4"
-        data-track-index="1"
-        data-width="1920"
-        data-height="1080"
-      ></div>
-      <div
-        id="workflow"
-        data-composition-id="workflow"
-        data-composition-src="compositions/workflow.html"
-        data-start="15.0"
-        data-duration="3.5"
-        data-track-index="2"
-        data-width="1920"
-        data-height="1080"
-      ></div>
-      <div
-        id="roi"
-        data-composition-id="roi"
-        data-composition-src="compositions/roi.html"
-        data-start="18.9"
-        data-duration="3.0"
-        data-track-index="3"
-        data-width="1920"
-        data-height="1080"
-      ></div>
+      <div data-hf-id="hf-nhin" id="chat" data-composition-id="chat" data-composition-src="compositions/chat.html" data-start="11.2" data-duration="3.4" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-303c" id="workflow" data-composition-id="workflow" data-composition-src="compositions/workflow.html" data-start="15.0" data-duration="3.5" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div data-hf-id="hf-cf5z" id="roi" data-composition-id="roi" data-composition-src="compositions/roi.html" data-start="18.9" data-duration="3.0" data-track-index="3" data-width="1920" data-height="1080"></div>
 
       <!-- Signature -->
-      <div
-        id="endcard"
-        data-composition-id="endcard"
-        data-composition-src="compositions/endcard.html"
-        data-start="22.6"
-        data-duration="3.4"
-        data-track-index="4"
-        data-width="1920"
-        data-height="1080"
-      ></div>
+      <div data-hf-id="hf-1c39" id="endcard" data-composition-id="endcard" data-composition-src="compositions/endcard.html" data-start="22.6" data-duration="3.4" data-track-index="4" data-width="1920" data-height="1080"></div>
     </div>
 
     <script>
